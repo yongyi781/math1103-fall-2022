@@ -1,0 +1,183 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype,pgfplots}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks]{hyperref}
+\usepackage[most]{tcolorbox}
+
+\usepgfplotslibrary{fillbetween,decorations.softclip}
+\pgfplotsset{compat=1.18}
+
+\definecolor{sol}{rgb}{0.1, 0.3, 0.6}
+
+\newtcolorbox{solution}{enhanced, breakable, colframe=sol, title=Solution}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\blank}{\underline{\hspace{1cm}}}
+\newcommand{\longblank}{\underline{\hspace{2cm}}}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 9}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, November 9 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Binary numbers are the bread and butter of how computers calculate things. What is the exact value of this binary number?
+        \[x=0.01010101\ldots.\]
+        If you are unfamiliar with binary, the $k$th position after the decimal point is the $\frac 1{2^k}$-place value. So for example, a finite binary expansion such as $0.01101$ would be equal to $\frac 14+\frac 18+\frac 1{32}$.
+    \end{problem}
+    \begin{solution}
+        The sum is
+        \[\frac 14+\frac 1{16}+\frac 1{32}+\dots=\frac{\frac 14}{1-\frac 14}=\frac 13,\]
+        this being a geometric series of common ratio $1/4$ and first term $1/4$.
+    \end{solution}
+
+    \begin{problem}
+        A king once lost in a game of chess to a traveller, and offered the traveller a prize of his choice. The traveller said:
+        \begin{quote}
+            I am a modest man, so I will only request this: on this chessboard in front of us, put one grain of rice on the first square, two grains of rice on the second square, four on the third square, and so on, doubling each time until the 64th square.
+        \end{quote}
+
+        The king laughed and said, ``That's all? You are too modest.''
+        
+        Do you agree with the king that the traveller is too modest? How many grains of rice did the traveller request? What fraction of the total rice belongs to the last square?
+    \end{problem}
+    \begin{solution}
+        If we double the number of rice from each square to the next, it will be the case that square $n$ must have $2^{n-1}$ squares on it for each $n$ from 1 to 64. In particular, on the last square the king must put $2^{63}$ grains of rice, which is
+        \[9223372036854775808.\]
+        That is a huge number\dots the traveller is very tricky! Definitely not modest. The total number of grains of rice the traveller requested is
+        \[1+2+4+\dots+2^{63}=2^{64}-1,\]
+        this being a geometric series of common ratio 2 and first term 1. The fraction of rice that belongs to the last square is then
+        \[\frac{2^{63}}{2^{64}-1}\]
+        which is very close to, but slightly greater than, 1/2 since $2^{63}/2^{64}=1/2$.
+    \end{solution}
+
+    \begin{problem}
+        Determine whether the following series converge or diverge, and find the sum of those that converge.
+        \begin{enumerate}[(a)]
+            \item \[\frac 1{10000}+\frac 1{10001}+\frac 1{10002}+\frac 1{10003}+\cdots\]
+            \begin{solution}
+                This is the tail of the harmonic series starting at $1/10000$, so it diverges. If you forget why the tail of a divergent series is divergent, it is because if the tail were convergent, then the harmonic series would be convergent as well, being a finite sum plus this tail.
+            \end{solution}
+            \item \[\frac 1{10000}+\frac 1{20000}+\frac 1{30000}+\frac 1{40000}+\cdots\]
+            \begin{solution}
+                This is 1/10000 times the harmonic series, so it diverges.
+            \end{solution}
+            \item \[\frac 1{10000}+\frac 1{20000}+\frac 1{40000}+\frac 1{80000}+\cdots\]
+            \begin{solution}
+                This is a geometric series with common ratio 1/2 and first term 1/10000. The common ratio has absolute value less than 1, so the geometric series converges.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        In this problem you will uncover many different ways to sum the series
+        \[1+2x+3x^2+4x^3+\cdots=\sum_{n=0}^\infty (n+1)x^n.\]
+        Spoiler alert: we'll find that the series sums to $1/(1-x)^2$ (whenever it converges).
+        \begin{enumerate}[(a)]
+            \item For now, assume $x$ is any number that makes the series converge. Recall the method mentioned in Problem Set 5 Problem 3(d) (Strang 8.4.20)! If necessary, relearning the method is part of this problem! Then work out the sum using that method.
+            \begin{solution}
+                Using the aforementioned method we obtain
+                \[\begin{split}
+                    1&+2x+3x^2+4x^3+\dots\\
+                    &= (1+x+x^2+\dots)+(x+x^2+x^3+\dots)+(x^2+x^3+x^4+\dots)+\dots\\
+                    &= \frac 1{1-x}+\frac x{1-x}+\frac{x^2}{1-x}+\dots\\
+                    &= \frac 1{1-x}(1+x+x^2+\dots)\\
+                    &= \frac 1{1-x}\cdot\frac 1{1-x}\\
+                    &= \frac 1{(1-x)^2}.
+                \end{split}\]
+            \end{solution}
+            \item Here is a completely different approach. First notice that the $k$th term above is $kx^{k-1}$ which is precisely the derivative of $x^k$. So
+            \[1+2x+3x^2+4x^3+\cdots\]
+            is precisely the derivative of
+            \[1+x+x^2+x^3+\cdots.\]
+            This is, of course, the geometric series we all know and love. You know what the geometric series sums to\ldots perhaps you can take the derivative of both sides of the geometric series formula? See where this leads.
+            \begin{solution}
+                The derivative of $1+x+x^2+x^3+\dots$ is $1+2x+3x^2+4x^3+\dots$, as the problem stated. Since we also know that $1+x^2+x^3+\dots=\frac 1{1-x}$, we can make the following chain of equalities:
+                \[\begin{split}
+                    1+2x+3x^2+4x^3+\dots &= \frac d{dx}(1+x+x^2+\dots)\\
+                    &= \frac d{dx}\left(\frac 1{1-x}\right)\\
+                    &= \frac 1{(1-x)^2}.
+                \end{split}\]
+            \end{solution}
+            \item Notice that $1/(1-x)^2$ is the square of $1/(1-x)$. Therefore, it somehow must be true that
+            \[(1+x+x^2+\dots)^2=1+2x+3x^2+4x^3+\dots.\]
+            See if you can argue why this equation is true by going through the expanding process on the left hand side. For example, I can see that the coefficient of $x$ in $(1+x+x^2+\dots)^2$ should be 2 because when we multiply $(1+x+x^2+\dots)(1+x+x^2\dots)$, the only two ways to get an $x^1$ term are to pick 1 from the first group and $x$ from the second group, or to pick $x$ from the first group and 1 from the second group.
+            \begin{solution}
+                When multiplying $(1+x+x^2+\dots)(1+x+x^2+\dots)$, the result is equal to the sum of terms $x^ax^b$ for each pair $(a,b)$ of non-negative integers. This is a result of the distributive property of multiplication over addition. The coefficient of $x^n$ is then the number of pairs $(a,b)$ such that $x^ax^b=x^n$, in other words, the number of pairs $(a,b)$ of non-negative integers such that $a+b=n$. Fix an $n$; can enumerate all the pairs as follows: $(0,n),(1,n-1),(2,n-2),(3,n-3),\dots,(n-1,1),(n,0)$. There are $n+1$ pairs here. Hence the coefficient of $x^n$ is $n+1$.
+            \end{solution}
+            \item What series do you think equals $1/(1-x)^3$? (Any reasonable guess with some explanation of why you think it's true suffices.)
+            \begin{solution}
+                The answer appears to be $1+3x+6x^2+10x^3+\dots$, where the coefficient of $x^n$ is the $(n+1)$st triangular number, that is, $(n+1)(n+2)/2$.
+
+                Here are a couple of proofs of this. If we take the derivative of $1/(1-x)^2$ we get $2/(1-x)^3$. On the other had if we take the derivative of
+                \[1+2x+3x^2+4x^3+\dots=\sum_{n=0}^\infty (n+1)x^n\]
+                we get
+                \[2+6x+12x^2+\dots=\sum_{n=1}^\infty n(n+1)x^{n-1}=\sum_{n=0}^\infty (n+1)(n+2)x^n.\]
+                Therefore
+                \[\frac 2{(1-x)^3}=\sum_{n=0}^\infty (n+1)(n+2)x^n\]
+                and dividing both sides by 2 gives the result.
+
+                Here is another proof. This uses the fact that $(n+1)(n+2)/2$ is the sum of the first $n+1$ positive integers (see pset 1, problem 1b!) We can write
+                \[\frac 1{(1-x)^3}=\frac 1{(1-x)^2}\frac 1{1-x}=(1+2x+3x^2+4x^3+\dots)(1+x+x^2+x^3+\dots).\]
+                By a similar reasoning process as in part (c), the $x^n$ term in the latter product is equal to the sum, over pairs $(a,b)$ of non-negative integers such that $a+b=n$, of $(a+1)x^ax^b$. This is
+                \[1\cdot x^0x^n+2\cdot x^1x^{n-1}+3\cdot x^2x^{n-2}+\dots+(n+1)\cdot x^nx^0.\]
+                This simplifies to
+                \[(1+2+3+\dots+(n+1))x^n=\frac{(n+1)(n+2)}2 x^n.\]
+            \end{solution}
+            \item (Optional) Let's address convergence. Find a formula for the \emph{finite} sum
+            \[1+2x+3x^2+4x^3+\dots+(n+1)x^n\]
+            (notice I'm stopping at $n$ here), and use what you know about growth rates to find the values of $x$ for which the series converges.
+            \begin{solution}
+                Let $S=1+2x+3x^2+\dots+(n+1)x^n$. Then
+                \[xS=x+2x^2+3x^3+\dots+nx^n+(n+1)x^{n+1}.\]
+                So
+                \[(1-x)S=S-xS=1+x+x^2+\dots+x^n-(n+1)x^{n+1}.\]
+                The terms besides the last term form a finite geometric series and can be simplified as
+                \[1+x+\dots+x^n=\frac{1-x^{n+1}}{1-x}.\]
+                Therefore,
+                \[(1-x)S=\frac{1-x^{n+1}}{1-x}-(n+1)x^{n+1},\]
+                so
+                \[\begin{split}
+                    S &=\frac{1-x^{n+1}}{(1-x)^2}-\frac{(n+1)x^{n+1}}{1-x}.\\
+                    &= \frac{1-x^{n+1}-(1-x)(n+1)x^{n+1}}{(1-x)^2}\\
+                    &= \frac{1-x^{n+1}-(n+1)x^{n+1}+(n+1)x^{n+2}}{(1-x)^2} \\
+                    &= \frac{1-(n+2)x^{n+1}+(n+1)x^{n+2}}{(1-x)^2}.
+                \end{split}\]
+                The only terms depending on $n$ in this final expression are $(n+2)x^{n+1}$ and $(n+1)x^{n+2}$. When $|x|<1$, both of these converge to 0 as $n\to\infty$, which shows that the partial sum converges to $1/(1-x)^2$, which therefore shows that the infinite series is convergent to $1/(1-x)^2$.
+                
+                On the other hand, if $|x| > 1$, then both $(n+1)x^{n+1}$ and $(n+1)x^{n+2}$ diverge to $\infty$, with the $(n+1)x^{n+2}$ term dominating (so there is no cancellation possible). Hence the series will not converge in this case.
+
+                If $|x|=1$, then we ignore our algebra (which isn't even valid for $x=1$ since we'd be dividing by 0) and look at the original expression $S=1+2x+3x^2+\dots+(n+1)x^n$. The terms of this series do not converge to 0, so the series does not converge.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        Rate the difficulty of each problem (1, 2, 3a, 3b, 3c, 4a, 4b, 4c, 4d) according to the following scale. Your ratings will collectively let me know which areas are difficult in this class. Thanks for your feedback!
+        \begin{itemize}
+            \item 1 -- Super easy, barely an inconvenience!
+            \item 2 -- Not easy, but I was able to solve the problem on my own by comparing it with an example from class or the textbook.
+            \item 3 -- Not easy, but I was able to solve the problem on my own through observations, analysis, and/or creative reasoning.
+            \item 4 -- I made some progress but got stuck, and with help, I was able to solve the problem. I feel like I understand it now.
+            \item 5 -- I could not start this problem without help, but after getting help I was able to solve the problem. I feel like I understand it now.
+            \item 6 -- I could not start this problem without help, but after getting help I was able to solve the problem. However, I still don't feel like I understand what is going on in this problem.
+            \item 7 -- I could not solve the problem, even with help.
+        \end{itemize}
+    \end{problem}
+\end{document}

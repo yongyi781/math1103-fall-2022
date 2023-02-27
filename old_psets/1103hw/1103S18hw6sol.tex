@@ -1,0 +1,363 @@
+\documentclass[12pt]{article}  
+
+%Run with XeLaTeX
+\usepackage
+[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=blue]
+{hyperref}
+
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphics} 
+\usepackage{graphicx} 
+%\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepgfplotslibrary{polar}
+\usepackage{ skull }
+\usetikzlibrary{decorations.fractals}
+\usepackage{pst-func}
+
+% GNUPLOT required
+\usepackage{verbatim}
+
+\linespread{1.3}
+
+%\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{20pt}
+\addtolength{\oddsidemargin}{20pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Begin user defined commands
+
+\newcommand{\map}[1]{\xrightarrow{#1}}
+
+
+\newcommand{\bz}{\mathbb Z}
+\newcommand{\bq}{\mathbb Q}
+\newcommand{\br}{\mathbb R}
+\newcommand{\bc}{\mathbb C}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\ep}{\epsilon}
+\DeclareMathOperator{\lub}{l.u.b.}
+%  End user defined commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These establish different environments for stating Theorems, Lemmas, Remarks, etc.
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ex}[Thm]{Example}
+
+\theoremstyle{definition}
+\newtheorem{Exercise}{Problem}
+
+\newenvironment{Solution}{\noindent\textbf{Solution.}}{}
+
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand\qedsymbol{QED}
+% End environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Some commands to save paper
+
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\LH}{\ \underset{\text{LH}}{=}\ }
+\newcommand{\Dep}{\Delta_+}
+\newcommand{\Dem}{\Delta_-}
+\newcommand{\bu}{\mathbf u}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\bw}{\mathbf w}
+
+\newcommand{\ora}{\overrightarrow}
+
+
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{-40pt}
+\addtolength{\oddsidemargin}{-40pt}
+\addtolength{\topmargin}{-80pt}
+\addtolength{\textheight}{1.8in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now we're ready to start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}  
+
+%\author{Your Name}
+{\bf MATH 1103 Homework 6 Solutions}\\
+{\bf Due Friday March 16, 2018}
+
+%Practice Problems (not to be turned in)
+%{\bf Practice 1.\ } 
+%{\bf Practice 2.\ } 
+%{\bf Practice 3.\ } 
+%{\bf Practice 4.\ }  
+
+ %\rule{\textwidth}{1pt}
+ %The homework to be turned in may be found on the next page.
+
+{\bf Homework 6 problems to be turned in.}
+
+{\bf 1.\ } Prove that $\cosh(1)$ is irrational. (Follow the method in section 7.1 for proving $e$ is irrational.)
+
+\begin{Solution}We know that 
+\[\cosh 1=\sum_{k=0}^\infty \frac{1}{(2k)!}=1+\frac{1}{2!}+\frac{1}{4!}+\cdots.\]
+Suppose $\cosh 1=a/b$ where $a,b$ are positive integers. 
+We will find an integer $N$ such that $0<N<1$. This contradiction will prove that $\cosh 1$ is irrational. 
+
+Choose an integer $n$ such that $2n>b$. Then $(2n)!\cdot \cosh 1=(2n)!\cdot \dfrac{a}{b}$ is an integer. Next consider the partial sum
+\[S_n=\sum_{k=0}^{n}\dfrac{1}{(2k)!}.\]
+ Each denominator $(2k)!$ divides $(2n)!$, so $(2n)!\cdot ch_n$ is an integer. Therefore the number 
+\[N=(2n)!\cdot (\cosh 1-S_n)\]
+is also an integer. On the other hand,
+\[\begin{split}
+\cosh1-S_n
+&=\cosh1-\left(1+\frac{1}{2!}+\frac{1}{4!}+\cdots+\frac{1}{(2n)!}\right)\\
+&\\
+&=\frac{1}{(2n+2)!}+\frac{1}{(2n+4)!}+\frac{1}{(2n+6)!}+\cdots\\
+&\\
+&=\frac{1}{(2n)!}\left[\frac{1}{(2n+1)(2n+2)}+\frac{1}{(2n+1)(2n+2)(2n+3)(2n+4)}+\cdots\right].
+\end{split}
+\]
+To simplify the notation, let $m=(2n+1)(2n+2)$. Then 
+\[\cosh1-S_n\leq 
+\frac{1}{(2n)!}\left[\frac{1}{m}+\frac{1}{m^2}+\cdots\right]=\frac{1}{(2n)!}\cdot \frac{1}{m-1}<1,
+\]
+so $0<N<1$, a contradiction. Therefore $\cosh 1$ is irrational. 
+
+
+
+\end{Solution}
+
+\newpage
+{\bf 2.\ } Prove that $\cos(1)$ is irrational. (Follow the method in section 7.2 for proving $\sin(1)$ is irrational.)
+
+\begin{Solution} We know that 
+\[\cos 1=\sum_{k=0}^\infty \frac{(-1)^k}{(2k)!}=1-\frac{1}{2!}+\frac{1}{4!}-\cdots.\]
+Suppose $\cos(1)=a/b$ where $a,b$ are positive integers. 
+We will find an integer $N$ such that $0<N<1$. This contradiction will prove that $\cos 1$ is irrational. 
+
+ 
+Choose an integer $n$ such that $2n>b$. Then $(2n)!\cdot \cos 1=(2n)!\cdot \dfrac{a}{b}$ is an integer. Next consider the partial sum
+\[c_n=\sum_{k=0}^{n-1}\dfrac{(-1)^k}{(2k)!}.\]
+ Each denominator $(2k)!$ divides $(2n)!$, so $(2n)!\cdot c_n$ is an integer. Therefore the number 
+\[N=(2n)!\cdot (\cos 1-c_n)\]
+is also an integer. On the other hand,
+\[\begin{split}
+|\cos1-c_n|
+&=\left |\cos1-\left(1-\frac{1}{2!}+\frac{1}{4!}+\cdots+(-1)^{n-1}\frac{1}{(2n-2)!}\right)\right|\\
+&\\
+&=\frac{1}{(2n)!}-\frac{1}{(2n+2)!}+\frac{1}{(2n+4)!}-\cdots\\
+&\\
+&=\frac{1}{(2n)!}\left[1-\frac{1}{(2n+1)(2n+2)}+\frac{1}{(2n+1)(2n+2)(2n+3)(2n+4)}-\cdots\right]\\
+\end{split}
+\]
+so 
+\[N=(2n)!\cdot |\cos1-c_n|=1-\frac{1}{(2n+1)(2n+2)}+\frac{1}{(2n+1)(2n+2)(2n+3)(2n+4)}-\cdots\]
+This is an alternating series, in which the even and odd partial sums form a Zax pair of sequences converging to $N$ in the middle. Thus, 
+\[0<1-\frac{1}{(2n+1)(2n+2)}< N<1.\]
+Therefore $0<N<1$. This contradiction proves that  $\cos 1$ is irrational.\qed
+
+
+\end{Solution}
+
+\newpage
+\rule{\textwidth}{1pt}
+The {\bf Bessel functions}\footnote{Friedrich Bessel, 1784-1846, German astronomer and mathematician}, also called {\bf cylinder functions} are a family of functions 
+\[J_0(x),\  J_1(x),\  J_2(x),\ \dots\]
+ that give solutions to many physical problems such as planetary motion around the sun, vibrations of circular membranes, and heat distribution in a cylinder. The function $J_n$ is the unique (up  to constant factor) function which is finite at $x=0$ and satisfies {\bf Bessels' differential equation of order $n$}
+\[x^2J_n''+xJ_n'+(x^2-n^2)J_n=0.\]
+
+
+The first two Bessel functions are given by the power series
+\[
+J_0(x)=\sum_{k=0}^\infty\frac{(-1)^k(x/2)^{2k}}{(k!)^2}\quad\text{and}\quad 
+J_1(x)=\sum_{k=0}^\infty\frac{(-1)^k(x/2)^{2k+1}}{k!(k+1)!}.
+\]
+
+\psset{xunit=1,yunit=1}
+
+\begin{pspicture}(-8,-.85)(8,1.25)
+%\rput(13,0.8){%
+ %$\displaystyle J_n(x)=\frac{1}{\pi}\int_0^\pi\cos(x\sin t-nt)\mathrm{d}t$}
+\psaxes[Dy=2,Dx=2]{->}(0,0)(-8,-.8)(8,1.5)
+\psset{linewidth=1pt}
+\psBessel[linecolor=red]{0}{-8}{8}%
+\psBessel[linecolor=blue]{1}{-8}{8}%
+%\psBessel[linecolor=green]{2}{-28}{28}%
+%\psBessel[linecolor=magenta]{3}{-28}{28}%
+\end{pspicture}
+
+
+
+\rule{\textwidth}{1pt}
+
+
+
+
+{\bf 3.\ } a)\ Identify which graph above is which Bessel function $J_0$ or $J_1$, with justification for your answer. 
+
+b)\ Prove that the power series for $J_0$ and $J_1$ converge for all $x$.
+
+c)\ What is the relation between $J_0'$ and $J_1$\ ?
+
+d)\ Prove that $J_0(x)$ satisfies Bessel's differential equation of order zero. 
+
+\begin{Solution}
+
+a)\  From the power series $J_0(0)=1$ and $J_1(0)=0$, which distinguishes the graphs. 
+
+b)\ Let $t=(-x/2)^2$. Then $J_0(x)=\sum\limits_{k=0}^\infty\dfrac{t^{k}}{(k!)^2}$
+has coefficients 
+\[a_k=\frac{1}{(k!)^2}>0.\]
+Its radius $R$ of convergence is given by
+\[\frac{1}{R}=\lim_{k\to\infty}\frac{(k!)^2}{((k+1)!)^2}=\lim_{k\to\infty}\frac{1}{(k+1)^2}=0,\]
+so $R=\infty$.  This means $J_0$ converges for all $t$, hence for all $x$. 
+
+Also $J_1(x)=\dfrac{x}{2}\sum\limits_{k=0}^\infty\dfrac{t^{k}}{k!(k+1)!}$ where the infinite series 
+has coefficients 
+\[a_k=\frac{1}{k!(k+1)!}>0,\]
+and its $R$ is given by 
+\[\frac{1}{R}=\lim_{k\to\infty}\frac{k!(k+1)!}{(k+1)!(k+2)!}=\lim_{k\to\infty}\frac{1}{(k+1)(k+2)}=0,\]
+so $R=\infty$ for $J_1$ as well. 
+
+c)\ Differentiating term-by-term, we have 
+\[J_0'(x)=\sum_{k=1}^\infty\frac{(-1)^kk(x/2)^{2k-1}}{(k!)^2}
+=\sum_{k=1}^\infty\frac{(-1)^k(x/2)^{2k-1}}{k!(k-1)!}
+=\sum_{k=0}^\infty\frac{(-1)^{k+1}(x/2)^{2k+1}}{k!(k+1)!}
+=-J_1(x).
+\]
+
+d)\ We have to show that $xJ_0''+J_0'+xJ_0=0$. We have 
+\[\begin{split}
+xJ_0&=\sum_{k=0}^\infty(-1)^k\frac{x^{2k+1}}{2^{2k}(k!)^2}\\
+J_0'&=\sum_{k=0}^\infty(-1)^{k+1}\frac{x^{2k+1}}{2^{2k+1}k!(k+1)!}\\
+xJ_0''&=\sum_{k=0}^\infty(-1)^{k+1}\frac{(2k+1)x^{2k+1}}{2^{2k+1}k!(k+1)!},
+\end{split}
+\]
+so the coefficient of $x^{2k+1}$ in $xJ_0''+J_0'+xJ_0$ is $(-1)^k$ times
+\[\frac{1}{2^{2k}(k!)^2}-\frac{1}{2^{2k+1}k!(k+1)!}-\frac{(2k+1)}{2^{2k+1}k!(k+1)!}
+=\frac{1}{2^{2k}(k!)^2}\left[1-\frac{1}{2(k+1)}-\frac{2k+1}{2(k+1)}\right]=0.
+\]
+
+
+\end{Solution}
+\newpage
+{\bf 4.\ }  The purpose of this exercise is to illustrate  Newton's Lemma II in the {\it Principia}, using the function 
+\[f(x)=\frac{\sin x}{x}\]
+on the interval $[0,\pi]$. 
+
+a) Draw the graph of $f(x)$ and the rectangles illustrating the upper and lower sums when the interval $[0,\pi]$ is divided into four equal parts. 
+
+b) Compute the upper and lower sums, simplifying your answer. What is the difference between these upper and lower sums?
+
+c) Suppose you divided $[0,\pi]$ into $n$ equal parts. Find the difference  between the upper and lower sums without actually computing them individually. How does this relate to what Newton claims in his Lemma II?
+
+
+\begin{Solution}
+a)
+\begin{center}
+\begin{tikzpicture}[scale=4.0]
+   % \fill[fill=blue!20] (0,0) -- plot [domain=0.001:3.14] 
+    %(\x,{sin(\x r)/(\x)}) -- (3.14,0)  -- cycle;
+    \draw plot[domain=0.01:3.14] (\x,{sin(\x r)/(\x)}) ;
+    %\node[label=below: $1$] at (1,0) {};
+    %\node[label=below: $x$] at (2,0) {};
+    \draw[black,->] (-0.2,0) -- (3+0.3,0) node[right]{$x$};
+    \draw[black,->] (0,-0.2) -- (0,1+0.3) node[above]{$y$};
+  \node[label=left: $1$ ] at (0,1) {};
+  
+     \draw[black] (.785,0) -- (.785,1.41/1.57) ;
+         \draw[blue] (.785,1.41/1.57) -- (.785,1) ;
+         \draw[blue] (0,1) -- (.785,1) ;
+
+         \node[label=below: $\frac{\pi}{4}$ ] at (.785,0) {};
+
+     
+    \draw[black] (1.57,0) -- (1.57,1/1.57) ;
+     \draw[blue] (1.57,1/1.57) -- (1.57,1.41/1.57) ;
+      \draw[blue] (.785,1.41/1.57) -- (1.57,1.41/1.57) ;
+       \draw[red] (.785,1.41/1.57) -- (0,1.41/1.57) ;
+    \node[label=below: $\frac{\pi}{2}$ ] at (1.57,0) {};
+   
+    \draw[black] (2.355,0) -- (2.355,1.41/4.71) ;
+    \draw[blue] (2.355,1.41/4.71) -- (2.355,1/1.57) ;
+     \draw[blue] (2.355,1/1.57) -- (1.57,1/1.57) ;
+      \draw[red] (1.57,1/1.57) -- (.785,1/1.57) ;
+     
+     \node[label=below: $\frac{3\pi}{4}$ ] at (2.355,0) {};
+     
+    \node[label=below: $\pi$ ] at (3.14,0) {};
+     \draw[blue] (3.14,0) -- (3.14,1.41/4.71) ;
+      \draw[blue] (3.14,1.41/4.71) -- (2.355,1.41/4.71) ;
+       \draw[red] (2.355,1.41/4.71) -- (1.57,1.41/4.71) ;
+\end{tikzpicture}
+\end{center}
+
+b)
+
+The lower sum is 
+\[
+L_4=\frac{\pi}{4}\left[ \frac{1/\sqrt 2}{\pi/4}+\frac{1}{\pi/2}+\frac{1/\sqrt{2}}{3\pi/4}+0\right]
+=
+\frac{1}{2}+\frac{4}{3\sqrt{2}}
+\]
+and the upper sum is 
+\[U_4=\frac{\pi}{4}\left[ 1+\frac{1/\sqrt 2}{\pi/4}+\frac{1}{\pi/2}+\frac{1/\sqrt{2}}{3\pi/4}+\right]=\frac{\pi}{4}+\frac{1}{2}+\frac{4}{3\sqrt{2}}
+\]
+
+and 
+\[U_4-L_4=\frac{\pi}{4},\]
+which is the area of the tallest rectangle, the one over $[0, \pi/4]$. 
+
+c) 
+
+For any $n$, the upper and lower sums $U_n$ and $L_n$ have the same terms except $U_n$ has an extra term from the rectangle over $[0,\pi/n]$, which has area $\pi/n$. 
+So 
+\[U_n-L_n=\frac{\pi}{n}.\]
+Since $\frac{\pi}{n}\to 0$, this confirms Newton's claim in his Lemma II that the upper sums, lower sums, and the area between approach one another to within any given difference, or as he says, ``the ultimate ratios of [these areas] to one another, are ratios of equality". 
+
+
+\end{Solution}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+ 
+ 

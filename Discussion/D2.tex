@@ -1,0 +1,41 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Discussion Sheet 2}
+
+\begin{document}
+    \maketitle
+    Every discussion you will be assigned three problems and you are encouraged to work in groups.
+
+    \begin{problem}
+        Define the floor function $$f(x)= \lfloor x \rfloor$$ which returns the value of the biggest integer that is smaller than $x$. For instance, $$f(2.5)=2, f(\pi)=3, f(\sqrt{2})=1,f(1)=1$$ Can you draw the graph of the floor function?
+        \newline
+        Similarly, we can define the ceiling function $$g(x)= \lceil x \rceil$$ which returns the value of the smallest integer that is bigger than $x$. For instance, $$g(2.5)=3, g(\pi)=4, g(\sqrt{2})=2, g(1)=1$$ Can you draw the graph of the ceiling function? What observations could you make between the floor and the ceiling functions? Can you calculate $\int_0^ {8.5} g(x) dx$?
+    \end{problem}
+
+    \begin{problem}
+       This problem aims to introduce the concepts of odd and even functions. A function is called odd if $f(-x)=-f(x)$ for all $x \in \mathbb{R}$. A function is called even if $f(-x)=f(x)$ for all $x \in \mathbb{R}$. Can you give three examples of odd functions and even functions respectively? What are some properties you can think of regarding the graphs of those functions? Can you calculate the following integrals without using antiderivatives?
+       $$ \int_{-1}^ 1 x dx$$
+       $$ \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \sin x dx$$
+       Based on what you calculated, can you guess what is $$\int_{-a}^ a f(x) dx$$ for any odd function $f(x)$?
+       
+    \end{problem}
+
+    \begin{problem}
+        Can you recall the statement of Fundamental Theorem of Calculus Part I? Can you recall the proof of it? In the proof you studied yesterday, continuity has been taken advantage of. Can you exactly state the delta-epsilon definition of continuity?
+        
+    \end{problem}
+
+
+\end{document}

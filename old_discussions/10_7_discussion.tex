@@ -1,0 +1,47 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+\usepackage{amsmath}								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{}
+\author{Week 6 discussion problems}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{enumerate}
+
+
+ \item Evaluate the following integrals:
+$$(a) \ \ \int \dfrac{4}{\sqrt{4-x^2}} \, dx    \ \ \ \  \ \ (b) \ \ \int \dfrac{4x}{\sqrt{4-x^2}} \, dx \ \ \ \ \  $$
+   
+\
+
+ 
+ \item Recall that the derivative of $\arctan(x)$ is $1/(1+x^2)$, so
+ $$ \int \dfrac{1}{1+x^2} \, dx= \arctan(x) + C$$
+ Let's compute this integral another way. Choose the appropriate trig substitution and compute the integral, to see that you get the same answer.
+ 
+\
+
+ \item  In class I mentioned (but didn't present) the reduction formulas for $\int \sin^n(x) \, dx$ and $\int \cos^n(x) \, dx$, where $n \ge 2$ is an integer. 
+
+\begin{enumerate}
+
+\item Derive the following reduction formula for $\int \cos^n(x) \, dx$:
+$$\int \cos^n(x) \, dx= \dfrac{1}{n} \sin(x)\cos^{n-1}(x)+\dfrac{n-1}{n}\int \cos^{n-2}(x) \, dx.$$ 
+(Hint: use integration by parts.
+
+\item Use this to find $\int \cos^4(x) dx$. Note we computed this in class using a different method and got an answer in terms of $\cos(2x)$ and $\cos(4x)$, which looks different. Using the half-angle formula for $\cos(2\theta)$ we can show these answers are the same.
+ \end{enumerate}
+
+ \end{enumerate}
+
+\end{document}  

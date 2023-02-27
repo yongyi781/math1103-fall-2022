@@ -1,0 +1,105 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 2}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, September 14 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Some exercises.
+        \begin{enumerate}[(a)]
+            \item Find $\int_a^b 1\,dx$ (in terms of $a$ and $b$).
+            \item Find $\int_a^b x^{100}\,dx$.
+            \item (Strang 5.7.7) Find
+            \[\frac d{dx}\int_x^{x+1}v(t)\,dt.\]
+            (The integral here is sometimes called a \emph{running average} of $v$.)
+            \item (Strang 5.7.8) Find
+            \[\frac d{dx}\left(\frac 1x\int_0^x v(t)\,dt\right).\]
+            (The integral here represents the average value of $v$ from 0 to $x$. A hint is to use the product rule for derivatives.)
+            \item Let $a,b$ be real numbers. Explain why
+            \[\frac {d^2}{dx^2}\int_0^x\int_a^b \sin(u^3)\,du\,dt=0.\]
+
+            \emph{Hint}: This is actually not a deep problem. The lesson here is to not be scared of the ``double'' integral; it's just an integral of an expression which happens to itself be an integral.
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}[Strang 5.4.43]
+        If $f(t)$ is an antiderivative of $v(t)$, find an antiderivative of
+        \begin{enumerate}[(a)]
+            \item $v(t+3)$.
+            \item $v(t)+3$.
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        Find
+        \[\int_0^{76.5}\lfloor x\rfloor\,dx.\]
+        Recall that for any real number $x$, the notation $\lfloor x\rfloor$, read \emph{floor} of $x$, means the greatest integer less than or equal to $x$. For example, $\lfloor \pi\rfloor=3$, $\lfloor -\pi\rfloor=-4$, and $\lfloor 15\rfloor=15$.
+    \end{problem}
+    % \begin{problem}
+    %     Recall that the constant acceleration of gravity leads to objects falling in a parabolic manner in real life. If the object is thrown instead, since its horizontal speed is unaffected by gravity (hence constant), we can also say that the trajectory of a thrown object follows a parabola.
+
+    %     Imagine a strange universe where gravity gets stronger linearly over time. What kind of trajectory would a thrown object follow? Justify your description with calculus.
+    % \end{problem}
+
+    % \begin{problem}[Strang 5.7.32, modified slightly]
+    %     \leavevmode\begin{enumerate}[(a)]
+    %         \item You choose a random number uniformly between 0 and 1, and I do the same. What is the probability that your number is greater than twice mine?
+    %         \item You choose a random number uniformly between 0 and 1, and I do the same. What is the probability that your number is greater than the square of mine?
+    %     \end{enumerate}
+    % \end{problem}
+    
+    \begin{problem}
+        Define
+        \[f(x)=\begin{cases}1 &\text{$x$ is rational},\\0 &\text{$x$ is irrational}.\end{cases}\]
+        It turns out that the definite integral
+        \[\int_0^1f(x)\,dx\]
+        does not exist! In this problem you will find out why.
+
+        You may take for granted the following fact about the real number line:
+
+        \emph{Between any two distinct real numbers, no matter how close they are to each other, one can find both rational numbers and irrational numbers.}
+
+        Using this fact, show that no matter how large $n$ is, a Riemann sum for the integral $\int_0^1 f(x)\,dx$ with $n$ equal partitions can be made equal to 1 or 0 depending on how you pick the sample points.
+
+        \emph{Remark}: Since the Riemann sums do not approach a limit, the aforementioned definite integral therefore does not exist, and such a function is said to be \emph{non-integrable}.
+
+        \emph{Remark 2}: Of course, the same reasoning applies to any bounds on the integral, not just from 0 to 1. 
+    \end{problem}
+
+    \begin{problem}
+        Let $f$ be an odd function, meaning that $f(-x)=-f(x)$ for all $x\in\bR$. Give two different proofs that
+        \[\int_{-a}^a f(x)\,dx=0\]
+        for any real number $a$:
+        \begin{enumerate}[(a)]
+            \item Graphically using the definition of definite integral as a signed area.
+            \item Algebraically using $u$-substitution.
+        \end{enumerate}
+    \end{problem}
+
+    
+    % \item Using substitution, prove that
+    % \[\int_0^4 xe^{(x-2)^4}\,dx=2\int_0^4e^{(x-2)^4}\,dx.\]
+
+    % \begin{problem}
+    %     Define
+    %     \[f(x)=\int_1^x\frac 1t\,dt.\]
+    %     Using properties of integrals and $u$-substitution, prove that $f(xy)=f(x)+f(y)$ for all positive real numbers $x$ and $y$.
+
+    %     \emph{Remark}: This property of turning multiplication into addition is one of the defining properties of the logarithm function.
+    % \end{problem}
+
+\end{document}

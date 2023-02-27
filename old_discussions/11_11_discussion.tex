@@ -1,0 +1,48 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+\usepackage{amsmath}								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{}
+\author{Week 11 discussion problems}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{enumerate}
+
+\item Use any tests to decide if the following series converge or diverge. If a series has positive and negative terms, determine if it converges absolutely, converges conditionally, or diverges.
+ 
+$$(a) \ \ \ \sum_{n=1}^{\infty} \dfrac{3^n n^2}{n!} \ \ \ \ \ \ \ \  (b) \ \ \ \sum_{n=1}^{\infty} \dfrac{1}{k \sqrt{k^2+1}} $$
+
+\
+
+$$(c) \ \ \ \sum_{n=1}^{\infty}  \left( \dfrac{n}{n+1} \right) ^{n^2} \ \ \ \ \ \ \ \  (d) \ \ \ \sum_{j=1}^{\infty} \dfrac{ (-1)^j \sqrt{j}}{j+5}$$
+ 
+\
+
+ 
+$$(e) \ \ \ \sum_{n=1}^{\infty}  \dfrac{1 \cdot 3 \cdot 5 \cdots (2n-1)}{2 \cdot 5 \cdot 8 \cdots (3n-1)} \ \ \ \ \ \ \ \  (f) \ \ \ \sum_{n=1}^{\infty} (-1)^{n-1}\arctan(n)$$
+
+\
+
+$$ (g) \sum_{n=1}^{\infty} \tan(1/n) \textrm{ This one is kind of tricky. Hint: try the LCT with the harmonic series.} $$
+
+
+\
+
+\item Let's prove  the useful limit results:
+
+$$(i) \ \ \ \  \lim_{n \to \infty} c^{1/n} = 1 \textrm{ for all c$>$0 } \ \ \ \ \ (ii) \lim_{n \to \infty} n^{1/n} = 1 \ \ \ \ \ (iii)  \lim_{n \to \infty} \left( 1+ \dfrac{c}{n} \right)^n =e^c \textrm{ for any constant c.}$$
+
+Reminder: it suffices to find the limit as $x \to \infty$ of $f(x)$ is the desired one, for appropriate functions $f(x)$. Also, for any positive value $b$, $b=e^{\ln b}$. Therefore, for example, 
+$$n^{1/n}= e^{\ln(n^{1/n})}=e^{\frac{\ln(n)}{n}}$$
+\end{enumerate}
+\end{document}  

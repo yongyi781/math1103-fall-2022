@@ -1,0 +1,68 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 1}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, September 7 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Algebra, functions, and differential calculus review and practice.
+        \begin{enumerate}[(a)]
+            % \item What is $\sqrt{20}+\sqrt{45}$?
+            \item Find a clever and simple way to evaluate $1002\cdot 998$.
+            \item Derive a formula for $1+2+\cdots+n$, the sum of the first $n$ positive integers. Try to think of as short a derivation as possible.
+            \item What is $\cfrac 1{1+\cfrac 1{1+\cfrac 1{1+\cdots}}}$?
+            
+            You do not have to prove this continued fraction converges; just use algebra to find its value.
+            \item What is the coefficient of $xyz$ in $(x+y+z)^3$?
+            % \item Suppose you can take for granted that all square roots of integers which are not perfect squares are irrational. Use this to prove that $\sqrt2+\sqrt3$ is irrational.
+            
+            % Hint: If $\sqrt2+\sqrt3$ is rational, then its square should be rational too.
+            % \item An odd (real-valued) function is defined to be a function $f\colon\bR\to\bR$ such that $f(-x)=-f(x)$ for all $x\in\bR$. An even function is defined to be a function $f\colon\bR\to\bR$ such that $f(-x)=f(x)$ for all $x\in\bR$. Prove that the product of two odd functions is an even function.
+            \item Find three different real-valued functions $f$ such that $(f(x))^2=x^2$ for all $x\in\bR$.
+            \item State the intermediate value theorem as precisely as possible, but in your own words.
+            % \item Building on the previous part, prove that the derivative of an odd differentiable function is an even function.
+            % \item Come up with an example of a function which is once differentiable but not twice differentiable. Show that your example works.
+            \item Find a formula, in terms of the positive integer $n$, for the $n$th derivative of $\ln(x)$.
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        Using only Euclidean geometry (no trigonometry), determine the area of a regular 12-sided polygon inscribed in a unit circle (i.e.\ a circle of radius 1). You should be able to get an exact answer. How close is the area to $\pi$?
+    \end{problem}
+
+    \begin{problem}
+        Use the method of Riemann sums with 20 equal divisions to approximate $\pi$, using the function $f(x)=\sqrt{1-x^2}$. Use a calculator or computer to help you with all the additions! (Excel or Google Sheets should be helpful here.)
+    \end{problem}
+
+    \begin{problem}
+        Find a general (possibly piecewise) expression for
+        \[\int_a^b |x|\,dx\]
+        in terms of the two real numbers $a,b$ (which can each 
+        be positive, negative, or zero!).
+    \end{problem}
+
+    \begin{problem}
+        For any sequence $\underline a=(a_1,a_2,a_3,\dots)$ of real numbers, define the \emph{finite difference operator} $\Delta$ by 
+        \[\Delta(\underline a)=(a_2-a_1,a_3-a_2,a_4-a_3,\dots).\]
+        For example, $\Delta(1,2,3,4,\dots)=(1,1,1,1,\dots)$. Also define the \emph{cumulative sum operator} $\Sigma$ by
+        \[\Sigma(\underline a)=(a_1,a_1+a_2,a_1+a_2+a_3,\dots).\]
+        For example, $\Sigma(1,2,3,4,\dots)=(1,3,6,10,\dots)$. In general, what is $\Delta(\Sigma(\underline a))$? (If you aren't sure, try on a few examples of your own.) Once you find a result, give a proof that your result holds.
+
+        Remark: This is the discrete analog of the fundamental theorem of calculus! Finite differences are the discrete version of derivatives, and cumulative sums are the discrete version of integrals.
+    \end{problem}
+
+\end{document}

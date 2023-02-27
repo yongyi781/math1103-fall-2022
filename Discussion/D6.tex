@@ -1,0 +1,72 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Discussion Sheet 6}
+
+\begin{document}
+    \maketitle
+    Every discussion you will be assigned three problems and you are encouraged to work in groups.
+
+    \begin{problem}\textit{Geometric series}. In your HW05, you must have encountered a sum like
+    $$
+    \sum_{i=1}^\infty (\frac{1}{2})^i=\frac{1}{2}+(\frac{1}{2})^2+(\frac{1}{2})^3+\cdots
+    $$
+    Did you remember how you have calculated it? Let's examine some general cases.
+        \begin{enumerate}
+         \item (Finite series). If we define $s_n$ as follows:
+         $$
+         s_n=\sum_{i=0}^{n-1} q^i=1+q+q^2+\cdots+q^{n-1}, q \not = 1
+         $$
+         Then there is a formula saying that 
+         $$
+         s_n=\frac{1-q^n}{1-q},q \not = 1
+         $$
+         Can you prove it?
+         \item Let's examine a geometric series,
+         $$
+         s=\sum_{i=0}^\infty q^i
+         $$
+         Can you come up with a formula for $s$? Does this formula hold for any $q \not=1$? If not, what should the domain of $q$ be to make it make sense? How could you prove this formula?
+         \end{enumerate}
+    \end{problem}
+
+    \begin{problem} Let's work with some standard distributions.
+    \begin{enumerate}
+        \item \textit{Poisson distribution}. Suppose on average 3 out of 100 passengers with reservations don't show up for a flight. If the plane holds 98 passengers, what is the probability that someone will be bumped! (What should the parameter $\lambda$ be in this case? How did you get it?) So in general, for any Poisson distribution with probability density function given by 
+        $$
+        p_n(x)=\frac{\lambda^n e^{-\lambda}}{n!}
+        $$
+        What is the average value(mean/expected value) of Poisson distribution?
+        \item \textit{Exponential distribution}. Laptops produced by company XYZ last, on average, 5 years. The lifespan of a laptop follows the exponential distribution. What is the probability that a laptop will last less than 3 years? (What should the parameter $\alpha$ be in this case? How did you get it?) So in genera, for any exponential distribution with probability density function given by
+        $$
+        p(x)=\alpha e^{-\alpha x}(x \geq 0)
+        $$
+        What is the average value(mean/expected value) of it?
+    \end{enumerate}
+    \end{problem}
+
+    \begin{problem} \textit{Expected value of transformed random variables}
+    \newline
+    \begin{enumerate}
+        \item If $X$ is a continuous random variable with probability density function $p(x)$, and $Y=g(X)$ for some function $g$. Then 
+        $$
+        E(Y)=\int_{-\infty}^\infty g(x)p(x) dx   
+        $$
+    Umm you don't have to know the proof at all. It might be doable assuming that $g$ is injective, but the statement is also true without the assumption that $g$ is injective. However, the proof is much more complicated.
+        \item Based on what we learned. If $X$ is uniformly distributed between $1$ and $3$. Let $Y=\ln X$. Then what is the value of $E(Y)$?
+    \end{enumerate}
+    \end{problem}
+
+
+\end{document}

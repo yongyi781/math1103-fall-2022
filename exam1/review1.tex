@@ -1,0 +1,140 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks]{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{remark}{Remark}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Exam 1 Review}
+
+\begin{document}
+\maketitle
+
+\begin{problem}
+Some integration problems.
+\begin{enumerate}[(a)]
+    \item Find $\displaystyle\int_{-2}^2|x-1|\,dx$.
+    \item Find $\int \sqrt x\ln x\,dx$.
+    \item Find $\int \ln(3x+2)\,dx$.
+    \item Find $\displaystyle\int x^5e^{x^3}\,dx$.
+    \item Find $\displaystyle\int_0^4\sqrt{9-\sqrt x}\,dx$.
+    \item Find $\displaystyle\int_1^e\frac 1{x+x\ln(x)}\,dx$.
+    \item If $\displaystyle\int_0^4 f(x)\,dx=50$, find $\displaystyle\int_0^2 xf(x^2)\,dx$.
+    \item What is $\displaystyle\int_{-4}^{10}f'(t)\,dt$?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+You are given that $\frac d{dx}(\ln(x-1)-\ln(x+1))=\frac 2{x^2-1}$ on the interval $(1,\infty)$. Compute
+\[\int_3^5\frac 1{1-x^2}\,dx.\]
+(Note: don't use partial fractions; we haven't touched that in class yet.)
+\end{problem}
+
+\begin{problem}
+Prove or disprove whether the limit $\lim_{a\to\infty}\int_{-a}^a x^3\,dx$ converges. What about $\int_{-\infty}^\infty x^3\,dx$?
+\end{problem}
+
+\begin{problem}
+Suppose the acceleration due to gravity is constant at 10 meters per second squared. I throw an object upwards such that it takes 2 seconds to land on the floor 2 meters below where it started. What was the initial upward velocity of this object?
+
+If you already happen to know relevant physics formulas, derive them using calculus.
+\end{problem}
+
+\begin{problem}
+Show that the infamous Gabriel's Horn, which is the solid of revolution obtained by revolving $y=\frac 1x$ around the $x$-axis and taking the part from $x=1$ all the way to $x=\infty$, has infinite surface area but finite volume.
+
+A popular slogan that one gets out of this is that you can fill Gabriel's Horn with a finite amount of paint, even though you can't paint the outside!
+\end{problem}
+
+\begin{problem}
+Recall that Buffon's needle experiment produced a probability of $1/\pi$ in the case that the needle's length was half the spacing between the lines. What if the needle's length is the same as the spacing between the lines? What if the needle's length is arbitrary?
+\end{problem}
+
+\begin{problem}
+(Exercise from class) Prove, from the definitions, that the variance of the normal distribution $N(\mu,\sigma)$ is $\sigma^2$, which shows that the parameter $\sigma$ really is permitted to be called the standard deviation.
+
+Recall that the PDF of the normal distribution $N(\mu,\sigma)$ is
+\[\frac 1{\sigma\sqrt{2\pi}}e^{-\left(\frac{x-\mu}\sigma\right)^2/2}.\]
+\end{problem}
+
+\subsection*{New problems!}
+
+\begin{problem}
+An ice-cream cone can be constructed by rotating $y=x$ from $y=0$ to $y=\frac{\sqrt{2}}{2}$, and rotating $y=\sqrt{1-x^2}$ around the $y$-axis, and from $y=\frac{\sqrt{2}}{2}$ to $y=1$ also around the $y$-axis. Can you draw a picture to illustrate this? Find the volume of this ice-cream cone.
+\end{problem}
+
+\begin{problem}
+A cafe is interested in studying the number of people who come to order coffee in the early morning, i.e., 6:00 am. 2 customers, on average, come to order coffee every 15 minutes between 6:00 am and 7:30 am. What is the probability that there are fewer than or equal to 3 people coming to order the coffee between 7:00 am and 7:15 am?
+\newline
+\textit{Hint}: Recall that for Poisson distribution, we have $E(X)=\lambda$, where $\lambda$ is the parameter of the (discrete!) probability distribution function $p_n=\frac{\lambda^n e^{-\lambda}}{n!}$.
+\end{problem}
+
+\begin{problem}
+(Exercise from discussion) Prove that for any exponential distribution with probability density function $p(x)=\alpha e^{-\alpha x}$, the expected value $E(X)=1/\alpha$.
+\end{problem}
+
+\bigskip
+See the next page for remarks/spoilers to these problems! Stop scrolling if you don't want to be spoiled.
+
+\newpage
+
+\begin{remark}
+    Each of these is solvable by either $u$-substitution or integration by parts, or neither. Answers can be verified by computer!
+\end{remark}
+
+\begin{remark}
+    Use FTC 2. Final answer is also verifiable by computer.
+\end{remark}
+
+\begin{remark}
+    The first limit converges. The expression inside the limit is 0 for all values of $a$! The second expression diverges because because it involves $\infty-\infty$, the two infinities being $\int_0^\infty x^3\,dx$ and $\int_{-\infty}^0x^3\,dx$.
+\end{remark}
+
+\begin{remark}
+    I got 9 m/s. Integrate acceleration (and use initial conditions to determine the constant of integration) to find the velocity as a function of time, then integrate velocity to find the position as a function of time (with initial velocity as a parameter, which can then be solved for). Keep your signs straight! If you choose up to be positive, then gravity's acceleration should be denoted as $-10$.
+\end{remark}
+
+\begin{remark}
+    The integral for the area is something you already computed in a homework, but you can use comparison to save yourself a lot of algebra. (See the Wikipedia article on Gabriel's horn to see what comparison the article uses.)
+\end{remark}
+
+\begin{remark}
+    If the needle's length is the same as the spacing between the lines, I believe the probability that a needle hits a line is $2/\pi$.
+\end{remark}
+
+\begin{remark}
+    First, use the $u$-substitution $u=(x-\mu)/\sigma$ to get rid of the $\mu$ term and $\sigma$ term (leaving a $\sigma^2$ factor outside the integral); effectively reducing the problem to a normal distribution with mean 0 and standard deviation 1.
+
+    We reduce the problem to showing that
+    \[\frac 1{\sqrt{2\pi}}\int_{-\infty}^\infty x^2e^{-x^2/2}\,dx=1.\]
+    Use integration by parts to finish. Obviously a non-elementary integral will be involved so you have to use the following result, that the total area under the bell curve is 1:
+    \[\frac 1{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-x^2/2}\,dx=1.\]
+\end{remark}
+
+\begin{remark}
+    Using disks for both parts leads to the easiest computation. For the cone part you could just use the formula we proved in class for the volume of a cone, which is $V=\frac 13\pi r^2h$, where $r=h=1/\sqrt2$. The integral for the cone part should be
+    \[\int_{\frac 1{\sqrt2}}^1\pi(1-y^2)\,dy.\]
+    The final volume should end up being $\pi \left( \frac{2-\sqrt2}3 \right)\approx 0.613434$.
+\end{remark}
+
+\begin{remark}
+    According to the problem, we have $\lambda=2$, so the required probability is
+    \[p_0+p_1+p_2+p_3=\sum_{n=0}^3\frac{2^n e^2}{n!}=\frac {19}{3e^2}\approx 0.857.\]
+\end{remark}
+
+\begin{remark}
+    Very similar to pset 6 problem 1(c)!
+\end{remark}
+\end{document}

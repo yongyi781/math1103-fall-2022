@@ -1,0 +1,142 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype}
+\usepackage[shortlabels]{enumitem}
+\usepackage[most]{tcolorbox}
+
+\definecolor{sol}{rgb}{0.1, 0.3, 0.6}
+
+\newtcolorbox{solution}{enhanced, breakable, colframe=sol, title=Solution}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 2}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, September 14 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Some exercises.
+        \begin{enumerate}[(a)]
+            \item Find $\int_a^b 1\,dx$ (in terms of $a$ and $b$).
+            \begin{solution}
+                This is the signed area under the graph of 1, from $a$ to $b$, which is the area of a rectangle of width $b-a$ and height 1; hence the definite integral equals $b-a$.
+            \end{solution}
+            \item Find $\int_a^b x^{100}\,dx$.
+            \begin{solution}
+                $x^{100}=\frac{d}{dx}\frac1{101}x^{101}$. Using this along with FTC 2, one gets
+                \[\int_a^b x^{100}\,dx=\frac 1{101}(b^{101}-a^{101}).\]
+            \end{solution}
+            \item (Strang 5.7.7) Find
+            \[\frac d{dx}\int_x^{x+1}v(t)\,dt.\]
+            (The integral here is sometimes called a \emph{running average} of $v$.)
+            \begin{solution}
+                We would like to apply FTC1, but in order to do that, the integral must be separated into two integrals where in each integral $x$ only appears in the upper limit. So let's rewrite:
+                \[
+                    \int_x^{x+1}v(t)\,dt = \int_0^{x+1}v(t)\,dt -\int_0^x v(t)\,dt.
+                \]
+                Now take the derivative:
+                \[\frac d{dx}\left(\int_0^{x+1}v(t)\,dt -\int_0^x v(t)\,dt\right)=v(x+1)-v(x).\]
+            \end{solution}
+            \item (Strang 5.7.8) Find
+            \[\frac d{dx}\left(\frac 1x\int_0^x v(t)\,dt\right).\]
+            (The integral here represents the average value of $v$ from 0 to $x$. A hint is to use the product rule for derivatives.)
+            \begin{solution}
+                \begin{align*}
+                    \frac d{dx}\left(\frac 1x\int_0^x v(t)\,dt\right) &= \frac d{dx}\left(\frac 1x\right)\cdot\int_0^x v(t)\,dt+\frac 1x\cdot\frac d{dx}\int_0^x v(t)\,dt\\
+                    &= -\frac1{x^2}\int_0^x v(t)\,dt+\frac 1x v(x).
+                \end{align*}
+                The expression $\int_0^x v(t)\,dt$ is the simplest way to express the area function of $v$ since we are given no further information about $v$, so we are done.
+            \end{solution}
+            \item Let $a,b$ be real numbers. Explain why
+            \[\frac {d^2}{dx^2}\int_0^x\int_a^b \sin(u^3)\,du\,dt=0.\]
+
+            \emph{Hint}: This is actually not a deep problem. The lesson here is to not be scared of the ``double'' integral; it's just an integral of an expression which happens to itself be an integral.
+            \begin{solution}
+                The expression
+                \[\int_a^b\sin(u^3)\,du\]
+                represents the signed area under the graph of $\sin(u^3)$ from $u=a$ to $u=b$. This is some number that does not depend on anything except $a$ and $b$. (Notice there are no free variables in that expression, apart from $a$ and $b$.) Therefore
+                \[\int_0^x\int_a^b\sin(u^3)\,du\,dt = \int_a^b\sin(u^3)\,du\cdot\int_0^x 1\,dt=\left( \int_a^b\sin(u^3) \right)x.\]
+                This is a linear function in $x$. So its second derivative with respect to $x$ is 0.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}[Strang 5.4.43]
+        If $f(t)$ is an antiderivative of $v(t)$, find an antiderivative of
+        \begin{enumerate}[(a)]
+            \item $v(t+3)$.
+            \begin{solution}
+                $f(t+3)$. You can add a constant to this if you like but it is not necessary; the problem only asked for an antiderivative.
+            \end{solution}
+            \item $v(t)+3$.
+            \begin{solution}
+                $f(t)+3t$. You can add a constant to this if you like but it is not necessary; the problem only asked for an antiderivative.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        Find
+        \[\int_0^{76.5}\lfloor x\rfloor\,dx.\]
+        Recall that for any real number $x$, the notation $\lfloor x\rfloor$, read \emph{floor} of $x$, means the greatest integer less than or equal to $x$. For example, $\lfloor \pi\rfloor=3$, $\lfloor -\pi\rfloor=-4$, and $\lfloor 15\rfloor=15$.
+    \end{problem}
+    \begin{solution}
+        The portion of the integral from 0 to 76 is a ``staircase'' and has area equal to $0+1+2+\cdots+75=75\cdot 76/2=2850$. The portion of the integral from 76 to 76.5 is a rectangle of width $0.5$ and height 76, which has area 38. So the total area is $2850+38=2888$.
+    \end{solution}
+    
+    \begin{problem}
+        Define
+        \[f(x)=\begin{cases}1 &\text{$x$ is rational},\\0 &\text{$x$ is irrational}.\end{cases}\]
+        It turns out that the definite integral
+        \[\int_0^1f(x)\,dx\]
+        does not exist! In this problem you will find out why.
+
+        You may take for granted the following fact about the real number line:
+
+        \emph{Between any two distinct real numbers, no matter how close they are to each other, one can find both rational numbers and irrational numbers.}
+
+        Using this fact, show that no matter how large $n$ is, a Riemann sum for the integral $\int_0^1 f(x)\,dx$ with $n$ equal partitions can be made equal to 1 or 0 depending on how you pick the sample points.
+
+        \emph{Remark}: Since the Riemann sums do not approach a limit, the aforementioned definite integral therefore does not exist, and such a function is said to be \emph{non-integrable}.
+
+        \emph{Remark 2}: Of course, the same reasoning applies to any bounds on the integral, not just from 0 to 1. 
+    \end{problem}
+    \begin{solution}
+        Let $n$ be any positive integer and consider a Riemann sum with $n$ partitions. First, in each interval of this partition pick the sample point to be a rational number contained in that interval, whose existence is granted to us by the real number line fact in the problem. Then the rectangle for each interval has width $1/n$ and height 1, because $f$ evaluated at any rational number is equal to 1. The total area is 1.
+
+        Now in each interval of this partition, pick the sample point to be some irrational number contained in that interval, whose existence is also granted to us by the real number line fact in the problem. Then the rectangle for each interval has width $1/n$ and height0, because $f$ evaluated at any irrational number is equal to 0. The total area is 0.
+    \end{solution}
+
+    \begin{problem}
+        Let $f$ be an odd function, meaning that $f(-x)=-f(x)$ for all $x\in\bR$. Give two different proofs that
+        \[\int_{-a}^a f(x)\,dx=0\]
+        for any real number $a$:
+        \begin{enumerate}[(a)]
+            \item Graphically using the definition of definite integral as a signed area.
+            \begin{solution}
+                There is a $180^\circ$ rotational symmetry about the origin in the graph of any odd function. The portion of the area to the right of the $x$-axis from 0 to $a$ is congruent to the portion of the area to the left of the $x$-axis from $-a$ to 0, but flipped vertically -- so positive area becomes negative area and vice versa. The two portions therefore cancel each other out.
+            \end{solution}
+            \item Algebraically using $u$-substitution.
+            \begin{solution}
+                In class the hint was to split the integral into two pieces. For variety's sake here's a different way to use $u$-substitution. Read the below solution carefully; minus signs are easy to mess up!
+                Make the substitution $u=-x$, so $du=-dx$. We have
+                \[\begin{split}
+                    \int_{-a}^a f(x)\,dx &= \int_{x=-a}^{x=a} f(x)\,dx= \int_{u=a}^{u=-a}f(-u)(-du)\\
+                    &= \int_{u=a}^{u=-a}-f(u)(-du)\\
+                    &= -\int_{u=-a}^{u-a}-f(u)(-du)\\
+                    &= -\int_{-a}^a f(u)\,du.
+                \end{split}\]
+                Of course, $\int_{-a}^a f(u)\,du=\int_{-a}^a f(x)\,dx$, so we have shown that $\int_{-a}^a f(x)\,dx$ is a number which is equal to negative of itself. The only number that satisfies that is zero.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+\end{document}

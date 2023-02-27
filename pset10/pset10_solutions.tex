@@ -1,0 +1,213 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks]{hyperref}
+\usepackage[most]{tcolorbox}
+
+\definecolor{sol}{rgb}{0.1, 0.3, 0.6}
+
+\newtcolorbox{solution}{enhanced, breakable, colframe=sol, title=Solution}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\blank}{\underline{\hspace{1cm}}}
+\newcommand{\longblank}{\underline{\hspace{2cm}}}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 10 Solutions}
+
+\begin{document}
+\maketitle
+This problem set is due on Wednesday, November 16 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+\begin{problem}
+Comparison and/or ratio test practice. Determine whether each of the following series converges. General tip: Think about comparison before thinking about ratio test. Of course, think about both strategies in case one of them doesn't seem to be leading anywhere useful.
+\begin{enumerate}[(a)]
+  \item $\displaystyle\sum_{k=1}^\infty{\frac{10^k}{7+5^k}}$.
+        \begin{solution}
+          The series diverges. We outline both methods.
+
+          \textbf{Method 1}: Comparison. We would like to compare the series with the series $\sum_{k=1}^\infty \frac{10^k}{5^k}=\sum_{k=1}^\infty 2^k$ which diverges because it is a geometric series with common ratio greater than 1. However, $\frac{10^k}{7+5^k}<\frac{10^k}{5^k}$, from which we cannot logically deduce that $\sum_{k=1}^\infty\frac{10^k}{7+5^k}$ diverges. However, we can solve this issue by ignoring the first term of the series in the problem, which doesn't affect whether the series converges or diverges, and then proving that $\frac{10^{k+1}}{7+5^{k+1}}>2^k$ for all $k$. Here are the details. Ignoring the first term is equivalent to looking at the series
+          \[\sum_{k=2}^\infty\frac{10^k}{7+5^k}=\sum_{k=1}^\infty\frac{10^{k+1}}{7+5^{k+1}}.\]
+          Now we compare this series term-by-term with the series $\sum_{k=1}^\infty 2^k$, that is, we are comparing $\frac{10^{k+1}}{7+5^{k+1}}$ with $2^k$. Let's prove that $\frac{10^{k+1}}{7+5^{k+1}}>2^k$. We have the chain of logical equivalences
+          \[\begin{alignedat}{3}
+              && \frac{10^{k+1}}{7+5^{k+1}}&>2^k\\
+              \iff&& 10^{k+1} &>2^k(7+5^{k+1})\\
+              \iff&& 10^{k+1} &> 7\cdot 2^k+2^k\cdot 5^{k+1}\\
+              \iff&& 10\cdot 10^k &> 7\cdot 2^k+5\cdot 10^k\\
+              \iff&& (10-5)\cdot 10^k &> 7\cdot 2^k\\
+              \iff&& 5\cdot 10^k &> 7\cdot 2^k\\
+              \iff&& \frac{10^k}{2^k} &>\frac 75\\
+              \iff&& 5^k &>\frac 75.
+            \end{alignedat}\]
+          The last statement is true for all $k\geq 1$ hence the first statement is also true for all $k\geq 1$.
+        \end{solution}
+        \begin{solution}
+          \textbf{Method 2}: Another way to do the comparison. Notice that $7+5^k<5^{k+1}$ for all $k\geq 1$ because $5^{k+1}-5^k=(5-1)5^k=4\cdot 5^k\geq 4\cdot 5=20>7$ for $k\geq 1$. Therefore,
+          \[\begin{split}
+              \sum_{k=1}^\infty\frac{10^k}{7+5^k} &<\sum_{k=1}^\infty\frac{10^k}{5^{k+1}}\\
+              &<\sum_{k=1}^\infty\frac 15\frac{10^k}{5^k}\\
+              &<\sum_{k=1}^\infty\frac 15 2^k,
+            \end{split}\]
+          and this latter series diverges because it is a geometric series with common ratio greater than 1.
+        \end{solution}
+        \begin{solution}
+          \textbf{Method 3}: Ratio test. If $a_k$ denotes the $k$th term of the series, then the ratio between $a_{k+1}$ and $a_k$ (absolute values ignored because everything is positive)
+          \[\frac{10^{k+1}}{7+5^{k+1}}\cdot \frac{7+5^k}{10^k}=10\cdot\frac{7+5^k}{7+5^{k+1}}=10\cdot\frac{7/5^k+1}{7/5^k+5}\xrightarrow{k\to\infty}10\cdot \frac 15=2.\]
+          This limit is greater than 1, therefore the series diverges.
+        \end{solution}
+  \item $\displaystyle\sum_{k=1}^\infty k\cdot 3^{-k}$.
+        \begin{solution}
+          The series converges.
+
+          \textbf{Method 1}: Comparison. For any $k\geq 1$, we have $k<2^k$. Therefore,
+          \[\sum_{k=1}^\infty k\cdot 3^{-k}<\sum_{k=1}^\infty \left(\frac 23\right)^k,\]
+          and this series converges because it is a geometric series with common ratio less than 1.
+        \end{solution}
+        \begin{solution}
+          \textbf{Method 2}: Ratio test. Ratio test. If $a_k$ denotes the $k$th term of the series, then the ratio between $a_{k+1}$ and $a_k$ (absolute values ignored because everything is positive)
+          \[\frac{k+1}{3^{k+1}}\cdot \frac{3^k}k=\frac 13\cdot\frac{k+1}k\xrightarrow{k\to\infty}\frac 13<1,\]
+          so the series converges.
+        \end{solution}
+  \item $\displaystyle\sum_{k=1}^\infty\frac{\log k}k$.
+        \begin{solution}
+          If you tried the ratio test, you would have found that it is inconclusive as the ratio is 1. Now let's do comparison. Since the log in the problem was accidentally ambiguous, some of you chose the base of the log to be 10 while others chose it to be $e$. In either case, $\log k$ becomes greater than 1 as soon as $k$ is greater than 10 (resp.\ $e$). From that point onward the series becomes greater than the corresponding tail of the harmonic series, so the series diverges.
+        \end{solution}
+  \item $\displaystyle\sum_{n=2}^\infty\frac 1{\sqrt{n^2-1}}$.
+        \begin{solution}
+          Notice that $\sqrt{n^2-1}<\sqrt{n^2}=n$, therefore $\frac 1{\sqrt{n^2-1}}>\frac 1n$. By comparison with the tail of the harmonic series $\sum_{n=2}^\infty \frac 1n$, we conclude the series diverges.
+        \end{solution}
+  \item $\displaystyle\sum_{n=1}^\infty\frac 1{n^n}$.
+        \begin{solution}
+          We can do a comparison between this and the series $\frac 1{2^n}$, at least starting from $n=2$. Indeed, for all $n\geq 2$, $n^n\geq 2^n$, so $\frac 1{n^n}\leq\frac 1{2^n}$. Thus,
+          \[\sum_{n=2}^\infty\frac 1{n^n}\leq\sum_{n=2}^\infty \frac 1{2^n}\]
+          which converges since it is a geometric series with common ratio less than 1. Therefore, the original sum starting at 1 converges too.
+
+          The ratio test is also plausible for this but requires knowing that $\left( \frac n{n+1} \right)^n$ converges to $\frac 1e$ as $n\to\infty$, which is techincally something you should be able to deduce from the definition of $e$ as $\lim_{n\to\infty}\left( 1+\frac 1n \right)^n$, but might be difficult to do on your own. It takes several steps of logical deduction.
+        \end{solution}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Partial fractions.
+\leavevmode\begin{enumerate}[(a)]
+  \item What is $\frac 12-\frac 13$? What is $\frac 13-\frac 14$? What is $\frac 14-\frac 15$? Make a conjecture based on your findings, then prove it.
+        \begin{solution}
+          \begin{align*}
+            \frac12-\frac13 & = \frac{3-2}6=\frac 16.        \\
+            \frac13-\frac14 & = \frac{4-3}{12} =\frac 1{12}. \\
+            \frac14-\frac15 & = \frac{5-4}{20}=\frac 1{20}.
+          \end{align*}
+          It looks like $\frac 1n-\frac 1{n+1}=\frac 1{n(n+1)}$.
+
+          \textbf{Proof}: $\frac 1n-\frac 1{n+1}=\frac{(n+1)-n}{n(n+1)}=\frac 1{n(n+1)}$.
+        \end{solution}
+  \item Using what you proved in part (a), find the sum
+        \[\frac 1{1\cdot 2}+\frac 1{2\cdot3 }+\frac 1{3\cdot 4}+\frac 1{4\cdot 5}+\cdots+\frac 1{99\cdot 100}\]
+        and the sum
+        \[\frac 1{1\cdot 2}+\frac 1{2\cdot3 }+\frac 1{3\cdot 4}+\cdots.\]
+        \begin{solution}
+          \[\begin{split}
+              \frac 1{1\cdot 2}+\frac 1{2\cdot 3}+\cdots+\frac 1{99\cdot 100} &= \left( 1-\frac 12 \right)+\left( \frac 12-\frac13 \right)+\cdots+\left( \frac1{99}-\frac1{100} \right).
+            \end{split}\]
+          In this sum, every term from $\frac12$ to $\frac 1{99}$ gets canceled out. Fun fact: Sums/series like this are called telescoping sums/series. Anyway, what remains is $1-\frac 1{100}=\frac{99}{100}$, so this is the answer.
+
+          To get the value of the infinite series, one must take the limit of $1-\frac 1n$ as $n\to\infty$, which is evidently 1. We got $1-\frac 1n$ by generalizing our reasoning from the first part.
+        \end{solution}
+  \item Challenge! Use your thinking skills, reflecting on how you solved the previous part, to find the sum
+        \[\frac1{1\cdot 4}+\frac 1{2\cdot 5}+\frac 1{3\cdot 6}+\cdots.\]
+        \begin{solution}
+          It looks like the general term of this series is $\frac 1{n(n+3)}$. Let's see what $\frac 1n-\frac 1{n+3}$ equals:
+          \[\frac 1n-\frac 1{n+3}=\frac{(n+3)-n}{n(n+3)}=\frac 3{n(n+3)}.\]
+          It looks like this is 3 times too big, so we divide everything by 3 to get what we want:
+          \[\frac 1{n(n+3)}=\frac 13\left( \frac 1n-\frac 1{n+3} \right).\]
+          Therefore,
+          \[\begin{split}
+              \frac 1{1\cdot 4}&+\frac 1{2\cdot 5}+\frac 1{3\cdot 6}+\cdots \\
+              &=\frac 13\left( 1-\frac 14 \right)+\frac 13\left( \frac12-\frac 15 \right)+\frac 13\left( \frac13-\frac 16 \right)+\cdots\\
+              &= \frac 13\left(1+\frac 12+\frac 13\right)\\
+              &=\frac 13\cdot \frac{11}6\\
+              &=\frac{11}{18},
+            \end{split}\]
+          where the third line follows from the second because 1, $\frac12$, and $\frac13$ are the only terms that survive the telescoping series.
+        \end{solution}
+  \item A slight change can make a problem much much harder. Let's now look at the following sum:
+        \[\frac 1{1\cdot 2}+\frac 1{3\cdot 4}+\frac 1{5\cdot 6}+\dots.\]
+        This sum is similar in form to the one in part (b) but the limit is now irrational! What does the internet (e.g. Wolfram Alpha) say this sum equals? (You might want to figure out how to express it as a summation so you can input it into the service.)
+
+        Then give a guess as to how one might prove it. (Hint: the sum in the Zax problem of 2 psets ago converged to $1-\ln 2$. Maybe there's a connection\ldots)
+        \begin{solution}
+          WA gives a value of $\ln 2$. To input it into WA I had to turn the sum into the form
+          \[\sum_{k=1}^\infty \frac 1{(2k-1)(2k)}\]
+          and type in something like
+          \begin{quote}
+            \texttt{sum of 1/((2k-1)(2k)) from k=1 to infinity}.
+          \end{quote}
+
+          As to the how the proof might go: no spoilers! (Spoiler in the solution to the next problem set.) I'll just say that maybe the series $1-\frac 12+\frac 13-\frac 14+\cdots$ might be involved in some way. Any reasonable and logical guess is acceptable for this part.
+        \end{solution}
+  \item Prove that $\displaystyle\sum_{n=1}^\infty \frac 1{n^2}$ converges, using comparison and the result of part (b).\footnote{Finding the sum was a famous problem, called the
+          Basel Problem because the Bernoulli family and Euler (all from Basel, Switzerland) worked
+          on it. It was Euler who found the sum in 1734. We may see later how he did it.}
+          \begin{solution}
+            The naive comparison between $\sum_{n=1}^\infty \frac 1{n^2}$ and $\sum_{n=1}^\infty \frac 1{n(n+1)}$ has the wrong direction, so we need to do some shifting. Instead, let's compare $\sum_{n=2}^\infty \frac 1{n^2}=\sum_{n=1}^\infty\frac 1{(n+1)^2}$ with $\sum_{n=1}^\infty \frac 1{n(n+1)}$. We have for every positive integer $n$ that $(n+1)^2=(n+1)(n+1)>n(n+1)$, therefore $\frac 1{(n+1)^2}<\frac 1{n(n+1)}$. Since the series $\sum_{n=1}^\infty \frac 1{n(n+1)}$ converges as proven in part (b), so does the series $\sum_{n=1}^\infty\frac 1{(n+1)^2}$. But this one is a tail of the series $\sum_{n=1}^\infty\frac 1{n^2}$, so the latter series converges too.
+          \end{solution}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Around 1910, the Indian mathematician Srinivasa Ramanujan discovered that
+\[
+  \frac{2\sqrt{2}}{9801}\sum_{n=0}^\infty\frac{(4n)!(1103+26390n)}{(n!)^4396^{4n}}=\frac{1}{\pi}.
+\]
+Prove the more modest assertion, that the series converges at all.
+\end{problem}
+\begin{solution}
+  Let's ignore the $\frac{2\sqrt 2}{9801}$ factor as it does not affect convergence. (It will also get cancelled in the ratio test.) Let's apply the ratio test: the ratio between the $(n+1)$st term and the $n$th term will be
+  \[\begin{split}
+    &\frac{(4(n+1))!(1103+26390(n+1))}{((n+1)!)^4 396^{4(n+1)}}\cdot \frac{(n!)^4 396^{4n}}{(4n)!(1103+26390n)}\\
+    &=\frac{(4n+4)!}{(4n)!}\cdot\frac{(n!)^4}{(n+1)!^4}\cdot\frac{396^{4n}}{396^{4(n+1)}}\cdot\frac{1103+26390(n+1)}{1103+26390n}\\
+    &=\frac{(4n+4)!}{(4n)!}\cdot \frac 1{(n+1)^4}\cdot \frac 1{396^4}\cdot \frac{1103+26390(n+1)}{1103+26390n}.
+  \end{split}\]
+  We seek the limit of this as $n\to\infty$. Now, $(4n+4)! =(4n)!(4n+1)(4n+2)(4n+3)(4n+4)$, so that the first term in the last line simplifies to $(4n+1)(4n+2)(4n+3)(4n+4)$. The last term in the last line converges to 1 as $n\to\infty$ since both the numerator and denominator are linear polynomials in $n$ with leading coefficient 26390. Therefore,
+  \[\begin{split}
+    &\lim_{n\to\infty}\frac{(4n+4)!}{(4n)!}\cdot \frac 1{(n+1)^4}\cdot \frac 1{396^4}\cdot \frac{1103+26390(n+1)}{1103+26390n}\\
+    &= \frac 1{396^4}\lim_{n\to\infty}\frac{(4n+4)(4n+3)(4n+2)(4n+1)}{(n+1)(n+1)(n+1)(n+1)}\\
+    &= \frac 1{396^4}\lim_{n\to\infty}\frac{4^4 n^4+O(n^3)}{n^4+O(n^3)}\\
+    &= \frac 1{396^4}\cdot 4^4\\
+    &= \frac{4^4}{396^4}\\
+    &= \left(\frac 1{99}\right)^4\\
+    &<1.
+  \end{split}\]
+  Therefore, the series converges.
+\end{solution}
+
+\begin{problem}
+Rate the difficulty of each problem (1a, 1b, 1c, 1d, 1e, 2a, 2b, 2c, 2d, 2e, 3) according to the following scale. Your ratings will collectively let me know which areas are difficult in this class. Thanks for your feedback!
+\begin{itemize}
+  \item 1 -- Super easy, barely an inconvenience!
+  \item 2 -- Not easy, but I was able to solve the problem on my own by comparing it with an example from class or the textbook.
+  \item 3 -- Not easy, but I was able to solve the problem on my own through observations, analysis, and/or creative reasoning.
+  \item 4 -- I made some progress but got stuck, and with help, I was able to solve the problem. I feel like I understand it now.
+  \item 5 -- I could not start this problem without help, but after getting help I was able to solve the problem. I feel like I understand it now.
+  \item 6 -- I could not start this problem without help, but after getting help I was able to solve the problem. However, I still don't feel like I understand what is going on in this problem.
+  \item 7 -- I could not solve the problem, even with help.
+\end{itemize}
+\end{problem}
+\begin{solution}
+  :)
+\end{solution}
+\end{document}

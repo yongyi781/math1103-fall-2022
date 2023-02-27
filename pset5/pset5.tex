@@ -1,0 +1,73 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 5}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, October 5 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Some exercises.
+        \begin{enumerate}[(a)]
+            \item (Strang 8.1.50) Rotate $y=x^3$ around the $y$-axis from $y=0$ to $y=8$. Write down the volume integral by shells and disks and compute both ways.
+            \item (Strang 8.2.12) What integral gives the length of Archimedes' spiral $x=t\cos t,\; y=t\sin t$?
+            \item (Strang 8.3.1) Find the surface area when the curve $y=\sqrt x,\ 2\leq x\leq 6$ is revolved around the $x$-axis.
+            \item (Strang 8.3.19 and 8.3.20) A lamp shade is constructed by rotating $y=1/x$ around the $y$-axis, and keeping the part from $y=1$ to $y=2$. What is the surface area of the lamp shade?
+            
+            \emph{Hint:} The integral computation is surprisingly tricky. See the third page for a guide.
+
+            \item (Strang 8.4.7) If you choose $x$ completely at random between 0 and $\pi$, what is the density $p(x)$ and the cumulative density $F(x)$?
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}[Strang 8.2.33]
+        \leavevmode\begin{enumerate}[(a)]
+            \item Write down the integral for the length $L$ of $y=x^2$ from $(0,0)$ to $(1,1)$.
+            \item Show (without computing the integrals) that $y=\frac 12x^2$ from $(0,0)$ to $(2,2)$ is exactly twice as long.
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        You toss a coin repeatedly and stop when you get heads. Let $X$ be a random variable representing the number of coins tossed. (So the minimum $X$ can be is 1, which happens if your first flip lands heads. But there is no maximum.)
+        \begin{enumerate}[(a)]
+            \item For each $n$ let $p_n=\Pr[X=n]$, the probability that $X$ equals $n$. Show that $p_n=1/2^n$ for every positive integer $n$.
+            \item (Strang 8.4.2) What is the probability that $X$ is odd?
+            \item (Strang 8.4.4) Show that the probability $P$ that $X$ is a prime number satisfies
+            \[\frac 6{16}\leq P\leq \frac 7{16}.\]
+            \item (Strang 8.4.20) Find the average number $\mu$ of coin tosses by writing $p_1+2p_2+3p_3+\dots$ as $(p_1+p_2+p_3+\dots)+(p_2+p_3+p_4+\dots)+(p_3+p_4+p_5+\dots)+\dots$.
+        \end{enumerate}
+    \end{problem}
+
+    % \begin{problem}
+    %     Two random numbers $X$ and $Y$ are picked at random from the interval $[0,1]$. Let $Z=X+Y$. What is the probability density function of $Z$? What is the cumulative distribution function of $Z$? Compare this to rolling two dice and adding the values together.
+    % \end{problem}
+
+    \newpage
+
+    \section*{Guide on how to compute the integral for 1(d)}
+
+    For this guide I will walk through a computation of the indefinite integral
+    \[\int\frac {\sqrt{y^4+1}}{y^3}\,dy.\]
+    First make the substitution $u=y^2$, $du=2y\,dy$. Then $\sqrt{y^4+1}$ can be written as $\sqrt{u^2+1}$, while $1/y^3\,dy$ can be written as $1/(2u^2)\,du$. So our integral is now
+    \[\int\frac{\sqrt{u^2+1}}{2u^2}\,du=\frac12\int\frac{\sqrt{u^2+1}}{u^2}\,du.\]
+    There are two choices now and they both work.
+    \subsection*{Choice 1}
+    Make the substitution $u=\tan\theta$, $du=\sec^2\theta\,d\theta$. This takes advantage of the fact that $\sqrt{\tan^2\theta+1}=\sec\theta$. We now have
+    \[\frac12\int \frac{\sec\theta}{\tan^2\theta}\sec^2\theta\,d\theta. \]
+    The integrand simplifies (using $\tan\theta=\sin\theta/\cos\theta$) to $\csc^2\theta\sec\theta$. Finally, using $\csc^2\theta=1+\cot^2\theta$ the integrand simplifies to $\sec\theta+\cot\theta\csc\theta$. The rest, as they say, is history. You can integrate both terms easily by a lookup table. Finally don't forget that a definite integral awaits after you find your antiderivative.
+
+    \subsection*{Choice 2}
+    If you like hyperbolic functions, you can make the substitution $u=\sinh\theta$, $du=\cosh\theta\,d\theta$. I won't walk through this beyond this point because I haven't talked about hyperbolic functions at all.
+\end{document}

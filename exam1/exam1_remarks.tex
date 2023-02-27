@@ -1,0 +1,132 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\PDF}{PDF}
+\DeclareMathOperator{\CDF}{CDF}
+
+\title{MATH1103 Fall 2022\\
+Exam 1 Remarks}
+\author{Wednesday, October 19, 2022}
+
+\begin{document}
+\maketitle
+
+Name: \underline{\hspace{6cm}}
+
+This exam is open notes, but calculators are not allowed. There are 50 points total in this exam.
+
+\begin{problem}
+Integrals. If you are using a result from class/homework/discussion, make sure you state it clearly.
+\begin{enumerate}[(a)]
+  \item (2 points) Calculate $\displaystyle\int_{-\pi}^\pi \sin x\,dx$.
+        \begin{remark}
+          Direct calculation or using the property that $\sin$ is an odd function, gives or 0.
+        \end{remark}
+        \vfill
+        % \item (2 points) Let $N$ be a positive integer. Find $\displaystyle\int_{-N}^N\lfloor x\rfloor\,dx$, in terms of $N$.
+  \item (2 points) Calculate the indefinite integral $\displaystyle\int \dfrac{e^x}{e^x+1}\, dx$.
+        \begin{remark}
+          Do $u$-substitution $u=e^x+1$, with $du=e^x\,dx$. This takes care of everything and we have
+          \[\int \frac{du}u=\ln|u|+C=\ln|e^x+1|+C.\]
+          For these types of integrations, it's natural to not think of the right method off the bat (many tried integration by parts), but you should be mindful enough to try the other method if you're not getting anywhere with your first choice.
+        \end{remark}
+        \vfill
+  \item (2 points) Calculate $\displaystyle\int_1 ^3 \ln x\,dx$.
+        \begin{remark}
+          Integrate by parts with $u=\ln x$ and $v=x$. Or you can cite a problem set 4 result that $\int\ln x\,dx=x\ln x-x+C$, then use FTC 2.
+        \end{remark}
+        \vfill
+  \item (2 points) Calculate $\displaystyle\int_{-1}^1 (x^5+\sin(x^3))\,dx$.
+        \begin{remark}
+          You had to notice that the integrand is an odd function, hence the integral is 0. There turns out to be no way to evaluate $\int\sin(x^3)\,dx$ with elementary functions.
+        \end{remark}
+        \vfill
+  \item (2 points) For which values of $x$ is $\displaystyle\int_1^x\left(\frac 1{|t|}+e^{t^2}\right)\,dt$ a well-defined number?
+        \begin{remark}
+          When $x>0$, this integral has no funny business, it is the area under the graph of a continuous function, no problems. So all is good. For $x=0$, this is an improper integral because $1/|t|$ blows up at $t=0$, and furthermore, the integral of $1/|t|$ from 1 to 0 is infinity. Therefore we do not get a well-defined number. For $x<0$ the integration passes through 0, so we still have an improper integral; and this improper integral does not evaluate to a well-defined number for the same reason.
+        \end{remark}
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+Let $P$ be the paraboloid formed by rotating the region bounded by $y=\frac 12x^2$, $x=0$, and $y=2$ around the $y$-axis.
+
+\begin{enumerate}[(a)]
+  \item (5 points) What is the volume of $P$?
+
+        \emph{Hint}: I found the disk method the easiest here.
+        \begin{remark}
+          $\int_0^2\pi(\sqrt{2y})^2\,dy=4\pi$.
+        \end{remark}
+        \vfill
+  \item (5 points) Show that the lateral surface area of $P$  is $\frac 23\pi(5\sqrt 5-1)$. (Lateral just means not including the top lid portion.)
+        \begin{remark}
+          Don't forget the hypotenuse (arc length) element for surface area! The integral should be
+          \[2\pi\int_0^2\sqrt{2y}\sqrt{1+\frac 1{2y}}\,dy.\]
+        \end{remark}
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+A dartboard has the shape of a circle of radius 1. A dart hits a random point in the circle, where by random we mean that the probability that the dart lands in any region $R$ inside the circle is equal to the area of $R$ divided by the area of the circle.
+\begin{enumerate}[(a)]
+  \item (5 points) Let $X$ be the random variable representing the dart's distance from the center. For any $r$ between 0 and 1, what is the probability that $X\leq r$?
+        \begin{remark}
+          The event $X\leq r$ means that the dart landed within a smaller circle of radius $r$ around the center. The region of such points inside this circle has area $\pi r^2$, and the total region has area $\pi\cdot 1^2=\pi$. So the probability that $X\leq r$ is $r^2$.
+        \end{remark}
+        \vfill
+  \item (5 points) What is the expected distance of the dart from the center?
+        \begin{remark}
+          The purpose of part (a) is that it gives us the CDF of $X$ as $r^2$, $0\leq r\leq 1$. The PDF is therefore $\PDF_X(r)=2r$, $0\leq r\leq 1$. The expected distance is therefore
+          \[\int_0^1 r\PDF_X(r)\,dr=\int_0^1 r\cdot 2r\,dr=\int_0^1 2r^2\,dr=\frac 23r^3\Big|_0^1=\frac 23.\]
+        \end{remark}
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+Find the variance of the exponential distribution given by $p(x)=ae^{-ax}$ for $x\geq 0$ (and 0 for $x<0$). You may use the fact that $\Var(X)=\bE[X^2]-\bE[X]^2$ for any random variable $X$, and the fact the mean of this exponential distribution is $1/a$.
+\end{problem}
+\begin{remark}
+  The hint provided gives us that $\Var(X)=\bE[X^2]-\mu^2$, or
+  \[\Var(X)=\int_0^\infty x^2 ae^{ax}\,dx-\frac 1{a^2}.\]
+  The integral in the above equation must be calculated by doing integration by parts twice, to get an answer of $\frac 2{a^2}$, which when combined with $-\frac 1{a^2}$ gives us a final variance of $\frac 1{a^2}$. The integration by parts was quite involved but calculational errors were treated very generously.
+\end{remark}
+
+\newpage
+
+\begin{problem}[10 points]
+Let $f$ be a continuous function and suppose that $f(x)=f(-x)$ for all $x$. Prove algebraically (not graphically) that
+\[\int_{-a}^a f(x)\,dx=2\int_0^a f(x)\,dx\]
+for all $a$.
+\end{problem}
+\begin{remark}
+  The key idea is that the LHS integral can be split into two integrals
+  \[\int_{-a}^0 f(x)\,dx+\int_0^a f(x)\,dx\]
+  and then $u$-substitution with $u=-x$, along with the property that $f(x)=f(-x)$ for all $x$, transforms the first term into an identical copy of the second term, turning the sum into
+  \[2\int_0^a f(x)\,dx.\]
+  The problem was graded with an emphasis on showing good logical reasoning skills.
+\end{remark}
+\end{document}

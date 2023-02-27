@@ -1,0 +1,169 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype,pgfplots}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks]{hyperref}
+\usepackage[most]{tcolorbox}
+
+\usepgfplotslibrary{fillbetween,decorations.softclip}
+\pgfplotsset{compat=1.18}
+
+\definecolor{sol}{rgb}{0.1, 0.3, 0.6}
+
+\newtcolorbox{solution}{enhanced, breakable, colframe=sol, title=Solution}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\blank}{\underline{\hspace{1cm}}}
+\newcommand{\longblank}{\underline{\hspace{2cm}}}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 7}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, October 26 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Euclid's proof of the infinitude of the sequence of primes, shown in full on the last page, is one of the oldest and most classic proofs in mathematics. Read it 15 times (I am serious!). On each reading, ask yourself why each statement follows from previous statements or already known facts, and try to answer it.
+        \begin{enumerate}[(a)]
+            \item Once you have finished, rewrite the proof in your own words.
+            \begin{solution}
+                Here is an example: We shall prove that given any finite list of primes, that there exists another prime not in the list. To this end, let $p_1,p_2,\dots,p_n$ be a list of $n$ primes. Let $P=p_1p_2\cdots p_n+1$. We notice that $P$ leaves a remainder of 1 when divided by each of $p_1,p_2,\dots,p_n$, which implies that $P$ is not divisible by any of $p_1,p_2,\dots,p_n$. However, we know that $P$ has a prime factor (either $P$ is prime, or has a prime factor less than $P$). Since this prime factor cannot be any of $p_1,\dots,p_n$, it must be a prime not in the list. This concludes the proof.
+            \end{solution}
+            \item Give two examples of finite lists of primes and verify that the proof does indeed produce a prime not in the list for both examples.
+            \begin{solution}
+                If our list is $2,3,5,7,11$, then $P=2311$ which is prime, so we can add 2311 to our list.
+
+                If our list is $3,5,7,11$, then $P=1156=2^2\times 17^2$, and we can pick either 2 as our new prime or 17 as our new prime.
+            \end{solution}
+            \item To show you understand the proof, say what happens if you try to set $P=p_1p_2\cdots p_r+2$ instead of $p_1p_2\cdots p_r+1$. The proof won't work anymore, but where and why does the proof break down?
+            \begin{solution}
+                We have $P-p_1p_2\cdots p_r=2$ now, and the reasoning that shows that $p$ is not in the list breaks down when it says that if $p$ was in the list, $p$ would divide 1 --- now it says that if $p$ was in the list, $p$ would divide 2, which is not a contradiction anymore because $p$ could indeed be 2.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        Example 3 on page 26 of Reeder's notes proves that $r^n$ converges to 0 for any $0<r<1$. Use this result to extend it to the result that $r^n\to 0$ for any $-1<r<1$, but without needing to write a long proof using the Binomial Theorem again. Do it by the following steps.
+        \begin{enumerate}[(a)]
+            \item Handling the $r=0$ case first. Let's take for granted that we know that all constant sequences, that is sequences of the form $x_n=a$ for some number $a$ independent of $n$, converge to $a$. (We might prove this result in class or in a future homework.) How can you use this result to handle the $r=0$ case?
+            \begin{solution}
+                The sequence $0^n$ is the constant sequence 0, so converges to 0.
+            \end{solution}
+
+            \item Complete the following statement (fill in the blanks, but write everything on your paper):
+            
+            The theorem that $r^n$ converges to 0 for all $0<r<1$ says that \blank (for all/there exists) $0<r<1$, \blank (for all/there exists) $\eps>0$, \blank (for every/there exists an) integer $N$ such that, \blank (for all/there exists) $n\geq N$, $|r^n-0|<\eps$. The inequality $|r^n-0|<\eps$ can be written more simply as \longblank.
+            
+            Let's call this theorem ``Theorem A.'' Read this theorem 15 times.
+
+            \begin{solution}
+                The theorem that $r^n$ converges to 0 for all $0<r<1$ says that \underline{for all} $0<r<1$, \underline{for all} $\eps>0$, \underline{there exists} an integer $N$ such that, \underline{for all} $n\geq N$, $|r^n-0|<\eps$. The inequality $|r^n-0|<\eps$ can be written more simply as \underline{$r^n<\eps$}.
+            \end{solution}
+
+            \item Complete the following statement (fill in the blanks, but write everything on your paper):
+            
+            We wish to prove that $r^n$ converges to 0 when $-1<r<0$. To this end, let $\eps>0$ be arbitrary. Also define $r'=-r$. Since $r$ satisfies $-1<r<0$, we deduce that $r'$ satisfies \blank, so we can use Theroem A on $r'$, plugging into it our $\eps$ as the $\eps$ in Theorem A. When we do this, we obtain an integer $N$ such that, \blank (for all/there exists) $n\geq N$, \longblank (same as the last blank of part (b), but with $r'$ in place of $r$). Let us pick the same $N$ for our proof. Then, for all $n\geq N$, (the number of blanks is not required to be 2, but these will take some thinking)
+            \[|r^n-0|=|r^n|=\longblank=\longblank<\eps,\]
+            so we win.
+
+            After you've written your proof, read it 15 times so you understand it by heart. (This part is mandatory.)
+            \begin{solution}
+                We wish to prove that $r^n$ converges to 0 when $-1<r<0$. To this end, let $\eps>0$ be arbitrary. Also define $r'=-r$. Since $r$ satisfies $-1<r<0$, we deduce that $r'$ satisfies \underline{$0<r<1$}, so we can use Theroem A on $r'$, plugging into it our $\eps$ as the $\eps$ in Theorem A. When we do this, we obtain an integer $N$ such that, \underline{for all} $n\geq N$, \underline{$(r')^n<\eps$}. Let us pick the same $N$ for our proof. Then, for all $n\geq N$,
+                \[|r^n-0|=|r^n|=(-r)^n=(r')^n<\eps,\]
+                so we win.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        We can use the $\eps$-lemma to prove that $0.999\ldots=1$. Do it by the following steps.
+        \begin{enumerate}[(a)]
+            \item Prove that for any $\eps>0$, there exists a positive integer $n$ such that $10^{-n}<\eps$.
+            
+            Big hint: Use the result mentioned in the beginning of Problem 2 (what is a suitable choice of $r$ that might be useful here?), then you barely have to write anything here.
+            \begin{solution}
+                Theorem A from Problem 2 (i.e.\ Example 3 on page 26 of Reeder) says that, for all $0<r<1$, $r^n$ converges to 0. Unpacking this, this says that for all $0<r<1$ and all $\eps>0$, there exists an integer $N$ such that, for all $n\geq N$, $r^n<\eps$. Let's input $r=1/10$ and our $\eps$ into this theorem, giving us an integer $N$ such that, for all $m\geq N$, $(1/10)^m<\eps$. In particular, $(1/10)^N<\eps$. In other words, $10^{-N}<\eps$. This is what we wanted. (The fact that our exponent is called $-N$ instead of $-n$ doesn't matter.)
+            \end{solution}
+            \item If we define $a_n=0.99\dots 9$ with $n$ 9s, then explain why $0.999\ldots >a_n$.
+            
+            \emph{Hint}: What's the decimal expansion of $0.999\ldots-a_n$?
+            \begin{solution}
+                $0.999\ldots-a_n$ is equal to $0.\underbrace{000\ldots 0}_{n\text{ 0s}}999\ldots$ which is a positive number, that is, $0.999\ldots-a_n.0$. This implies that $0.999\ldots>a_n$.
+            \end{solution}
+            \item Also explain why $1-a_n=10^{-n}$.
+            \begin{solution}
+                If we do the subtraction algorithm, $1-a_n$ has the decimal expansion $0.\underbrace{000\ldots 0}_{(n-1)\text{ 0s}}1$. This number is also the decimal expansion of $10^{-n}$.
+            \end{solution}
+            \item Also show why part (b) implies that $1-0.999\ldots<1-a_n$.
+            \begin{solution}
+                Part (b) showed that $0.999\ldots >a_n$. We know that $a>b\iff -a<-b\iff 1-a<1-b$. Hence, $1-0.999\ldots<1-a_n$.
+            \end{solution}
+            \item You can finally write the proof that $0.999\ldots=1$ as follows (fill in the blanks; write out the whole proof in your submission, of course):
+            
+            Let $\eps>0$ be arbitrary. Pick $n$ large enough so that $10^{-n}<\eps$. Then $|1-0.999\ldots|=1-0.999\ldots<1-\underline{\hspace{1cm}}=10^{-n}<\underline{\hspace{1cm}}$. Therefore, $|1-0.999\ldots|$ is less than every positive number, so by the $\eps$-lemma, $1-0.999\ldots=\underline{\hspace{1cm}}$, meaning that $0.999\ldots=1$.
+
+            After you've written your proof, read it 15 times so you understand it by heart. (This part is mandatory.)
+            \begin{solution}
+                Let $\eps>0$ be arbitrary. Pick $n$ large enough so that $10^{-n}<\eps$. Then $|1-0.999\ldots|=1-0.999\ldots<1-\underline{a_n}=10^{-n}<\underline{\eps}$. Therefore, $|1-0.999\ldots|$ is less than every positive number, so by the $\eps$-lemma, $1-0.999\ldots=\underline{0}$, meaning that $0.999\ldots=1$.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        Prove that $\frac 1{\sqrt n}$ converges to 0 using the $\eps$ definition of convergence.
+    \end{problem}
+    \begin{solution}
+        Let $\eps>0$ be arbitrary. Pick $N$ to be any integer greater than $1/\eps^2$, for example $N=\lfloor 1/\eps^2\rfloor+1$. Then for all $n\geq N$, we have
+        \[\frac 1{\sqrt n}\leq\frac 1{\sqrt N}<\frac 1{1/\eps}=\eps.\]
+    \end{solution}
+
+    \begin{problem}
+        Rate the difficulty of each problem (1a, 1b, 1c, 2a, 2b, 2c, 3a, 3b, 3c, 3d, 3e, 4) according to the following scale. Your ratings will collectively let me know which areas are difficult in this class. Thanks for your feedback!
+        \begin{itemize}
+            \item 1 -- Super easy, barely an inconvenience!
+            \item 2 -- Not easy, but I was able to solve the problem on my own by comparing it with an example from class or the textbook.
+            \item 3 -- Not easy, but I was able to solve the problem on my own through observations, analysis, and/or creative reasoning.
+            \item 4 -- I made some progress but got stuck, and with help, I was able to solve the problem. I feel like I understand it now.
+            \item 5 -- I could not start this problem without help, but after getting help I was able to solve the problem. I feel like I understand it now.
+            \item 6 -- I could not start this problem without help, but after getting help I was able to solve the problem. However, I still don't feel like I understand what is going on in this problem.
+            \item 7 -- I could not solve the problem, even with help.
+        \end{itemize}
+    \end{problem}
+    \begin{solution}
+        :)
+    \end{solution}
+
+    \newpage
+
+    \section{Euclid's proof of the infinitude or primes (c.\ 300 BC)}
+    \begin{theorem}
+        There are more primes than can be found in any finite list of primes.
+    \end{theorem}
+    \begin{proof}
+        Call the primes in our finite list $p_1,p_2,\dots,p_r$.  Let
+        \[P=p_1p_2\cdots p_r+1.\]
+        Now $P$ is either prime or it is not. If it is prime, then $P$ is a prime that was not in our list.  If $P$ is not prime, then it is divisible by some prime, call it $p$.  Notice $p$ cannot be any of $p_1,p_2,\dots,p_r$, otherwise $p$ would divide $P-p_1p_2\cdots p_r=1$, which is impossible.  So this prime $p$ is some prime that was not in our original list.  Either way, the original list was incomplete.
+    \end{proof}
+
+    \subsection*{Some background knowledge necessary for the understanding of the proof}
+    \begin{itemize}
+        \item A \emph{prime number} is a positive integer, greater than 1, which is not divisible by any other positive integer except 1 and itself.
+        \item Every positive integer has a unique decomposition as a product of prime numbers. For example, $60=2\cdot 2\cdot 3\cdot 5$. A seemingly weaker, but actually equivalent, statement is that every positive integer has at least one prime factor.
+        \item When we say ``$a$ divides $b$,'' this just means that $b$ is a multiple of $a$, or in other words, $a$ is a factor of $b$. Or more formally, there exists an integer $k$ such that $b=ka$.
+        \item If $a$ divides $b$ and $a$ divides $c$, then $a$ divides $b+c$ as well as $b-c$. (This is actually a theorem that can be proved from the previous bullet.)
+    \end{itemize}
+\end{document}

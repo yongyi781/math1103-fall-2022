@@ -1,0 +1,295 @@
+\documentclass[12pt]{article}  
+
+%Run with XeLaTeX
+\usepackage
+[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=blue]
+{hyperref}
+
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphics} 
+\usepackage{graphicx} 
+%\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepgfplotslibrary{polar}
+\usepackage{ skull }
+\usetikzlibrary{decorations.fractals}
+%\usepackage{pst-func}
+
+% GNUPLOT required
+\usepackage{verbatim}
+
+\linespread{1.3}
+
+%\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{20pt}
+\addtolength{\oddsidemargin}{20pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Begin user defined commands
+
+\newcommand{\map}[1]{\xrightarrow{#1}}
+
+
+\newcommand{\bz}{\mathbb Z}
+\newcommand{\bq}{\mathbb Q}
+\newcommand{\br}{\mathbb R}
+\newcommand{\bc}{\mathbb C}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\ep}{\epsilon}
+\DeclareMathOperator{\lub}{l.u.b.}
+%  End user defined commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These establish different environments for stating Theorems, Lemmas, Remarks, etc.
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ex}[Thm]{Example}
+
+\theoremstyle{definition}
+\newtheorem{Exercise}{Problem}
+
+\newenvironment{Solution}{\noindent\textbf{Solution.}}{}
+
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand\qedsymbol{QED}
+% End environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Some commands to save paper
+
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\LH}{\ \underset{\text{LH}}{=}\ }
+\newcommand{\Dep}{\Delta_+}
+\newcommand{\Dem}{\Delta_-}
+\newcommand{\bu}{\mathbf u}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\bw}{\mathbf w}
+
+\newcommand{\ora}{\overrightarrow}
+
+
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{-40pt}
+\addtolength{\oddsidemargin}{-40pt}
+\addtolength{\topmargin}{-80pt}
+\addtolength{\textheight}{1.8in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now we're ready to start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}  
+
+%\author{Your Name}
+{\bf MATH 1103 Homework 12 solutions}\\
+{\bf Not graded, not to be turned in. Solutions will appear.}
+
+
+
+
+{\bf 1.\ } In class we found the period $T$ of the pendulum of length $\ell$ and initial angular displacement $\al$ to be 
+\[T=4\sqrt{\frac{\ell}{g}}\int_0^{\pi/2}\frac{du}{\sqrt{1-r^2\sin^2 u}},\footnote{Note typos in original problem, which had $2\pi$ instead of 4 and $\sin u$ instead of $\sin^2 u$.}
+\]
+where $r=\sin(\al/2)$. Compute $T$ as an infinite series in $r$. 
+
+\begin{Solution}
+The integrand expands as 
+\[\frac{1}{\sqrt{1-r^2\sin^2 u}}
+=\sum_{k=0}^\infty(-1)^k\binom{-1/2}{k} r^{2k}\sin^{2k}u.
+\]
+We have 
+\[\binom{-1/2}{k}=(-1)^kP_k\qquad \text{and}\qquad
+\int_0^{\pi/2}\sin^{2k}u=P_k\cdot\frac{\pi}{2},
+\]
+so integrating term-by-term we get
+\[
+T\ =\ 2\pi\sqrt{\frac{\ell}{g}}\sum_{k=0}^\infty P_k^2\cdot  r^{2k}
+\ =\ 2\pi\sqrt{\frac{\ell}{g}}\left[
+1+\left(\frac{1}{2}\right)^2 r^2
++\left(\frac{1\cdot 3}{2\cdot 4}\right)^2 r^4
++\left(\frac{1\cdot 3\cdot 5}{2\cdot 4\cdot 6}\right)^2 r^6
++\cdots\right].
+\]
+
+\end{Solution}
+
+
+
+{\bf 2.\ } Suppose $\al=\pi/2$. That is, we let the pendulum go from the ceiling. Compute $T$ in terms of 
+$\displaystyle\int_0^{\pi/2}
+\frac{d\theta}{\sqrt{\cos \theta}}.
+$
+(Hint: Use the first integral we found for $T$.)
+
+\begin{Solution} Our first integral for $T$ was 
+\[T=4\sqrt{\frac{\ell}{2g}}\int_0^{\al}
+\frac{d\theta}{\sqrt{\cos\theta-\cos\al}}=
+4\sqrt{\frac{\ell}{2g}}\int_0^{\pi/2}
+\frac{d\theta}{\sqrt{\cos\theta}},
+\]
+since $\al=\pi/2$. 
+\end{Solution}
+
+{\bf 3.\ } Show that Wallis' integral $\int_0^1(1-x^{1/p})^q\ dx$ 
+has the trigonometric form
+\[
+\int_0^1(1-x^{1/p})^q\ dx=2p\int_0^{\pi/2}\cos^{2p-1}(u)\sin^{2q+1}(u)\ du
+\]
+[Hint: Let $x=\cos^{2p}(u)$.]
+
+\begin{Solution} With this substitution we have 
+\[(1-x^{1/p})^q=(1-\cos^2(u))^q=\sin^{2q}(u),\qquad
+dx=-2p\cos^{2p-1}(u)\cdot\sin(u)\ du,
+\]
+and the limits $0,1$ change to $\pi/2, 0$, so 
+\[
+\int_0^1(1-x^{1/p})^q\ dx=
+\int_{\pi/2}^0\sin^{2q}(u)\cdot (-2p)\cos^{2p-1}(u)\cdot\sin(u)\ du
+=2p\int_0^{\pi/2}\cos^{2p-1}(u)\sin^{2q+1}(u)\ du,
+\]
+as desired.
+\end{Solution}
+
+{\bf 4.\ } Assume that Wallis' guess 
+\[
+\int_0^1(1-x^{1/p})^q\ dx=\frac{p!\ q!}{(p+q)!}
+\]
+is correct for any numbers $p,q>-1$. (It is.) Combine the two previous problems to compute the period of the pendulum with $\al=\pi/2$, in terms of factorials. [Hint: select $p$ and $q$ so that the trigonometric integral in 3 becomes the integral in 2. ]
+
+\begin{Solution} To get $\int(\cos \theta)^{-1/2}$, we need $2p-1=-(1/2)$, so $p=1/4$, and $2q+1=0$, so $q=-(1/2)$. Then 3 says 
+\[\int_0^{\pi/2}
+\frac{d\theta}{\sqrt{\cos\theta}}=
+\frac{1}{2p}\int_0^1(1-x^{1/p})^q\ dx=
+\frac{1}{2p}\cdot \frac{p!\ q!}{(p+q)!}=
+2\cdot\frac{\left(\frac{1}{4}\right)!\ \left(-\frac{1}{2}\right)!}
+{\left(-\frac{1}{4}\right)!}=
+2\sqrt{\pi}\cdot\frac{\left(\frac{1}{4}\right)!}
+{\left(-\frac{1}{4}\right)!}
+\]
+(the approximate value is $2.662$).
+Now from 2 we get
+\[
+T=4\sqrt{\frac{\ell}{2g}}\int_0^{\pi/2}
+\frac{d\theta}{\sqrt{\cos\theta}}=
+8\sqrt{\frac{\pi\ell}{2g}}\cdot\frac{\left(\frac{1}{4}\right)!}
+{\left(-\frac{1}{4}\right)!}
+\]
+
+\end{Solution}
+
+{\bf 5.\ } Let $a,b,c$ be positive constants. The equation 
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1\]
+defines an {\it ellipsoid} in three-dimensional $x,y,z$ space, whose  cross-sections are ellipses.
+For each fixed $z$ the slice is an ellipse with equation
+\[\frac{x^2}{a_z^2}+\frac{y^2}{b_z^2}=1,\]
+where 
+\[a_z=a\cdot\sqrt{1-\frac{z^2}{c^2}},\qquad \text{and}\qquad 
+b_z=b\cdot\sqrt{1-\frac{z^2}{c^2}}.
+\]
+Use Cavalieri's principle and a result from your last homework to compute the volume of this ellipsoid. 
+
+\begin{Solution} 
+According to Cavalieri, the volume is the integral over $z$ of the area of the slice at $z$. This slice is the ellipse described above. By the result of problem 2 the slice area is 
+\[\pi a_z b_z=\pi a b\left(1-\frac{z^2}{c^2}\right),\]
+so the volume of the ellipsoid is 
+\[
+2\int_0^c\pi a b\left(1-\frac{z^2}{c^2}\right)\ dz=
+2\pi a b\left(c-\frac{1}{c^2}\cdot \frac{c^3}{3}\right)=
+\frac{4\pi a b c}{3}.
+\]
+
+\end{Solution} 
+
+{\bf 6.\ } The goal of this problem is to compute the volume of a bagel. We will  apply Cavalieri's principle to the slices made by a bagel slicer. Our bagel is obtained by rotating the circle of radius $a$ centered at $(0,b)$ about the $x$-axis, where $a,b$ are constants with $0<a<b$. And $x$ will vary from $-a$ to $a$. 
+
+a)\ What is the area of the bagel slice at $x$? 
+
+b)\ Integrate the above slices to obtain the volume of the bagel. 
+(It is easier to find the volume of half a bagel, then multiply by two.)
+
+\begin{Solution} Each slice is an annulus (the region between two concentric circles)
+whose radii $y=b\pm\sqrt{a^2-x^2}$ are the top and bottom halves of the orginal bagel-generating circle.  This slice area is 
+\[
+\pi\left[(b+\sqrt{a^2-x^2})^2-(b-\sqrt{a^2-x^2})^2\right]=
+4\pi b\sqrt{a^2-x^2}.
+\]
+Therefore the volume of the bagel is 
+(making the substitution $x=a\sin\theta$):
+\[
+2\int_0^a4\pi b\sqrt{a^2-x^2}\ dx=
+8\pi a^2 b\int_0^{\pi/2} \cos^2\theta\ d\theta=
+8\pi a^2 b\cdot \frac{\pi}{4}=2\pi^2 a^2b.
+\]
+\end{Solution}
+
+{\bf 7.\ }Find the lengths of the following curves.  
+
+a)\ The graph of $f(x)=\frac{2}{3}(x-1)^{3/2},\ 1\leq x\leq 2$
+
+b)\  The graph of $f(x)=x^{3/2},\ 0\leq x\leq 4$.
+
+
+
+\begin{Solution} a)\ The length is $\int_1^2 \sqrt{1+(f')^2}$, and
+$f'(x)=(x-1)^{1/2}$, so the length is
+\[
+\int_1^2\sqrt{1+f'(x)^2} dx=
+\int_1^2\sqrt{1+x-1}\ dx=\int_1^2\sqrt{x}\ dx=
+\frac{2}{3} x^{3/2}\bigg\vert_1^2=
+\frac{2}{3}\left(2^{3/2}-1\right).
+\]
+
+b)\ The length is $\int_0^4\sqrt{1+(f')^2}$, and 
+$f'(x)=(3/2)x^{1/2}$, so the length is 
+\[
+\int_0^4\sqrt{1+\frac{9}{4} x}\ dx=
+\frac{4}{9}\int_0^9 \sqrt{1+u}\ du=
+\frac{8}{27}\cdot \left(10^{3/2}-1\right).
+\]
+
+\end{Solution}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+ 
+ 

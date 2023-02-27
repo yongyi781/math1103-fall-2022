@@ -1,0 +1,73 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Discussion Sheet 7}
+
+\begin{document}
+    \maketitle
+
+    \begin{problem}\textit{Geometric series and decimal expression of a number}. In your HW05, you must have encountered a sum like
+    $$
+    \sum_{i=1}^\infty (\frac{1}{2})^i=\frac{1}{2}+(\frac{1}{2})^2+(\frac{1}{2})^3+\cdots
+    $$
+    Did you remember how you have calculated it? Let's examine some general cases.
+        \begin{enumerate}
+         \item (Finite series). If we define $s_n$ as follows:
+         $$
+         s_n=\sum_{i=0}^{n-1} q^i=1+q+q^2+\cdots+q^{n-1}, q \not = 1
+         $$
+         Then there is a formula saying that 
+         $$
+         s_n=\frac{1-q^n}{1-q},q \not = 1
+         $$
+         Can you prove it?
+         \vfill
+         \item Let's examine a geometric series,
+         $$
+         s=\sum_{i=0}^\infty q^i
+         $$
+         Can you come up with a formula for $s$? Does this formula hold for any $q \not=1$? If not, what should the domain of $q$ be to make it make sense? How could you prove this formula?
+         \vfill
+         \item (Decimal expression of a number)
+         \newline
+         When we think of the number $1/2$, we at the same time knows that it is also $.5$. Similarly, there is an infamous/a famous fact that $1=.99999\cdots$. Have you ever thought about why we have an infinite decimal expression for a number? For instance, if we say a number has the following decimal expression
+         $$
+         a=.a_1a_2a_3a_4\cdots
+         $$
+         What does this mean? Why does it make sense?
+         \vfill
+         \end{enumerate}
+    \end{problem}
+    
+    \begin{problem}(\textit{Epsilon Lemma})
+    \newline
+    The $\epsilon$ is stated as follows: If the distance between two numbers is smaller than any positive number then the two numbers are equal. 
+    \newline
+    Mathematically, this means for any number $x,y$, if $|x-y|<\epsilon$ for any positive number $\epsilon$. Then $x=y$.
+    \newline
+    Can you give some intuitive example to understand this statement? Can you prove it?
+    \vfill
+    
+    \end{problem}
+    
+    \begin{problem}(Euclid's proof for existence of infinitely many primes)
+    \newline
+    We know that primes can be listed as $2,3,5,7,11,\cdots$. Indeed, there are infinitely many primes. How can we prove it?..... Huh, interesting!
+    \vfill
+    \end{problem}
+
+    
+
+
+\end{document}

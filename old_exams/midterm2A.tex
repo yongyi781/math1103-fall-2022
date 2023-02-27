@@ -1,0 +1,81 @@
+\documentclass[12pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+\usepackage{amsmath}								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{}
+\author{MATH1103   \ \ \ \ \ \ Midterm 2 \ \ \ \  October 17, 2021 \ \ \ \ \  Version A \\  \\ Closed book, closed notes; show all your work.}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\begin{enumerate}
+
+\item 
+(15 pts) Consider the pictured region in the first quadrant bounded by the curve $y=e^{3x}$ and the lines $x=1$ and $y=2$.  This region is revolved around the $x$-axis to form a solid.  \emph{Using the shell method}, find the volume $V$ of the resulting solid.
+
+\includegraphics[width= 4 in]{figure_shaded.pdf}
+
+
+\
+
+
+\
+
+\item (15 pts) Write the partial fractions representation for the following function and solve for the appropriate constants. \emph{Do not compute the integral.}  
+
+$$ f(x)= \dfrac{3x^2+5}{x^3+2x^2+4x} $$
+
+
+\newpage
+
+\item (15 pts each) Evaluate the following integrals. (Note several reduction formulas are given at the end of the test, which may or not be useful.)
+
+$$ \ \textrm{(a)} \int_1^e \dfrac{ 1}{x(1+\ln(x))^4} \, dx \ \ \ \ \ \ \ \ \ \textrm{(b)}  \ \  \int \sec^7(x) \tan^5(x) \, dx$$
+
+\
+
+\item (10 pts each) Evaluate the following integrals.
+
+$$\textrm{(a)} \ \  \int   \dfrac{4x^2-6x-12}{x(x+2)(x-3)} \, dx  \ \ \ \ \ \ \  \textrm{(b)} \ \ \int 5x \cos(3x) \, dx $$
+
+
+\
+
+\item (10 pts each) Evaluate the following integrals. 
+$$   \textrm{(a)} \ \  \int \sqrt{10-x^2} \, dx \ \ \ \ \ \ \ \   \textrm{(b)} \int \dfrac{1}{2+e^x} \, dx$$
+
+
+\
+
+\
+
+Here are some reduction formulas, \emph{which may or may not be useful}:
+
+\
+
+\begin{center}
+$ \begin{array}{| c |}
+\hline
+\int \sin^n(x) \, dx= \dfrac{-1}{n}\sin^{n-1}(x) \cos(x) + \dfrac{n-1}{n} \int \sin^{n-2}(x) \, dx \\
+\\
+\int \cos^n (x) \, dx= \dfrac{1}{n} \sin(x) \cos^{n-1}(x) + \dfrac{n-1}{n} \int \cos^{n-2}(x) \, dx \\
+\\
+\int \sec^n(x) \, dx= \dfrac{1}{n-1}  \sec^{n-2}(x) \tan(x) + \dfrac{n-2}{n-1} \int \sec^{n-2}(x) \, dx \\
+\\ \int \tan^n(x) \,dx= \dfrac{1}{n-1} \tan^{n-1}(x)- \int \tan^{n-2}(x) \, dx \\
+\hline
+\end{array}$
+\end{center}
+
+
+
+\end{enumerate}
+
+
+\end{document}  

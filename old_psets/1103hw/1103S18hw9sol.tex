@@ -1,0 +1,351 @@
+\documentclass[12pt]{article}  
+
+%Run with XeLaTeX
+\usepackage
+[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=blue]
+{hyperref}
+
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphics} 
+\usepackage{graphicx} 
+%\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepgfplotslibrary{polar}
+\usepackage{ skull }
+\usetikzlibrary{decorations.fractals}
+%\usepackage{pst-func}
+
+% GNUPLOT required
+\usepackage{verbatim}
+
+\linespread{1.3}
+
+%\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{20pt}
+\addtolength{\oddsidemargin}{20pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Begin user defined commands
+
+\newcommand{\map}[1]{\xrightarrow{#1}}
+
+
+\newcommand{\bz}{\mathbb Z}
+\newcommand{\bq}{\mathbb Q}
+\newcommand{\br}{\mathbb R}
+\newcommand{\bc}{\mathbb C}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\ep}{\epsilon}
+\DeclareMathOperator{\lub}{l.u.b.}
+%  End user defined commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These establish different environments for stating Theorems, Lemmas, Remarks, etc.
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ex}[Thm]{Example}
+
+\theoremstyle{definition}
+\newtheorem{Exercise}{Problem}
+
+\newenvironment{Solution}{\noindent\textbf{Solution.}}
+
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand\qedsymbol{QED}
+% End environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Some commands to save paper
+
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\LH}{\ \underset{\text{LH}}{=}\ }
+\newcommand{\Dep}{\Delta_+}
+\newcommand{\Dem}{\Delta_-}
+\newcommand{\bu}{\mathbf u}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\bw}{\mathbf w}
+
+\newcommand{\ora}{\overrightarrow}
+
+
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{-40pt}
+\addtolength{\oddsidemargin}{-40pt}
+\addtolength{\topmargin}{-80pt}
+\addtolength{\textheight}{1.8in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now we're ready to start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}  
+
+%\author{Your Name}
+{\bf MATH 1103 Homework 9 }\\
+{\bf Due Friday April 13  2018}
+
+{\bf Practice Problems}
+
+{\bf Practice 1.\ } 
+
+a)\ $\int_0^\pi x\sin x\ dx$,\qquad b)\ $\int_0^b xe^{-x}\ dx$ (where $b$ is a constant)
+\qquad c) $\int_1^e \log x\ dx$.
+
+\begin{Solution}
+These are all integration by parts. 
+
+a)\  $u=x,\ v'=\sin x,\ u'=1,\ v=-\cos x$, so 
+\[\int_0^\pi x\sin x\ dx=-x\cos x\big\vert_0^\pi+\int_0^\pi \cos x=\pi.\]
+
+b)\ $u=x,\ v'=e^{-x},\ u'=1,\ v=-e^{-x}$, so 
+\[\int_0^b xe^{-x}\ dx=xe^{-x}\big\vert_0^b+\int_0^b e^{-x}\ dx=be^{-b}-e^{-b}+1.\]
+
+c)\ $u=\log x,\ u'=\frac{1}{x},\ v'=1,\ v=x$, so
+\[\int_1^e \log x\ dx=x\log x\big\vert_1^e-\int_1^e \frac{1}{x}\cdot x\ dx=e-(e-1)=1.\]
+\end{Solution}
+
+{\bf Practice 2.\ } Let $c$ and $r$ be constants
+
+a)\ Find antiderivatives of 
+$e^{cx}, \sin(cx), \cos( cx), (cx)^{r}$. 
+
+b)\ If $F(x)$ is an antiderivative of $f(x)$, find an antiderivative of $f(cx)$. 
+
+\begin{Solution}
+
+a) $\dfrac{1}{c}e^{cx},\ -\dfrac{1}{c}\cos(cx),\ \dfrac{c^r}{r+1}x^{r+1}$.
+
+b) $\frac{1}{c}F(cx)$. 
+
+\end{Solution}
+
+{\bf Practice 3.\ } For constants $a,b$ compute the indefinite integrals
+\[\int e^{ax}\cos bx\ dx, \qquad \text{and}\qquad \int e^{ax}\sin bx\ dx.\]
+[Hint: Integration by parts, and don't give up!]
+
+\begin{Solution} Do integration by parts twice, both times letting $u=e^{ax}$ and letting $v'$ be the trig function. 
+\[\begin{split}
+\int e^{ax}\cos bx\ dx&=\frac{e^{ax}}{a^2+b^2}\left(b\sin bx+a\cos bx\right)+C\\
+\int e^{ax}\sin bx\ dx&=\frac{e^{ax}}{a^2+b^2}\left(a\sin bx-b\cos bx\right)+C
+\end{split}\]
+\end{Solution} 
+
+{\bf Practice 4.\ } Let $f$ be a polynomial.
+
+a) Show that 
+\[\int_0^\infty f(x) e^{-x}\ dx=f(0)+\int_0^\infty f'(x) e^{-x}\ dx.\]
+(Here, $\int_0^\infty$ is defined to be $\lim\limits_{b\to\infty}\int_0^b$.)
+
+b)\ Find a formula for $\int_0^\infty f(x) e^{-x}\ dx$ in terms of the derivatives $f^{(k)}(0)$. 
+
+c)\ Use your formula to show that $\int_0^\infty x^n e^{-x}\ dx=n!$.
+
+
+\begin{Solution} a)\ $u=f$, $v'=e^{-x}$, $u'=f'$, $v=-e^{-x}$.
+$uv\big\vert_0^b=-f(b)e^{-b}+f(0)\to f(0)$ because exponentials crush polynomials.
+
+b)\ Replacing $f$ by $f'$ then $f''$, etc, we get
+\[\int_0^\infty f(x) e^{-x}\ dx
+=\sum_{k=0}^nf^{(k)}(0),
+\] where $n$ is the degree of the polynomial $f$. 
+
+c)\ For $f(x)=x^n$ we have $f^{(n)}(0)=n!$ and $f^{(k)}(0)=0$ for $0\leq k<n$. 
+\end{Solution}
+
+{\bf Practice 5.\ } Let $n$ be a positive integer. Use integration by parts to show that  
+\[\int_0^{\pi/2}\cos^{n+1}(\theta)\ d\theta=\frac{n}{n+1}\int_0^{\pi/2}\cos^{n-1}(\theta)\ d\theta.
+\]
+and use this to compute $\int_0^{\pi/2}\cos^{n}(\theta)\ d\theta$ for any integer $n$. 
+
+\begin{Solution} See analogous (in fact the same) solution for $\sin^n\theta$ in section 9.8.1 in the notes. 
+\end{Solution}
+
+{\bf Practice 6.\ } Let $p$ and $q$ be integers, with $p>0$ and $q\geq 0$. 
+Consider the integral
+\[W_{p,q}=\displaystyle{\int_0^1(1-x^{1/p})^q\ dx.}\]
+a)\ Using integration by parts, show that if $q\geq 1$ then 
+$\displaystyle{W_{p,q}=\frac{q}{p+q} W_{p,q-1}.}$
+\newline
+b)\ Using part a), show that 
+$\displaystyle{\int_0^1(1-x^{1/p})^q\ dx=\frac{p!\ q!}{(p+q)!}}$
+
+\begin{Solution}
+Integrating by parts with 
+\[ u=(1-x^{1/p})^q,\quad v'=1,\quad\text{so}\quad 
+u'=-\frac{q}{p}(1-x^{1/p})^{q-1}\cdot x^{-1+1/p},
+\quad v=x.\]
+Since $uv\big\vert_0^1=0$, we get
+\[\begin{split}
+W_{p,q}&=\frac{q}{p}\int_0^1(1-x^{1/p})^{q-1}\cdot x^{-1+1/p}\cdot x\ dx\\
+&=\frac{q}{p}\int_0^1(1-x^{1/p})^{q-1}\cdot \left(x^{1/p}\right)\ dx\\
+&=\frac{q}{p}\int_0^1(1-x^{1/p})^{q-1}\cdot \left(1-(1-x^{1/p})\right)\ dx\\
+&=\frac{q}{p}\int_0^1\left[(1-x^{1/p})^{q-1}-(1-x^{1/p})^{q}\right]\ dx\\
+&=\frac{q}{p}\left(W_{p,q-1}-W_{p,q}\right),
+\end{split}\]
+so
+\[
+\left(1+\frac{q}{p}\right) W_{p,q}=\frac{q}{p}\cdot W_{p,q-1}.
+\]
+Solving for $W_{p,q}$ we get 
+\[W_{p,q}=\frac{q}{p+q}\cdot W_{p,q-1}\]
+as desired.
+Now we have
+\[W_{p,q}=\frac{q}{p+q}\cdot W_{p,q-1}=\frac{q}{p+q}\cdot\frac{q-1}{p+q-1}\cdot W_{p,q-2}
+=\cdots
+\frac{q}{p+q}\cdot\frac{q-1}{p+q-1}\cdots\frac{1}{p+1}\cdot W_{p,0}
+=\frac{q!\ p!}{(p+q)!}
+\]
+
+\end{Solution}
+\vskip10pt
+Problems to turn in are on the next page
+\newpage
+
+{\bf Homework 9 problems to be turned in.}
+
+The goal of this entire assignment is to prove that $\pi$ is an irrational number. In fact you will prove the stronger statement that $\pi^2$ is irrational. Practice problem 4 is a good warmup.
+
+
+{\bf 1.\ } Suppose $f$ is a polynomial function. Use integration by parts to prove that 
+\[\int_0^1 f(x)\sin(\pi x)\ dx=\frac{f(0)+f(1)}{\pi}-\frac{1}{\pi^2}\int_0^1f''(x)\sin(\pi x)\ dx.
+\]
+\begin{Solution}
+Taking $u=f$ and $v'=\sin(\pi x)$ we have $u'=f'$ and $v=-\frac{1}{\pi}\cos(\pi x)$, so 
+\[\begin{split}\int_0^1 f(x)\sin(\pi x)\ dx
+&=-\frac{f(x)}{\pi}\cos(\pi x)\Big\vert_0^1+\frac{1}{\pi}\int_0^1 f'(x) \cos(\pi x)\\
+&=\frac{f(0)+f(1)}{\pi}+\frac{1}{\pi}\int_0^1 f'(x) \cos(\pi x).
+\end{split}
+\]
+Now taking $u=f'$ and $v'=\cos(\pi x)$ we have $u'=f''$ and $ v=\frac{1}{\pi}\sin(\pi x)$, so 
+\[\begin{split}
+\int_0^1 f(x)\sin(\pi x)\ dx
+&=\frac{f(0)+f(1)}{\pi}+\frac{1}{\pi}
+\left[\frac{f'(x)}{\pi}\sin(\pi x)\Big\vert_0^1-\frac{1}{\pi}\int_0^1 f''(x) \sin(\pi x)\right]\\
+&=\frac{f(0)+f(1)}{\pi}-\frac{1}{\pi^2}\int_0^1 f''(x) \sin(\pi x),
+\end{split}
+\]
+since $\sin(0)=\sin(\pi)=0$.  
+\end{Solution}
+
+{\bf 2.\ } Suppose $f$ is a polynomial  of even degree $2n$.   Use the formula in Problem 1 to prove that 
+\[\int_0^1 f(x)\sin(\pi x)=\sum_{k=0}^{n}(-1)^k\frac{f^{(2k)}(0)+f^{(2k)}(1)}{\pi^{2k+1}}.\]
+(Here $f^{(2k)}$ is the $2k$-th derivative of $f$.)
+
+\begin{Solution} Replacing $f$ by $f''$ in exercise 1 we get 
+\[\int_0^1 f''(x)\sin(\pi x)=\frac{f''(0)+f''(1)}{\pi}-\frac{1}{\pi^2}\int_0^1f^{(4)}(x)\sin(\pi x), 
+\]
+so
+\[\int_0^1 f(x)\sin(\pi x)=
+\frac{f(0)+f(1)}{\pi}-\frac{f''(0)+f''(1)}{\pi^3}+\frac{1}{\pi^4}\int_0^1f^{(4)}(x)\sin(\pi x).
+\]
+Doing this $n$ times we get 
+\[\int_0^1 f(x)\sin(\pi x)=\sum_{k=0}^{n}(-1)^k\frac{f^{(2k)}(0)+f^{(2k)}(1)}{\pi^{2k+1}},
+\]
+since $f^{(2n+2)}=0$. 
+\end{Solution}
+
+{\bf 3.\ } Fix a positive integer $n$ and let 
+$f(x)=\dfrac{x^n(1-x)^n}{n!}$. 
+Prove the following. 
+\begin{itemize}
+\item[a)] 
+$f^{(2k)}(0)=f^{(2k)}(1)$. [Hint: How is $f(x)$ related to $f(1-x)$?]
+\item[b)]  All derivatives of $f(x)$ take integer values at $x=0$. 
+[Hint: How is $f^{(m)}(0)$ related to the coefficient of $x^{m}$ in $f(x)$?]
+\item[c)] We have $f(x)\leq \dfrac{1}{n!}$ for all $0\leq x\leq 1$. [Hint: this is just good old differential calculus.]
+\end{itemize}
+
+\begin{Solution} a)\ First, we have $f(x)=f(1-x)$ so $f'(x)=-f'(1-x)$, $f''(x)=f''(1-x)$ and in general $f^{(2k)}(x)=f^{(2k)}(1-x)$. So $f^{(2k)}(0)=f^{(2k)}(1)$. 
+
+b)\ For any polynomial $p(x)$, $p^{(m)}(0)$ is $m!$ times the coefficient of $x^m$ in $p(x)$. The polynomial 
+\[x^n(1-x)^n=\sum_{m=n}^{2n}c_m x^m\]
+where the coefficients $c_m$ are integers. So we have
+$f^{(m)}(0)=0$ if $m<n$ or $m>2n $ and 
+$f^{(m)}(0)=\dfrac{m!}{n!}c_m$
+if $n\leq m\leq 2n$. In this last case $m!/n!$ is an integer. So for all $m$ we have that $f^{(m)}(0)$ is an integer.
+
+c)\ Writing $f$ as 
+\[f(x)=\frac{1}{n!}(x-x^2)^n\]
+we have 
+\[f'(x)=\frac{n}{n!}(1-2x)(x-x^2)^{n-1}.\]
+This is zero only at $x=0,\frac{1}{2}, 1$. Since $f(0)=f(1)=0$ the maximum value of $f$ is 
+\[f(\tfrac{1}{2})=\frac{1}{4^n n!}\leq \frac{1}{n!}.\]
+Actually it is not necessary to work this hard. Just note that $x(1-x)\leq 1$. 
+
+\end{Solution}
+
+\newpage
+\rule{\textwidth}{1pt}
+
+Now assume $\pi^2$ is a rational number, say $\pi^2=\dfrac{a}{b}$ where $a$ and $b$ are integers. Since $\lim_{n\to\infty}\dfrac{a^{n}}{n!}=0$, we can choose a positive integer $n$ so that $\dfrac{a^{n}}{n!}<\frac{1}{2}$. 
+With this choice of $n$ let $f(x)$ be the  polynomial 
+$f(x)=\dfrac{x^n(1-x)^n}{n!}$ from Problem 3, and let 
+\[N= \pi a^{n}\int_0^1 f(x)\sin(\pi x).\]
+
+\rule{\textwidth}{1pt}
+
+\vskip10pt
+{\bf 4.\ } Use the results of problems 1, 3a) and 3b) to prove that $N$
+is an integer. 
+
+\begin{Solution} From problems 1 and 3a)we have
+\[\begin{split}
+N&=\pi a^n\int_0^1 f(x)\sin(\pi x)\ dx\\
+&=\pi a^n\sum_{k=0}^n(-1)^k\frac{f^{(2k)}(0)+f^{(2k)}(1)}{\pi^{2k+1}}\\
+&= 2a^n\sum_{k=0}^n(-1)^kf^{(2k)}(0)\cdot \frac{1}{\pi^{2k}}\\
+&=2a^n\sum_{k=0}^n(-1)^kf^{(2k)}(0)\cdot\frac{b^k}{a^k}\\
+&=2\sum_{k=0}^n(-1)^kf^{(2k)}(0)\cdot a^{n-k}b^k.
+\end{split}
+\]
+This is an integer by 3b). 
+\end{Solution}
+
+\vskip10pt
+{\bf 5.\ } Prove that
+$0<N<1$
+and explain why this proves $\pi^2$ is irrational. 
+
+
+\begin{Solution} The integral $\int_0^1 f(x)\sin(\pi x)\ dx$ is positive because $f(x)\sin(\pi x)>0$ on $(0,1)$. So $0<N$.  From 3c we have 
+\[\pi a^{n}\int_0^1 f(x)\sin(\pi x)\ dx\leq\pi a^{n}\frac{1}{n!}\int_0^1 \sin(\pi x)\ dx
+=\pi a^{n}\frac{1}{n!}\frac{2}{\pi}
+=\frac{2a^n}{n!}<1
+\] 
+by our choice of $n$. Thus, based on the assumption that $\pi^2$ is rational we have found a number $N$ which is both an integer yet lies in $(0,1)$. this is a contradiction, so $\pi^2$ must be irrational. 
+
+
+\end{Solution}
+
+
+
+\end{document}

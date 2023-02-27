@@ -1,0 +1,125 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks]{hyperref}
+\usepackage[most]{tcolorbox}
+
+\definecolor{sol}{rgb}{0.1, 0.3, 0.6}
+
+\newtcolorbox{solution}{enhanced, breakable, colframe=sol, title=Solution}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\blank}{\underline{\hspace{1cm}}}
+\newcommand{\longblank}{\underline{\hspace{2cm}}}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 10$\frac12$ Solutions}
+
+\begin{document}
+\maketitle
+This half-problem set is due on \textbf{Monday}, November 21 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+\begin{problem}
+Euler's identity! For this problem, let $i$ denote the square root of $-1$.
+\leavevmode\begin{enumerate}[(a)]
+  \item Derive the power series of $\sin x$ (around 0) using the fact that the coefficient of $x^n$ in the power series of $f(x)$ should be $\frac 1{n!}f^{(n)}(0)$.
+        \begin{solution}
+          This was done in class (I believe). Let's recall what we did. We first remark that the derivatives of $\sin x$ are periodic with period 4, namely the derivatives go $\sin x$ (0th derivative), then $\cos x,-\sin x,-\cos x,\sin x,\dots$.
+
+          Then the values at 0 of each of these are: $\sin(0)=0,\cos(0)=1,-\sin(0)=0,-\cos(0)=-1,0,1,0,-1,\dots$.
+
+          Thus
+          \[\sin(x)=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots=\sum_{k=0}^\infty\frac{(-1)^k x^{2k+1}}{(2k+1)!}.\]
+        \end{solution}
+  \item Do the same for $e^x$ as well as $\cos x$.
+        \begin{solution}
+          Because $e^x$ is its own derivative, we have $\frac{d^n}{dx^n}e^x\Big|_{x=0}=1$ for all $n$. The series for $e^x$ is therefore
+          \[e^x=\sum_{n=0}^\infty \frac {x^n}{n!}.\]
+          The values of $\frac{d^n}{dx^n}\cos x\Big|_{x=0}$ for $n\geq 0$ are: $1,0,-1,0,1,0,-1,0,\dots$. Therefore,
+          \[\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots=\sum_{k=0}^\infty\frac{(-1)^kx^{2k}}{(2k)!}.\]
+        \end{solution}
+  \item If you take the power series for $e^x$ and plug in $x=i\theta$, you get a power series in $\theta$. What is the coefficient of $\theta^n$ in this power series? Recall that $i^2=-1$, $i^3=-i$, and $i^4=1$. So the answer will depend on the remainder of $n$ mod 4.
+        \begin{solution}
+          We write
+          \[e^{i\theta}=1+i\theta+\frac{(i\theta)^2}{2!}+\frac{(i\theta)^3}{3!}+\frac{(i\theta)^4}{4!}+\cdots=1+i\theta-\frac{\theta^2}{2!}-i\frac{\theta^3}{3!}+\frac{\theta^4}{4!}+\cdots.\]
+          The pattern in the powers of $i$ repeats in a cycle of 4. The coefficient of $\theta^n$ is
+          \[\begin{cases}
+              \frac 1{n!}  & \text{if }n\equiv 0\pmod 4, \\
+              \frac i{n!}  & \text{if }n\equiv 1\pmod 4, \\
+              -\frac 1{n!} & \text{if }n\equiv 2\pmod 4, \\
+              -\frac i{n!} & \text{if }n\equiv 3\pmod 4.
+            \end{cases}\]
+        \end{solution}
+  \item Using part (c), prove the \#1 most beautiful math equation (Euler's identity)
+        \[e^{i\theta}=\cos\theta+i\sin\theta.\]
+        \begin{solution}
+          If we take the expression for $e^{i\theta}$,
+          \[1+i\theta-\frac{\theta^2}{2!}-i\frac{\theta^3}{3!}+\frac{\theta^4}{4!}+\cdots,\]
+          from part (c) and look at the even exponent terms, we get
+          \[1-\frac{\theta^2}{2!}+\frac{\theta^4}{4!}+\cdots\]
+          which is exactly the power series for $\cos\theta$. If we look at the odd exponent terms, we get
+          \[i\theta-i\frac{\theta^3}{3!}+i\frac{\theta^5}{5!}-\cdots=i\left(\theta-\frac{\theta^3}{3!}+\frac{\theta^5}{5!}+\cdots\right)\]
+          which is exactly $i$ times the power series for $\sin\theta$. Therefore,
+          \[e^{i\theta}=\cos\theta+i\sin\theta.\]
+        \end{solution}
+  \item To see why it's so beautiful, let's derive the double angle identities for $\sin(2\theta)$ and $\cos(2\theta)$ without breaking a sweat, using the result of part (d): start with
+        \[\cos(2\theta)+i\sin(2\theta)=e^{2i\theta}=e^{i\theta}e^{i\theta}=\cdots\]
+        and finish this line of thinking to get the proof. You will need to recall that $a+bi=c+di$ for real numbers $a,b,c,d$ if and only if $a=c$ and $b=d$.
+        \begin{solution}
+          We have
+          \[\begin{split}
+              \cos(2\theta)+i\sin(2\theta) &= e^{2i\theta}=e^{i\theta}e^{i\theta}\\
+              &= (\cos\theta+i\sin\theta)(\cos\theta+i\sin\theta)\\
+              &= \cos^2\theta+2i\cos\theta\sin\theta+i^2\sin^2\theta\\
+              &= (\cos^2\theta-\sin^2\theta)+i(2\cos\theta\sin\theta).
+            \end{split}\]
+          Matching the real and imaginary parts of both sides, we get
+          \[\cos(2\theta)=\cos^2\theta-\sin^2\theta,\qquad\sin(2\theta)=2\sin\theta\cos\theta.\]
+        \end{solution}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+You now have the tools to prove something hinted at from last week's problem set:
+\[\frac 1{1\cdot 2}+\frac 1{3\cdot 4}+\frac 1{5\cdot 6}+\dots=\ln 2.\]
+The task for this problem: prove it. I won't tell you exactly how to do it. I'll just say you can freely use the following result we proved in class:
+\[1-\frac12+\frac13-\frac 14+\dots=\ln 2.\]
+Also, try to do this problem without looking at your notes, even if you feel tempted to because you don't know how to start! Remember the good problem solving habits you learned in class.
+\end{problem}
+\begin{solution}
+  Each $\frac 1{n(n+1)}$ splits apart as $\frac 1n-\frac 1{n+1}$ as seen in the last problem set. Therefore,
+  \[\begin{split}
+      \frac 1{1\cdot 2}+\frac 1{3\cdot 4}+\frac 1{5\cdot 6}+\dots &= \left( \frac 11-\frac12 \right)+\left( \frac 13-\frac 14 \right)+\left( \frac 15-\frac 16 \right)+\cdots\\
+      &= \frac 11-\frac 12+\frac13-\frac14+\frac15-\frac16+\cdots\\
+      &= \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}.
+    \end{split}\]
+  This is the alternating harmonic series we saw last time, and we know this series converges to $\ln 2$ (remember how we proved that, using the power series of $-\ln(1-x)$ which was itself derived from integrating the geometric series formula!).
+\end{solution}
+
+\begin{problem}
+Rate the difficulty of each problem (1a, 1b, 1c, 1d, 1e, 2) according to the following scale. Your ratings will collectively let me know which areas are difficult in this class. Thanks for your feedback!
+\begin{itemize}
+  \item 1 -- Super easy, barely an inconvenience!
+  \item 2 -- Not easy, but I was able to solve the problem on my own by comparing it with an example from class or the textbook.
+  \item 3 -- Not easy, but I was able to solve the problem on my own through observations, analysis, and/or creative reasoning.
+  \item 4 -- I made some progress but got stuck, and with help, I was able to solve the problem. I feel like I understand it now.
+  \item 5 -- I could not start this problem without help, but after getting help I was able to solve the problem. I feel like I understand it now.
+  \item 6 -- I could not start this problem without help, but after getting help I was able to solve the problem. However, I still don't feel like I understand what is going on in this problem.
+  \item 7 -- I could not solve the problem, even with help.
+\end{itemize}
+\end{problem}
+\end{document}

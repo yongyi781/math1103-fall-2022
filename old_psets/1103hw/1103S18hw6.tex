@@ -1,0 +1,202 @@
+\documentclass[12pt]{article}  
+
+%Run with XeLaTeX
+\usepackage
+[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=blue]
+{hyperref}
+
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphics} 
+\usepackage{graphicx} 
+%\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepgfplotslibrary{polar}
+\usepackage{ skull }
+\usetikzlibrary{decorations.fractals}
+\usepackage{pst-func}
+
+% GNUPLOT required
+\usepackage{verbatim}
+
+\linespread{1.3}
+
+%\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{20pt}
+\addtolength{\oddsidemargin}{20pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Begin user defined commands
+
+\newcommand{\map}[1]{\xrightarrow{#1}}
+
+
+\newcommand{\bz}{\mathbb Z}
+\newcommand{\bq}{\mathbb Q}
+\newcommand{\br}{\mathbb R}
+\newcommand{\bc}{\mathbb C}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\ep}{\epsilon}
+\DeclareMathOperator{\lub}{l.u.b.}
+%  End user defined commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These establish different environments for stating Theorems, Lemmas, Remarks, etc.
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ex}[Thm]{Example}
+
+\theoremstyle{definition}
+\newtheorem{Exercise}{Problem}
+
+\newenvironment{Solution}{\noindent\textbf{Solution.}}{}
+
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand\qedsymbol{QED}
+% End environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Some commands to save paper
+
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\LH}{\ \underset{\text{LH}}{=}\ }
+\newcommand{\Dep}{\Delta_+}
+\newcommand{\Dem}{\Delta_-}
+\newcommand{\bu}{\mathbf u}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\bw}{\mathbf w}
+
+\newcommand{\ora}{\overrightarrow}
+
+
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{-40pt}
+\addtolength{\oddsidemargin}{-40pt}
+\addtolength{\topmargin}{-80pt}
+\addtolength{\textheight}{1.8in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now we're ready to start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}  
+
+%\author{Your Name}
+{\bf MATH 1103 Homework 6}\\
+{\bf Due Friday March 16, 2018}
+
+%Practice Problems (not to be turned in)
+%{\bf Practice 1.\ } 
+%{\bf Practice 2.\ } 
+%{\bf Practice 3.\ } 
+%{\bf Practice 4.\ }  
+
+ %\rule{\textwidth}{1pt}
+ %The homework to be turned in may be found on the next page.
+
+{\bf Homework 6 problems to be turned in.}
+
+{\bf 1.\ } Prove that $\cosh(1)$ is irrational. (Follow the method in section 7.1 for proving $e$ is irrational.)
+
+{\bf 2.\ } Prove that $\cos(1)$ is irrational. (Follow the method in section 7.2 for proving $\sin(1)$ is irrational.)
+
+
+\rule{\textwidth}{1pt}
+The {\bf Bessel functions}\footnote{1784-1846, German astronomer and mathematician}, also called {\bf cylinder functions} are a family of functions 
+\[J_0(x),\  J_1(x),\  J_2(x),\ \dots\]
+ that give solutions to many physical problems such as planetary motion around the sun, vibrations of circular membranes, and heat distribution in a cylinder. The function $J_n$ is the unique (up  to constant factor) function which is finite at $x=0$ and satisfies {\bf Bessels' differential equation of order $n$}
+\[x^2J_n''+xJ_n'+(x^2-n^2)J_n=0.\]
+
+
+The first two Bessel functions are given by the power series
+\[
+J_0(x)=\sum_{k=0}^\infty\frac{(-1)^k(x/2)^{2k}}{(k!)^2}\quad\text{and}\quad 
+J_1(x)=\sum_{k=0}^\infty\frac{(-1)^k(x/2)^{2k+1}}{k!(k+1)!}.
+\]
+
+\psset{xunit=1,yunit=1}
+
+\begin{pspicture}(-8,-.85)(8,1.25)
+%\rput(13,0.8){%
+ %$\displaystyle J_n(x)=\frac{1}{\pi}\int_0^\pi\cos(x\sin t-nt)\mathrm{d}t$}
+\psaxes[Dy=2,Dx=2]{->}(0,0)(-8,-.8)(8,1.2)
+\psset{linewidth=1pt}
+\psBessel[linecolor=red]{0}{-8}{8}%
+\psBessel[linecolor=blue]{1}{-8}{8}%
+%\psBessel[linecolor=green]{2}{-28}{28}%
+%\psBessel[linecolor=magenta]{3}{-28}{28}%
+\end{pspicture}
+
+
+
+\rule{\textwidth}{1pt}
+
+
+
+
+{\bf 3.\ } a)\ Identify which graph above is which Bessel function $J_0$ or $J_1$, with justification for your answer. 
+
+b)\ Prove that the power series for $J_0$ and $J_1$ converge for all $x$.
+
+c)\ What is the relation between $J_0'$ and $J_1$\ ?
+
+d)\ Prove that $J_0(x)$ satisfies Bessel's differential equation of order zero. 
+
+
+{\bf 4.\ }  The purpose of this exercise is to illustrate  Newton's Lemma II in the {\it Principia}, using the function 
+\[f(x)=\frac{\sin x}{x}\]
+on the interval $[0,\pi]$. 
+
+a) Draw the graph of $f(x)$ and the rectangles illustrating the upper and lower sums when the interval $[0,\pi]$ is divided into four equal parts. 
+
+b) Compute the upper and lower sums, simplifying your answer. What is the difference between these upper and lower sums?
+
+c) Suppose you divided $[0,\pi]$ into $n$ equal parts. Find the difference  between the upper and lower sums without actually computing them individually. How does this relate to what Newton claims in his Lemma II?
+
+
+%\begin{Solution}
+%\end{Solution}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+ 
+ 

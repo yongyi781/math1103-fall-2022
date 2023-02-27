@@ -1,0 +1,117 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Exam 2}
+\author{Wednesday, November 30, 2022}
+
+\begin{document}
+\maketitle
+
+Name: \underline{\hspace{6cm}}
+
+This exam is open notes, but calculators are not allowed. There are 50 points total in this exam. If you do not manage to solve a problem, show a strategy you tried and a reflection on why it did not work, for partial credit.
+
+\begin{problem}
+Convergence tests. Any proof will do. You may use results from class and homework.
+\begin{enumerate}[(a)]
+  \item (5 points) Find, with proof, whether $\displaystyle\sum_{k=0}^\infty \frac{k!}{314159^k}$ converges or diverges.
+        \vfill
+  \item (5 points) Find, with proof, whether $\displaystyle\sum_{n=314159}^\infty\frac 1{n-1}$ converges or diverges.
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+Power series. You may freely use without proof the power series for $e^x$ we established in class:
+\[e^x=\frac 1{0!}+\frac x{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots.\]
+You do not need to write any series in sigma notation.
+\begin{enumerate}[(a)]
+  \item (5 points) What is the power series of $e^{-5x}$?
+        \vfill
+  \item (5 points) The below series converges. (You do not need to prove it.)
+        \[\frac 1{0!}-\frac {10}{1!}+\frac {100}{2!}-\frac {1000}{3!}+\cdots.\]
+        What is its exact value? This problem does not depend on part (a).
+        \vfill
+        % \item (5 points) What is the power series of $\displaystyle\int_0^x e^{-t^2}\,dt$?\footnote{This problem is an application of power series to integrate a function that can't be integrated algebraically!}
+
+        %       This question uses part (a). If you could not solve part (a), describe what you would do if you did have a result for part (a).
+        %       \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+You are freely given (thanks to Euler) that
+\[\frac 1{1^2}+\frac 1{2^2}+\frac 1{3^2}+\cdots=\frac{\pi^2}6.\]
+\begin{enumerate}[(a)]
+  \item (5 points) Prove, from the above equation, that
+        \[\frac 1{2^2}+\frac 1{4^2}+\frac 1{6^2}+\cdots=\frac{\pi^2}{24}.\]
+        \vfill
+  \item (5 points) Using the result of part (a), find the value of
+        \[\frac 1{1^2}+\frac 1{3^2}+\frac 1{5^2}+\cdots.\]
+        % If you weren't able to solve part (a), you may use the variable $a$ as a substitute for part (a)'s answer, and the answer you get should be in terms of $a$ rather than $\pi^2/8$.
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+% \begin{problem}
+%   Power series.
+%   \begin{enumerate}[(a)]
+%     \item (5 points) What function has
+%     \[\frac 1{1!}-\frac x{3!}+\frac {x^2}{5!}-\dots=\sum_{n=0}^\infty \frac{(-1)^nx^n}{(2n+1)!}\]
+%     as its power series?
+
+%     \emph{Hint}: Square roots may come in useful.
+%     \vfill
+%     \item (5 points) Deduce from part (a) the value of
+%     \[\frac 1{1!}-\frac {2}{3!}+\frac {2^2}{5!}-\cdots=\sum_{n=0}^\infty\frac{(-2)^n}{(2n+1)!}.\]
+%     If you did not solve part (a), you can use $f(x)$ to denote what part (a)'s answer is.
+%     \vfill
+%   \end{enumerate}
+% \end{problem}
+
+% Might still be too hard?
+
+\begin{problem}[10 points]
+What are the first 10 digits of $\dfrac 1{98}$?
+
+\emph{Note}: A solution using long division will be awarded at most 5 points.
+
+\emph{Hint}: First prove that
+\[\frac 1{98}=\frac12 \sum_{n=1}^\infty \frac {2^n}{100^n},\]
+then use that result to figure out the digits.
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+For $n\geq 1$, let
+\[b_n=\begin{cases}
+    4^n    & \text{if }n<314159      \\
+    271828 & \text{if }n\geq 314159.
+  \end{cases}\]
+What is $\lim_{n\to\infty}b_n$? Prove it using the $\eps$ definition of limit.
+\end{problem}
+
+\end{document}

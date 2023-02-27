@@ -1,0 +1,63 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+							% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{}
+\author{Week 1 discussion problems}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{enumerate}
+%1
+\item Suppose the following table gives the velocity $v(t)$ in meters/sec of an object moving in a straight line after $t$ seconds. Estimate the distance covered in 12 seconds. 
+
+\
+
+\begin{tabular}{|  l | c |  c |  c |  c |  c |  c |  c  |}
+\hline
+time in seconds & 0 & 2 & 4 & 6 & 8 & 10 & 12 \\
+\hline
+velocity in m/sec & 12.1 & 15.2 & 20.4 & 36.0 & 25.0 & 17.1 & 15.2 \\
+\hline
+\end{tabular}
+
+\
+
+(Note that different choices of $x_i^*$ will give different estimates of the distance; just choose one.)
+
+\
+
+%2
+\item
+Let $f(x)=3x+5$ on the interval [0,4].
+
+\begin{enumerate}
+\item Graph $f$.
+
+\item Find $R_4$.
+
+\item Find $R_n$ and simplify the expression. (Hint: it's useful to find $x_0, x_1, x_2, x_3, \ldots$ to find $x_i$.)
+
+\item Using (c), find $\lim_{n \to \infty} R_n$.
+
+\item By our definition, your answer to (d) is $\int_0^4 3x+5 \, dx$ and both of these are the area between the graph and the $x-$axis. Use geometry to find this area and see that these are the same. Finally, pretend we've covered the Fundamental Theorem of Calculus and compute the integral.
+
+\end{enumerate}
+
+%3
+\item Let $f(x)=7x^4+2x$ on [2,4]. Compute $\sum_{i=1}^3 f(x_i^*) \Delta x$ where [2,4] is partitioned into 3 equal subintervals and $x_i^*$ is the midpoint of the subinterval $[x_{i-1},x_i]$, for $i=1,2,3.$ Do not simplify your answer, unless you have time to kill.
+
+
+
+\end{enumerate}
+
+\end{document}  

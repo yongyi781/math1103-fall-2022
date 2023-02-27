@@ -1,0 +1,400 @@
+\documentclass[12pt]{article}  
+
+\usepackage
+[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=blue]
+{hyperref}
+
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphics} 
+\usepackage{graphicx} 
+%\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepgfplotslibrary{polar}
+\usepackage{ skull }
+\usetikzlibrary{decorations.fractals}
+
+
+% GNUPLOT required
+\usepackage{verbatim}
+
+\linespread{1.3}
+
+%\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{20pt}
+\addtolength{\oddsidemargin}{20pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Begin user defined commands
+
+\newcommand{\map}[1]{\xrightarrow{#1}}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Primes}{\mathbb P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\bz}{\mathbb Z}
+\newcommand{\bq}{\mathbb Q}
+\newcommand{\br}{\mathbb R}
+\newcommand{\bc}{\mathbb C}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\ep}{\epsilon}
+\DeclareMathOperator{\lub}{l.u.b.}
+%  End user defined commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These establish different environments for stating Theorems, Lemmas, Remarks, etc.
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ex}[Thm]{Example}
+
+\theoremstyle{definition}
+\newtheorem{Exercise}{Problem}
+
+\newenvironment{Solution}{\noindent\textbf{Solution.}}{}
+
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand\qedsymbol{QED}
+% End environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Some commands to save paper
+
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\LH}{\ \underset{\text{LH}}{=}\ }
+\newcommand{\Dep}{\Delta_+}
+\newcommand{\Dem}{\Delta_-}
+\newcommand{\bu}{\mathbf u}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\bw}{\mathbf w}
+
+\newcommand{\ora}{\overrightarrow}
+
+
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{-40pt}
+\addtolength{\oddsidemargin}{-40pt}
+\addtolength{\topmargin}{-80pt}
+\addtolength{\textheight}{1.8in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now we're ready to start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}  
+
+%\author{Your Name}
+{\bf MATH 1103 Homework 5}\\
+{\bf Due Friday March 2, 2018}
+
+Practice Problems (not to be turned in)
+
+{\bf Practice 1.\ } Find the radius of convergence $R$ of the following power series, and if possible find the sum of the series for $-R<x<R$. 
+\[a)\ \sum\limits_{n=0}^\infty \frac{x^n}{2^n}\qquad\qquad
+b)\ \sum\limits_{n=0}^\infty \frac{x^n}{n!}\qquad\qquad
+c)\ \sum\limits_{n=1}^\infty \frac{n^n}{n!}x^n.
+\]
+a)\ $R=2$\quad b)\ $R=\infty$ \quad c)\ $R=1/e$.
+
+{\bf Practice 2.\ } Suppose there is a number $M$ such that  $|a_n|\leq M$ for all $n$. 
+
+(a)\ Prove that $\sum\limits_{n=0}^\infty a_n x^n$ converges for $|x|<1$.
+
+(b)\ Prove that $\sum\limits_{n=0}^\infty a_n \dfrac{x^n}{n!}$ converges for all $x$. 
+
+\begin{Solution}
+
+(a)\ Let $r=|x|<1$. Then $|a_n x^n|\leq Mr^n$ so $\sum |a_nx^n| $ converges by comparison with the geometric series $\sum Mr^n$. Therefore $\sum a_nx^n$ converges as well. 
+
+(b)\ $|a_n \frac{x^n}{n!}|\leq M\frac{|x|^n}{n!}$ and the series $\sum M\frac{|x|^n}{n!}$ converges (see part b) in Practice 1), so $\sum|a_n \frac{x^n}{n!}|$ converges and therefore $\sum a_n \frac{x^n}{n!}$ converges. 
+
+\end{Solution}
+{\bf Practice 3.\ } Using only the power series $\exp x=\sum\limits_{n=0}^\infty\dfrac{x^n}{n!}$, prove that 
+\begin{enumerate}
+\item[(a)] $(\exp x)'=\exp x$
+\item[(b)] $\exp (x+y)=(\exp x)(\exp y)$ (challenging - use the binomial expansion). 
+\item[(c)] $\exp(-x)=\dfrac{1}{\exp x}$.
+\item[(d)] $\exp x>0$ for all $x$. 
+\end{enumerate}
+
+\begin{Solution}
+
+(a)\ $(\exp x)'=\sum\limits_{n=1}^\infty n\dfrac{x^{n-1}}{n!}=
+\sum\limits_{n=1}^\infty \dfrac{x^{n-1}}{(n-1)!}=
+\sum\limits_{n=0}^\infty \dfrac{x^{n}}{n!}=\exp(x).$
+
+(b)\ 
+\[\begin{split}\exp(x+y)&=\sum\limits_{n=0}^\infty \dfrac{(x+y)^{n}}{(n)!}=
+\sum\limits_{n=0}^\infty \sum\limits_{k=0}^n\dbinom{n}{k}\dfrac{x^ky^{n-k}}{n!}
+=\sum\limits_{n=0}^\infty \sum\limits_{p+q=n}\dfrac{x^py^{q}}{p!q!}
+=\left(\sum\limits_{p=0}^\infty\dfrac{x^p}{p!}\right)\cdot
+\left(\sum\limits_{q=0}^\infty\dfrac{y^q}{q!}\right)\\
+&=\exp(x)\cdot\exp(y).
+\end{split}
+\]
+
+(c)\ $1=\exp(0)=\exp(x-x)=\exp(x)\cdot \exp(-x)$, using (b). 
+
+(d)\ Follows from (c). 
+
+
+
+\end{Solution}
+
+
+{\bf Practice 4.\ }  The functions $\cosh(t)$ and $\sinh (t)$ can be defined by the power series
+\[\
+\cosh(t)= \sum_{n=0}^\infty \frac{t^{2n}}{(2n)!}\qquad
+\sinh(t)= \sum_{n=0}^\infty \frac{t^{2n+1}}{(2n+1)!}.
+\]
+Prove that these power series converge for all numbers $t$,  that each is the derivative of the other, and that 
+\[\cosh^2(t)-\sinh^2(t)=1.\]
+Do all of this working directly with the power series; do not use $e^t$. 
+
+
+\begin{Solution} Let $u=t^2$. $\cosh(t)=p(u)$ where 
+\[p(u)=\sum_{n=0}^\infty \frac{u^n}{(2n)!}\]
+has all coefficients nonzero. Its radius convergence $R$ is given by the limit
+\[\frac{1}{R}=\lim_{n\to\infty}\frac{(2n)!}{(2n+2)!}=\lim_{n\to\infty}\frac{1}{(2n+1)(2n+2)}=0,\]
+so $R=\infty$. So $p(u)$ converges for all $u$, hence $\cosh(t)$ converges for all $t$. 
+Similarly, the series 
+\[q(t)=\sum_{n=0}^\infty \frac{t^{2n}}{(2n+1)!}\]
+converges for all $t$, hence so does $tq(t)=\sinh(t)$. 
+
+Easy to check that $(\cosh t)'=\sinh t$ and vice-versa. Differentiating 
+\[(\cosh^2(t)-\sinh^2(t))'=2(\cosh t)(\sinh t)-2(\sinh t)(\cosh t)=0,\]
+so $\cosh^2(t)-\sinh^2(t)=C$, some constant. Evaluating at $t=0$ gives $C=1$. 
+\end{Solution}
+
+ \rule{\textwidth}{1pt}
+The homework to be turned in may be found on the next page.
+
+
+\newpage
+
+{\bf Homework 5 problems to be turned in.}
+
+{\bf 1.\ } a)\ Prove that 
+\[
+\sum_{n=1}^\infty\frac{x^n}{n}=\log\left(\frac{1}{1-x}\right), 
+\]
+for $|x|<1$. 
+[Hint: differentiate both sides.]
+
+b)\ Use part a) to find the sum of the series
+\[\sum_{n=1}^\infty \frac{1}{n2^n}.\]
+
+\begin{Solution}
+\[\frac{d}{dx}\sum_{n=1}^\infty\frac{x^n}{n}=\sum_{n=1}^\infty x^{n-1}=
+\sum_{n=0}^\infty x^n=\frac{1}{1-x}. 
+\]
+and $\log\left(\dfrac{1}{1-x}\right)=-\log(1-x)$, so 
+\[\frac{d}{dx}\log\left(\frac{1}{1-x}\right)=-\left(\frac{-1}{1-x}\right)=\frac{1}{1-x}.\] 
+Therefore 
+\[
+\sum_{n=1}^\infty\frac{x^n}{n}=\log\left(\frac{1}{1-x}\right)+C 
+\]
+for some constant $C$. Evaluating at $x=0$ we get $C=0$. 
+\end{Solution}
+
+{\bf 2.\ } Suppose $\sum_{n=0}^\infty a_nx^n$ is a power series with radius of convergence $R$. Assume that all $a_n\neq 0$. Prove that the power series $\sum\limits_{n=1}^\infty na_nx^{n-1}$  has the same radius of convergence $R$.
+\begin{Solution}
+Since all $a_n\neq 0$ we have 
+\[R=\lim_{n\to\infty}\frac{|a_n|}{|a_{n+1}|}.\]
+Likewise, the series $\sum n a_n x^{n-1}$ has radius of convergence 
+\[R'=\lim_{n\to\infty}\frac{|na_n|}{|(n+1)a_{n+1}|}
+=R\cdot \lim_{n\to\infty}\frac{n}{n+1}=R,
+\]
+since  $\lim\limits_{n\to\infty}\dfrac{n}{n+1}=1$. 
+\end{Solution}
+
+{\bf 3.\ } Starting with the power series (no trigonometry)
+\[\cos x=\sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!},\qquad 
+\sin x=\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!}
+\]
+prove that 
+
+a)\ $(\cos x)'=-\sin x$ and $(\sin x)'=\cos x$.
+
+b)\ $\cos^2x+\sin^2 x=1$ (differentiate both sides). 
+
+c)\ $|\sin x|\leq 1$ and $|\cos x|\leq 1$
+
+d)\ $\lim\limits_{x\to 0}\dfrac{\sin x}{x}=1$ and $\lim\limits_{x\to 0}\dfrac{1-\cos x}{x}=0$. 
+
+\begin{Solution}
+a)\ 
+\[\begin{split}
+(\cos x)'&=\frac{d}{dx}\sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!}
+=\sum_{n=1}^\infty (-1)^n(2n)\frac{x^{2n-1}}{(2n)!}\\
+&=\sum_{n=1}^\infty (-1)^n\frac{x^{2n-1}}{(2n-1)!}
+=\sum_{n=0}^\infty (-1)^{n+1}\frac{x^{2n+1}}{(2n+1)!}\\
+&=-\sin x. 
+\end{split}
+\]
+The proof that $(\sin x)'=\cos x$ is similar. 
+
+b)\ Differentiating we get
+\[2(\cos x)(-\sin x)+2(\sin x)(-\cos x)=0,\]
+so 
+$\cos^2x+\sin^2 x=C$ for some constant $C$. Evalutating at $x=0$ we find $C=1+0=1$.
+
+c)\ From b) it follows that $\cos^2x\leq 1$ and $\sin^2x\leq 1$. This means $|\cos x|\leq 1$ and $|\sin x|\leq 1$. 
+
+d)\ We have 
+\[
+\frac{\sin x}{x}=\sum_{n=0}^\infty(-1)^n\frac{x^{2n}}{(2n+1)}=1-\frac{x^2}{3!}+\frac{x^4}{5!}-\cdots\to 1,
+\] 
+as $x\to 0$. Likewise, 
+\[
+\frac{1-\cos x}{x}
+=\frac{1}{x}\left(1-\sum_{n=0}^\infty(-1)^n\frac{x^{2n}}{(2n)!}\right)
+=\frac{1}{x}\left(1-1+\frac{x^2}{2!}-\frac{x^4}{4!}+\cdots\right)
+=\frac{x}{2!}-\frac{x^3}{4!}+\cdots\to 0.
+\] 
+\end{Solution}
+
+{\bf 4.\ } The tangent function $\tan(x)=\dfrac{\sin(x)}{\cos(x)}$ is an odd function, so its power series looks like
+\[\tan(x)=a_1x+a_3x^3+a_5x^5+a_7x^7+\cdots.\]
+Find the  coefficients $a_1, a_3, a_5, a_7$ by setting 
+\[\cos(x)\cdot(a_1x+a_3x^3+a_5x^5+a_7x^7+\cdots)=\sin(x)\]
+and using the power series for $\cos(x)$ and $\sin(x)$. 
+
+\begin{Solution}
+Setting
+\[
+\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\cdots\right)\cdot
+\left(a_1x+a_3x^3+a_5x^5+a_7x^7+\cdots\right)=
+\left(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots\right),
+\]
+the left side is 
+\[\begin{split}
+a_1x+a_3x^3+a_5x^5+a_7x^7+&\cdots\\
+-\frac{1}{2!}(a_1x^3+a_3x^5+a_5x^7)+&\cdots\\
++\frac{1}{4!}(a_1x^5+a_3x^7)+&\cdots\\
+-\frac{1}{6!}a_1x^7+&\cdots
+\end{split}
+\]
+where $\cdots$ involves terms $x^n$ with $n>7$. 
+Comparing coefficients of $x^n$ for $n\leq 7$ we get
+\[\begin{split}
+a_1&=\ \ 1\\
+ a_3-\frac{a_1}{2!}&=-\frac{1}{3!}\\
+a_5-\frac{a_3}{2!}+\frac{a_1}{4!}&=\ \ \frac{1}{5!}\\
+a_7-\frac{a_5}{2!}+\frac{a_3}{4!}-\frac{a_1}{6!}&=-\frac{x^7}{7!}
+\end{split}
+\]
+and solving we get
+\[a_1=1,\quad  a_3=\frac{1}{3},\quad a_5=\frac{2}{15},\quad a_7=\frac{17}{315}.\]
+\end{Solution}
+
+
+{\bf 5.\ } 
+This problem concerns analogues of the functions $\cosh(t)$ and $\sinh(t)$ (see practice problem 4),
+namely the power series 
+\[
+p(t)= \sum_{n=0}^\infty \frac{t^{3n}}{(3n)!}\qquad
+q(t)= \sum_{n=0}^\infty \frac{t^{3n+1}}{(3n+1)!}\qquad
+r(t)= \sum_{n=0}^\infty \frac{t^{3n+2}}{(3n+2)!}
+\]
+
+a)\ Prove that $p(t)$, $q(t)$ and $r(t)$ converge for all $t$. 
+
+b)\ How are the derivatives of $p(t)$, $q(t)$ and $r(t)$ related to one another? 
+
+c)\ Try  to find  three numbers $x,y,z$, all nonzero, satisfying the equation $x^3+y^3+z^3=3xyz+1$. (Don't be upset if you cannot. This part is not graded!)
+
+d)\ Prove that if  $x=p(t)$, $y=q(t)$, $z=r(t)$ then $x,y,z$ satisfy the equation 
+$x^3+y^3+z^3=3xyz+1$. 
+
+[Thus we have infinitely many solutions of the equation $x^3+y^3+z^3=3xyz+1$ given by power series. This equation in $x,y,z$ is somewhat analogous to the hyperbola $x^2-y^2=1$ satisfied by $x=\cosh(t), y=\sinh(t)$. ]
+
+\begin{Solution}
+
+a)\ We have $p(t)=p_1(t^3)$, where 
+\[p_1(t)= \sum_{n=0}^\infty \frac{t^{n}}{(3n)!}\]
+has all coefficients nonzero. The series $p_1(t)$ has radius of convergence $R$ where
+\[\frac{1}{R}=\lim_{n\to\infty}\frac{(3n)!}{(3n+3)!}=\lim_{n\to\infty}\frac{1}{(3n+1)(3n+2)(3n+3)}=0,\]
+So $R=\infty$. Likewise, we have $q(t)=tq_1(t^3)$, and $r(t)=t^2r_1(t^3)$, where 
+\[q_1(t)= \sum_{n=0}^\infty \frac{t^{n}}{(3n+1)!}\qquad\text{and}\qquad
+r_1(t)= \sum_{n=0}^\infty \frac{t^{n}}{(3n+2)!}
+\]
+have, respectively, 
+\[ \frac{1}{R}=\lim_{n\to\infty}\frac{(3n+1)!}{(3n+4)!}=\lim_{n\to\infty}\frac{1}{(3n+2)(3n+3)(3n+4)}=0,
+\]
+and
+\[ \frac{1}{R}=\lim_{n\to\infty}\frac{(3n+2)!}{(3n+5)!}=\lim_{n\to\infty}\frac{1}{(3n+3)(3n+4)(3n+5)}=0.
+\]
+Since the series $p_1(t), q_1(t), r_1(t)$ converge for all $t$, so do the series for 
+$p(t)=p_1(t^3)$, $ q(t)=tq_1(t^3)$ and $ r(t)=t^2r_1(t^3)$. 
+
+b)\ Since the first term in $p$ is constant, the series for $p'$ starts at $n=1$:
+\[p'(t)=\sum_{n=1}^\infty(3n) \frac{t^{3n-1}}{(3n)!}
+=\sum_{n=1}^\infty \frac{t^{3n-1}}{(3n-1)!}
+=\sum_{n=0}^\infty \frac{t^{3n+2}}{(3n+2)!}=r(t),
+\] For $q$ and $r$ the first terms are not constant, so their derived series' start at $n=0$:
+\[q'(t)=\sum_{n=0}^\infty(3n+1) \frac{t^{3n}}{(3n+1)!}
+=\sum_{n=0}^\infty \frac{t^{3n}}{(3n)!}
+=p(t),
+\]
+\[r'(t)=\sum_{n=0}^\infty(3n+2) \frac{t^{3n+1}}{(3n+2)!}
+=\sum_{n=0}^\infty \frac{t^{3n+1}}{(3n+1)!}
+=q(t).
+\]
+
+c)\ (not graded) One such solution is $x=2/3, y=2/3, z=-1/3$. There are infinitely many rational solutions. 
+
+d)\  We differentiate both sides, using $p'=r, q'=p, r'=q$, part b).
+\[(p^3+q^3+r^3)'=3p^2p'+3q^2q'+3r^2r'=3(p^2r+q^2p+r^2q),\]
+\[3(pqr)'=3(p'qr+pq'r+pqr')=3(rqr+ppr+pqq),\]
+so $p^3+q^3+r^3=3pqr+C$ for some constant $C$. Evaluating at $t=0$, we get $C=1$ since $p(0)=1, q(0)=r(0)=0$. 
+
+
+
+\end{Solution}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+ 
+ 

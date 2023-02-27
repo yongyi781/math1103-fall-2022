@@ -1,0 +1,86 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Exam 1}
+\author{Wednesday, October 19, 2022}
+
+\begin{document}
+\maketitle
+
+Name: \underline{\hspace{6cm}}
+
+This exam is open notes, but calculators are not allowed. There are 50 points total in this exam.
+
+\begin{problem}
+Integrals. If you are using a result from class/homework/discussion, make sure you state it clearly.
+\begin{enumerate}[(a)]
+    \item (2 points) Calculate $\displaystyle\int_{-\pi}^\pi \sin x\,dx$.
+          \vfill
+          % \item (2 points) Let $N$ be a positive integer. Find $\displaystyle\int_{-N}^N\lfloor x\rfloor\,dx$, in terms of $N$.
+    \item (2 points) Calculate the indefinite integral $\displaystyle\int \dfrac{e^x}{e^x+1}\, dx$.
+          \vfill
+    \item (2 points) Calculate $\displaystyle\int_1 ^3 \ln x\,dx$.
+          \vfill
+    \item (2 points) Calculate $\displaystyle\int_{-1}^1 (x^5+\sin(x^3))\,dx$.
+          \vfill
+    \item (2 points) For which values of $x$ is $\displaystyle\int_1^x\left(\frac 1{|t|}+e^{t^2}\right)\,dt$ a well-defined number?
+          \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+Let $P$ be the paraboloid formed by rotating the region bounded by $y=\frac 12x^2$, $x=0$, and $y=2$ around the $y$-axis.
+
+\begin{enumerate}[(a)]
+    \item (5 points) What is the volume of $P$?
+
+          \emph{Hint}: I found the disk method the easiest here.
+          \vfill
+    \item (5 points) Show that the lateral surface area of $P$  is $\frac 23\pi(5\sqrt 5-1)$. (Lateral just means not including the top lid portion.)
+          \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+A dartboard has the shape of a circle of radius 1. A dart hits a random point in the circle, where by random we mean that the probability that the dart lands in any region $R$ inside the circle is equal to the area of $R$ divided by the area of the circle.
+\begin{enumerate}[(a)]
+    \item (5 points) Let $X$ be the random variable representing the dart's distance from the center. For any $r$ between 0 and 1, what is the probability that $X\leq r$?
+          \vfill
+    \item (5 points) What is the expected distance of the dart from the center?
+          \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+Find the variance of the exponential distribution given by $p(x)=ae^{-ax}$ for $x\geq 0$ (and 0 for $x<0$). You may use the fact that $\Var(X)=\bE[X^2]-\bE[X]^2$ for any random variable $X$, and the fact the mean of this exponential distribution is $1/a$.
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+Let $f$ be a continuous function and suppose that $f(x)=f(-x)$ for all $x$. Prove algebraically (not graphically) that
+\[\int_{-a}^a f(x)\,dx=2\int_0^a f(x)\,dx\]
+for all $a$.
+\end{problem}
+\end{document}

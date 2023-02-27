@@ -1,0 +1,274 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks]{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{remark}{Remark}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Exam 2 Review}
+
+\begin{document}
+\maketitle
+
+Many of these review problems are similar to homework problems. For best learning, please try to work them out at first \textbf{without} referring to notes or your homework.
+
+\begin{problem}
+Determine whether the following series converges or not. You may use comparison test/ratio test/any other logical reasoning steps that make perfect sense.
+\begin{enumerate}[(a)]
+  \item $\displaystyle\sum_{n=1}^\infty (-1)^n$.
+  \item $\displaystyle\sum_{n=1}^\infty \dfrac{n}{n^3+3}$.
+  \item $\displaystyle\sum_{n=1}^\infty \dfrac{3}{n\cdot {\sin}^2 n}$.
+
+        \textit{Note}: You may use the fact that $\sin n \not =0,$ for any positive integer $n$.
+  \item $\displaystyle\sum_{n=1}^\infty \frac{1}{n^{5/2}}$.
+  \item $\displaystyle\sum_{k=1}^\infty \ln k$.
+  \item $\displaystyle\sum_{k=1}^\infty\frac{\ln k}k$.
+  \item $\displaystyle\frac 1{20000}+\frac 1{20001}+\frac 1{20002}+\frac 1{20003}+\cdots$.
+  \item $\displaystyle\frac 1{10000}+\frac 1{40000}+\frac 1{90000}+\frac 1{160000}+\cdots$.
+  \item $\displaystyle\frac 1{10000}+\frac 1{30000}+\frac 1{90000}+\frac 1{270000}+\cdots$.
+  \item $\displaystyle \frac 1{1\cdot 2}+\frac 1{3\cdot 4}+\frac 1{5\cdot 6}+\cdots$.
+  \item $\displaystyle\sum_{k=1}^\infty a_k$ where $a_k=e^{-k}$ if $k<10^{100}$ but $a_k=\frac 1k$ if $k\geq 10^{100}$.
+
+        We did not have a question exactly like this in class or on homework, so please work this problem out very carefully!
+  \item $\displaystyle\sum_{k=1}^\infty a_k$ where $a_k=2^{-k}$ if $k$ is not a power of 2, but $a_k=\frac 1{1000}$ if $k$ is a power of 2. The first few terms of $(a_k)$ look like: $\frac 1{1000}, \frac 1{1000}, \frac 18, \frac 1{1000}, \frac 1{32}, \frac 1{64}, \frac 1{128}, \frac 1{1000}$, because 3, 5, 6, and 7 are not powers of 2 while 1, 2, 4, and 8 are.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+If $(x_n)$ and $(y_n)$ both diverge, then answer the following questions. Notice that we didn't discuss these exact questions in class nor did you have them on your homework (so don't bother looking in your notes!), but nevertheless these can be answered completely convincingly using only your thinking and some logic. Exercise your creative mind to try to come up with counterexamples!
+\begin{enumerate}[(a)]
+  \item Must $(x_n+y_n)$ be divergent? If so, give a proof. Otherwise, give a counterexample
+  \item Must $(x_n \cdot y_n)$ be divergent? If so, give a proof. Otherwise, give a counterexample.
+  \item Must $(x_n-y_n)$ be divergent? If so, give a proof. Otherwise, give a counterexample.
+  \item Must $\left(\dfrac{x_n}{y_n}\right)$ be divergent (say $y_n \not = 0$ for all $n$ in this case)? If so, give a proof. Otherwise, give a counterexample.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+\leavevmode\begin{enumerate}[(a)]
+  \item Prove that $\left(\frac{999}{1000}\right)^n$ converges to 0, using the $\eps$ definition of convergence and logarithms.
+
+        How to start your proof, if you're stuck: ``Let $\eps>0$ be arbitrary. [Now you must find an integer $N$ such that $\left|\left(\frac{999}{1000}\right)^n-0\right|<\eps$ for all $n\geq N$.]'' Also check the front page of the Canvas site for a guide.
+
+  \item Let $a_0=1000$ and $a_n=a_{n-1}-\frac 1{1000}a_{n-1}$ for $n\geq 1$. Prove that $a_n$ converges to 0.
+
+        Hint: Make observations first! You should find something that reduces this to a problem you already solved\ldots. Hence avoiding having to write an $\eps$ proof for this.
+
+  \item Prove that $\left(\frac{1000}{999}\right)^n$ does \textbf{not} converge to 0, using the $\eps$ definition of convergence.
+
+        Hint: First prove that $\left(\frac{1000}{999}\right)^{n+1}>\left(\frac{1000}{999}\right)^n$ for all $n$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem} Deriving the formula for geometric series.
+\begin{enumerate}[(a)]
+  \item if
+        \[s_n=a+ar+ar^2+\cdots+ar^{n-1}\]
+        for some numbers $a,r$, then what kind of formula can you come up with to calculate $s_n$?
+  \item Now we assume that $|r|<1$. Then the (geometric series)
+        \[s=a+ar+ar^2+ar^3+\cdots\]
+        converges and we are very familiar with a formula that we've been using again and again that $s=\dfrac{a}{1-r}$. First, prove this formula with the result you calculated in part(a).
+  \item Besides proving part(b) with the result from part(a), we can also prove the formula $s=\dfrac{a}{1-r}$ directly. Finish the proof yourself.
+  \item Use geometric series to show that $1=.999\cdots$
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Recall that the decimal expression of a number $x=0.a_1a_2a_3\cdots$, where $a_i \in \{0,1,\cdots,9\}$ means
+\[x=a_1\cdot 10^{-1}+a_2\cdot 10^{-2}+a_3\cdot 10^{-3}+\cdots.\]
+While in the homework, we explored that a binary expression of a number $x=0.b_1b_2b_3\cdots$, where $b_i \in \{0,1\}$ means
+\[x=b_1\cdot 2^{-1}+b_2\cdot 2^{-2}+b_3\cdot 2^{-3}+\cdots.\]
+
+Similarly, we can also define a ternary expression for a number $x=0.c_1c_2c_3\cdots$, where $c_i \in \{0,1,2\}$ means
+\[x=c_1\cdot 3^{-1}+c_2\cdot 3^{-2}+c_3\cdot 3^{-3}+\cdots.\]
+
+Then determine what the number $x=0.1111\ldots$ really stands for in decimal, binary, ternary expressions respectively.
+\end{problem}
+
+\begin{problem}
+What is $0.99989998\ldots$, where the 9998 is repeating?
+\end{problem}
+
+\begin{problem}
+What does $\frac{\cos n}n$ approach as $n\to\infty$? Prove it.
+\end{problem}
+
+\begin{problem}\label{problem:p8}
+Knowing that $1+2x+3x^2+4x^3+\dots=\frac 1{(1-x)^2}$ is a true identity that you have already proved in homework, deduce a closed form for $2+3x+4x^2+5x^3+\dots$.
+\end{problem}
+
+\begin{problem}
+Prove that $\displaystyle\sum_{n=1}^\infty \frac 1{n^2}$ converges.
+\end{problem}
+
+\begin{problem}
+Prove that there are infinitely many odd numbers.
+\end{problem}
+
+\begin{problem}
+Find the exact values of:
+\begin{enumerate}[(a)]
+  \item $\displaystyle\frac 1{1\cdot 2}+\frac 1{2\cdot 3}+\frac 1{3\cdot 4}+\cdots$
+  \item $\displaystyle\frac 1{1\cdot 2}+\frac 1{3\cdot 4}+\frac 1{5\cdot 6}+\cdots$
+  \item $\displaystyle\frac 1{1\cdot 3}+\frac 1{3\cdot 5}+\frac 1{5\cdot 7}+\cdots$
+  \item $\displaystyle\frac 1{1\cdot 3}+\frac 1{5\cdot 7}+\frac 1{9\cdot 11}+\cdots$ (I think there's a $\pi$ in the answer to this one.)
+  \item $\displaystyle\frac 1{3!}+\frac 1{4!}+\frac 1{5!}+\cdots$
+  \item $\displaystyle\sum_{k=1}^{100} ((k+1)^2-k^2)$.
+  \item $\displaystyle 2+\frac 35+\frac 4{25}+\frac 5{125}+\cdots$. (Note: the denominators are powers of 5. If you are stuck and need inspiration, first solve Problem \ref{problem:p8}.)
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+What is the power series (around 0) for:
+\begin{enumerate}[(a)]
+  \item $e^{2x}$?
+  \item $e^x-1$?
+  \item $\arctan x$?
+  \item $\arctan(-x)$?
+  \item Prove that $\arctan x$ is an odd function using its power series, applying the previous 2 parts.
+  \item $\ln(1+x)$?
+  \item $400\ln(1+x)$?
+  \item $\dfrac{x^2}{1-x}$?
+  \item $\dfrac 1{(1+x)(1-x)}$? (Hint: Multiply out the denominator.)
+  \item $\dfrac {x^2}{(1+x)(1-x)}$?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Prove that
+\[\frac 1{0!}+\frac 1{2!}+\frac 1{4!}+\dots=\frac{e+\frac 1e}2.\]
+\end{problem}
+
+\bigskip
+See the next page for remarks/spoilers to these problems! Stop scrolling if you don't want to be spoiled.
+
+\newpage
+
+\begin{remark}
+  Please let me know if I made any mistakes in the below!
+  \begin{enumerate}[(a)]
+    \item Diverges, because the limit of terms is not 0.
+    \item Converges, by comparison with $\frac 1{n^2}$.
+    \item Diverges, by comparison with the harmonic series.
+    \item Converges, by comparison with $\frac 1{n^2}$.
+    \item Diverges, because the limit of the terms is not 0.
+    \item Diverges, by comparison with the harmonic series (after the 3rd term).
+    \item Diverges, because it is a tail of the harmonic series.
+    \item Converges, because it is a constant multiple of the series $\sum_{n=1}^\infty \frac 1{n^2}$.
+    \item Converges, because it is a geometric series with common ratio between 0 and 1.
+    \item Converges, because by partial fractions this becomes a decreasing alternating series whose terms converge to 0.
+    % \item Converges, because there is an explicit formula for the $n$th partial sum: $S_n=1-\frac 1{n+1}$, and this sequence of partial sums converges. See Problem Set 10 problem 2 for this exact problem. Note that this series is what we used to prove that $\sum_{n=1}^\infty \frac 1{n^2}$ converges, so it would be pretty weird to cite comparison with $\sum_{n=1}^\infty \frac 1{n^2}$ for this one. It'd be circular logic, unless you have another way to prove either of these series converges! (Bonus: Integral test would be such a way. But integral test will not be on the upcoming exam.)
+    \item The tail is what matters, and the tail is the tail of a harmonic series, so this series diverges.
+    \item The sequence of terms was constructed in such a way that it does not converge to 0. Indeed, put $\eps=\frac 1{2000}$, then no matter what $N$ is, there exists $n\geq N$ such that $a_n\geq\eps$. (Just pick the next power of 2 after $N$.) This proves that $a_n\not\to 0$, so the series does not converge.
+    
+    Or you can say that the series includes infinitely many $\frac 1{1000}$ terms, and all other terms are positive, so it diverges by comparison with the sum $\frac 1{1000}+\frac 1{1000}+\cdots$.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  \leavevmode\begin{enumerate}[(a)]
+    \item Counterexample: Let $x_n=2^n$ and $y_n=-2^n$, then $x_n+y_n$ is the constant zero sequence. Thus $(x_n)$ and $(y_n)$ both diverge but $(x_n+y_n)$ converges!
+    \item Counterexample: Let $x_n$ be any sequence whose odd subsequence (meaning $x_1,x_3,x_5,\dots$) is divergent and whose even terms are all 0, and let $y_n$ be the other way around. Then $x_ny_n$ is always 0.
+    \item Counterexample: Let $x_n$ and $y_n$ be the same divergent sequence. $x_n-y_n$ is the constant sequence 0.
+    \item Exact same idea as in part (c) applies here too! Haha. $x_n/y_n$ will be the constant sequence 1.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  \leavevmode\begin{enumerate}[(a)]
+    \item This was in problem set 8 or so.
+    \item This looks like a completely new problem on first sight, but actually, the equation $a_n=a_{n-1}-\frac 1{1000}a_{n-1}$ simplifies to
+    \[a_n=\left( 1-\frac 1{1000} \right)a_{n-1}=\frac{999}{1000}a_{n-1}.\]
+    So each term is $999/1000$ times as large as the previous one. This is the geometric series again! So this series and the one in part (a) are identical.
+    \item Since $\frac{1000}{999}>1$, we can multiply this inequality on both sides by $\left( \frac{1000}{999} \right)^n$ to deduce that $\left(\frac{1000}{999}\right)^{n+1}>\left(\frac{1000}{999}\right)^n$ for all $n$. It follows that the sequence $\left( \frac{1000}{999} \right)^n$ is an increasing sequence of positive real numbers, so cannot converge to 0. (More detail: the first term is 1, and the sequence is increasing, so every term is at least a distance 1 away from 0.)
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  Check out one of the discussions. Also the internet has plenty of derivations for the geometric series formula. Part (d) was a homework problem.
+\end{remark}
+
+\begin{remark}
+  In base $n$, 0.111\ldots is the series $\sum_{k=1}^\infty \frac 1{n^k}$. So in binary ($n=2$), the series converges to 1, which leads us to say that $0.111_2\ldots=1$. (The subscript 2 after a string of digits is standard notation which indicates the number is to be read in binary.) This should be very reminiscent of the $0.999\ldots=1$ equality in base 10. In fact, if $\triangle$ represents the digit $(n-1)$ in base $n$, then $0.\triangle\triangle\triangle\ldots$ always equals 1! Maybe you can try to prove this\ldots
+
+  Similarly, one can plug in $n=3$ into the series to find that $0.111\ldots_3$ is the ternary expansion for the very familiar number $1/2$!
+
+  And of course, $0.111\ldots_{10}$ is $1/9$. (Plug in $n=10$ into the series to verify this.)
+\end{remark}
+
+\begin{remark}
+  Answer for your checking purposes:
+  \[\frac{9998}{9999}.\]
+\end{remark}
+
+\begin{remark}
+  $\cos n$ is bounded while $\frac 1n$ converges to 0. Therefore $\frac{\cos n}n$, being the product of a bounded sequence and a sequence that converges to 0, converges to 0. (You can also use the squeeze theorem, which could be one of our favorite theorems $\blacksquare$)
+\end{remark}
+
+\begin{remark}
+  You have to notice that $2+3x+4x^2+5x^3+\dots$ is the sum of $1+2x+3x^2+4x^3+\dots$ and $1+x+x^2+x^3+\dots$, both of which you already know. The rest is some algebra!
+\end{remark}
+
+\begin{remark}
+  We compare the series with the series of Problem 1(j)! Just as in problem set 10 problem 2(e).
+\end{remark}
+
+\begin{remark}
+  This is supposed to remind you of Euclid's proof of the infinitude of primes. A very short proof that there are infinitely many odd numbers might be as follows:
+  \begin{quote}
+    Suppose there are finitely many odd numbers. Then there is a largest odd number, let's call it $N$. But then $N+2$ is also an odd number, and $N+2$ is greater than $N$, contradicting the fact that $N$ was the largest odd number.
+  \end{quote}
+  If you want to also justify why $N+2$ is odd if $N$ is odd, you can use the following: The definition of $N$ being odd is that $N=2k+1$ for some positive integer $k$. To prove $N+2$ is odd, one has to show that $N+2=2m+1$ for some positive integer $m$. But $N+2=(2k+1)+2=2k+3=2(k+1)+1$. So we have found our $m$, it is $k+1$ which is an integer!
+\end{remark}
+
+\begin{remark}
+  Answers:
+  \begin{enumerate}[(a)]
+    \item 1
+    \item $\ln 2$
+    \item $\dfrac 12$
+    \item $\dfrac{\pi}8$
+    \item $\displaystyle e-\frac 1{0!}-\frac{1}{1!}-\frac{1}{2!}=e-1-1-\frac 12=e-\frac52$
+    \item $101^2-1^2=10200$ (keyword: telescope)
+    And if you remember the idea from Problem Set 1 Problem 1, you could compute the value as follows: $101^2-1^2=(101+1)(101-1)=102\cdot 100=10200$. Neat!
+    \item Take what you got for problem 8 and plug in $x=\frac 15$.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  Answers (in non-sigma form. Either sigma or non-sigma form is fine):
+  \begin{enumerate}[(a)]
+    \item $\displaystyle 1+2x+\frac{4x^2}{2!}+\frac{8x^3}{3!}+\cdots$
+    \item $\displaystyle x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots$
+    \item $\displaystyle x-\frac{x^3}3+\frac{x^5}5-\frac{x^7}7+\cdots$
+    \item $\displaystyle (-x)+\frac{x^3}3-\frac{x^5}5+\frac{x^7}7+\cdots$
+    \item The answers to the two previous parts are exact negatives of each other. This shows that $\arctan(-x)$ and $-\arctan(x)$ represent the same function, which shows that $\arctan(-x)=-\arctan(x)$ for all real numbers $x$, which is exactly what proves that $\arctan$ is an odd function.
+    \item We know that
+    \[-\ln(1-x)=x+\frac{x^2}2+\frac{x^3}3+\cdots,\]
+    so if we plug in $-x$ in place for $x$ and negate everything, we'll get
+    \[\ln(1+x)=x-\frac{x^2}2+\frac{x^3}3-\frac{x^4}4+\cdots.\]
+    \item \[400\ln(1+x)=400x-200x^2+\frac{400x^3}3-100x^4+\cdots.\]
+    \item It's $x^2$ times the geometric series $1+x+x^2+\cdots$, which is $x^2+x^3+x^4+\cdots$.
+    \item \[\frac 1{(1+x)(1-x)}=\frac 1{1-x^2}=1+x^2+x^4+x^6+\cdots.\]
+    \item It's $x^2$ times the above, so it's $x^2+x^4+x^6+\cdots$.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  The power series for $e^x$ is $1/0!+x/1!+x^2/2!+x^3/3!+\cdots$. The number $e$ can be obtained by plugging in $x=1$ to this power series, so we get $1/0!+1/1!+1/2!+1/3!+1/4!+\cdots$. The number $1/e$, which is also equal to $e^{-1}$, can be obtained by plugging in $x=-1$ to the power series for $e^x$, so we get $1/0!-1/1!+1/2!-1/3!+1/4!-\cdots$. If we add the power series of $e$ to that of $1/e$, the even terms double while the odd terms cancel out. Finally dividing the result by 2 gives us
+  \[\frac{e+\frac 1e}2=\frac 1{0!}+\frac 1{2!}+\frac 1{4!}+\cdots.\]
+\end{remark}
+\end{document}

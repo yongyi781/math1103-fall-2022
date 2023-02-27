@@ -1,0 +1,149 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Final Exam}
+\author{Wednesday, December 14, 2022\\
+Friday, December 16, 2022}
+
+\begin{document}
+\maketitle
+
+Name: \underline{\hspace{6cm}}
+
+This exam is open notes, but calculators are not allowed. There are 100 points total in this exam. If you do not manage to solve a problem, show a strategy you tried and a reflection on why it did not work, for partial credit.
+
+\begin{problem}
+\leavevmode\begin{enumerate}[(a)]
+  \item (3 points) Calculate $\displaystyle\int_{-\pi}^\pi(\sin x+\cos x)\,dx$.
+        \vfill
+  \item (3 points) Calculate $\displaystyle\int \frac{\ln x}x\,dx$.
+        \vfill
+  \item (4 points) Calculate $\displaystyle\int_0^{1}|e^x-2|\,dx$.
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+\leavevmode\begin{enumerate}[(a)]
+  \item (5 points) Show that $\displaystyle\int\cos^2 x\,dx=\frac x2+\frac{\sin(2x)}4+C$.
+        \vfill
+  \item (5 points) Calculate $\displaystyle\int x\cos^2 x\,dx$.
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+\leavevmode\begin{enumerate}[(a)]
+  \item (5 points) Find the area bounded by the parabola $y=x^2$ and the line through the points $(-1,1)$ and $(2,4)$.
+        \vfill
+  \item (5 points) Let $R$ be the part of the region described in (a) to the right of the $y$-axis, and form a solid of revolution by revolving $R$ around the $y$-axis. What is the volume of this solid?
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+For each of the following sums, find its exact value or prove that it diverges.
+\begin{enumerate}[(a)]
+  \item (3 points) $\displaystyle 1-\frac 14+\frac 1{16}-\frac 1{64}+\frac 1{256}+\cdots$.
+        \vfill
+  \item (3 points) $\displaystyle\pi-\frac{\pi^3}{3!}+\frac{\pi^5}{5!}-\frac{\pi^7}{7!}+\cdots$.
+        \vfill
+  \item (4 points) $\displaystyle 1+\frac13+\frac 15+\frac 17+\frac19+\cdots$.
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+For which values of $x$ does the power series $\displaystyle \sum_{n=1}^\infty \frac{nx^{n-1}}{5^{n-1}}$ converge?
+\end{problem}
+
+\newpage
+
+\begin{problem}
+  \leavevmode\begin{enumerate}[(a)]
+    \item (5 points) Show that $\displaystyle\int\tan x\,dx=-\ln|\cos x|+C$.
+    
+    \emph{Hint}: Start by writing $\tan x=\dfrac{\sin x}{\cos x}$.
+    \vfill
+
+    \item (5 points) An angle $\theta$ is chosen uniformly at random between 0 and $\pi/4$. What is the average slope of the line joining $(0,0)$ and $(\cos\theta,\sin\theta)$?
+    \vfill
+  \end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+Let $(a_n)$ be a sequence such that $0\leq a_n\leq 1$ for all positive integers $n$ and $\displaystyle\sum_{n=1}^\infty a_n$ converges. Prove that $\displaystyle\sum_{n=1}^\infty a_n^2$ converges.
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+Prove that
+\[\lim_{x\to 0}\frac{\sin x-x}{x^3}=-\frac16.\]
+\emph{Hint}: Power series may be useful.
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+The standard normal distribution is given by the probability density function
+\[p(x)=\frac 1{\sqrt{2\pi}}e^{-\frac{x^2}2}.\]
+Let $A=\int_{-1}^1 p(x)\,dx$. Prove that
+\[A>\frac 1{\sqrt{2\pi}}\left(e^{-\frac12}+e^{-\frac18}\right).\]
+\emph{Hint}: Draw a picture and think about Riemann sums! (Maybe try looking at a lower Riemann sum with 4 subdivisions\ldots)
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+You push a button to call the elevator. The instant you push the button, a music cycle starts which consists of 10 seconds of music, then 10 seconds of silence, then 10 seconds of music, then 10 seconds of silence, and so on, until the elevator arrives.
+
+Of course, the waiting time for the elevator is random. The probability distribution for the amount of time, in seconds, it takes for the elevator to arrive is modeled by the exponential density function $p(t)=\frac 1{10}e^{-\frac 1{10}t}$, $t\geq 0$. (So for example, the average waiting time is 10 seconds according to the model.)
+
+What is the probability that there is music playing at the moment the elevator arrives?
+\end{problem}
+% \begin{problem}
+%   Power series.
+%   \begin{enumerate}[(a)]
+%     \item (5 points) What function has
+%     \[\frac 1{1!}-\frac x{3!}+\frac {x^2}{5!}-\dots=\sum_{n=0}^\infty \frac{(-1)^nx^n}{(2n+1)!}\]
+%     as its power series?
+
+%     \emph{Hint}: Square roots may come in useful.
+%     \vfill
+%     \item (5 points) Deduce from part (a) the value of
+%     \[\frac 1{1!}-\frac {2}{3!}+\frac {2^2}{5!}-\cdots=\sum_{n=0}^\infty\frac{(-2)^n}{(2n+1)!}.\]
+%     If you did not solve part (a), you can use $f(x)$ to denote what part (a)'s answer is.
+%     \vfill
+%   \end{enumerate}
+% \end{problem}
+
+% Might still be too hard?
+
+\end{document}

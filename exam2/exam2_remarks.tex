@@ -1,0 +1,157 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+
+\DeclareMathOperator{\Var}{Var}
+
+\title{MATH1103 Fall 2022\\
+Exam 2 Remarks}
+\author{Wednesday, November 30, 2022}
+
+\begin{document}
+\maketitle
+
+Name: \underline{\hspace{6cm}}
+
+This exam is open notes, but calculators are not allowed. There are 50 points total in this exam. If you do not manage to solve a problem, show a strategy you tried and a reflection on why it did not work, for partial credit.
+
+\begin{problem}
+Convergence tests. Any proof will do. You may use results from class and homework.
+\begin{enumerate}[(a)]
+  \item (5 points) Find, with proof, whether $\displaystyle\sum_{k=0}^\infty \frac{k!}{314159^k}$ converges or diverges.
+        \begin{remark}
+          Using the ratio test, we have
+          \[\left|\frac{(k+1)!}{314159^{k+1}}\cdot\frac{314159^k}{k!}\right|=\left|\frac{k+1}{314159}\right|\xrightarrow{k\to\infty}\infty,\]
+          from which we conclude the series diverges.
+        \end{remark}
+        \vfill
+  \item (5 points) Find, with proof, whether $\displaystyle\sum_{n=314159}^\infty\frac 1{n-1}$ converges or diverges.
+        \begin{remark}
+          The series is a tail of the harmonic series, so it diverges.
+        \end{remark}
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+Power series. You may freely use without proof the power series for $e^x$ we established in class:
+\[e^x=\frac 1{0!}+\frac x{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots.\]
+You do not need to write any series in sigma notation.
+\begin{enumerate}[(a)]
+  \item (5 points) What is the power series of $e^{-5x}$?
+        \begin{remark}
+          You can substitute $-5x$ for $x$ in the power series of $e^x$, or you can calculate $\frac 1{n!}\frac{d^n}{dx^n}\Big|_{x=0}e^{-5x}$ for each $n$. Either way works.
+        \end{remark}
+        \vfill
+  \item (5 points) The below series converges. (You do not need to prove it.)
+        \[\frac 1{0!}-\frac {10}{1!}+\frac {100}{2!}-\frac {1000}{3!}+\cdots.\]
+        What is its exact value? This problem does not depend on part (a).
+        \begin{remark}
+          This series equals the power series of $e^x$ at $x=-10$, so the exact value is $e^{-10}$.
+        \end{remark}
+        \vfill
+        % \item (5 points) What is the power series of $\displaystyle\int_0^x e^{-t^2}\,dt$?\footnote{This problem is an application of power series to integrate a function that can't be integrated algebraically!}
+
+        %       This question uses part (a). If you could not solve part (a), describe what you would do if you did have a result for part (a).
+        %       \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[10 points]
+You are freely given (thanks to Euler) that
+\[\frac 1{1^2}+\frac 1{2^2}+\frac 1{3^2}+\cdots=\frac{\pi^2}6.\]
+\begin{enumerate}[(a)]
+  \item (5 points) Prove, from the above equation, that
+        \[\frac 1{2^2}+\frac 1{4^2}+\frac 1{6^2}+\cdots=\frac{\pi^2}{24}.\]
+        \begin{remark}
+          Divide the given equation by 4, and use the fact that $2^2=4$.
+        \end{remark}
+        \vfill
+  \item (5 points) Using the result of part (a), find the value of
+        \[\frac 1{1^2}+\frac 1{3^2}+\frac 1{5^2}+\cdots.\]
+        \begin{remark}
+          If you subtract the first equation by the second equation, what remains is $\frac 1{1^2}+\frac 1{3^2}+\frac 1{5^2}+\cdots=\frac{\pi^2}6-\frac{\pi^2}{24}=\frac{\pi^2}8$.
+        \end{remark}
+        % If you weren't able to solve part (a), you may use the variable $a$ as a substitute for part (a)'s answer, and the answer you get should be in terms of $a$ rather than $\pi^2/8$.
+        \vfill
+\end{enumerate}
+\end{problem}
+
+\newpage
+
+% \begin{problem}
+%   Power series.
+%   \begin{enumerate}[(a)]
+%     \item (5 points) What function has
+%     \[\frac 1{1!}-\frac x{3!}+\frac {x^2}{5!}-\dots=\sum_{n=0}^\infty \frac{(-1)^nx^n}{(2n+1)!}\]
+%     as its power series?
+
+%     \emph{Hint}: Square roots may come in useful.
+%     \vfill
+%     \item (5 points) Deduce from part (a) the value of
+%     \[\frac 1{1!}-\frac {2}{3!}+\frac {2^2}{5!}-\cdots=\sum_{n=0}^\infty\frac{(-2)^n}{(2n+1)!}.\]
+%     If you did not solve part (a), you can use $f(x)$ to denote what part (a)'s answer is.
+%     \vfill
+%   \end{enumerate}
+% \end{problem}
+
+% Might still be too hard?
+
+\begin{problem}[10 points]
+What are the first 10 digits of $\dfrac 1{98}$?
+
+\emph{Note}: A solution using long division will be awarded at most 5 points.
+
+\emph{Hint}: First prove that
+\[\frac 1{98}=\frac12 \sum_{n=1}^\infty \frac {2^n}{100^n},\]
+then use that result to figure out the digits.
+\end{problem}
+\begin{remark}
+  To prove that
+  \[\frac 1{98}=\frac12 \sum_{n=1}^\infty \frac {2^n}{100^n},\]
+  we notice that the right hand side is a geometric series with common ratio $1/50$ (because $2^n/100^n=(2/100)^n=(1/50)^n$) and with first term $1/2\cdot 1/50=1/100$, so the sum of the geometric series is
+  \[\frac{1/100}{1-1/50}=\frac{1/100}{49/50}=\frac 1{100}\cdot \frac{50}{49}=\frac 1{98}.\]
+  This proves the hint. Now to use it to figure out the first 10 digits, notice
+  \[\begin{split}
+    \frac12\sum_{n=1}^\infty\frac{2^n}{100^n} &=\frac12\left( \frac2{10^2}+\frac 4{10^4}+\frac8{10^6}+\frac{16}{10^8}+\frac{32}{10^{10}}+\cdots \right)\\
+    &=\frac1{10^2}+\frac 2{10^4}+\frac4{10^6}+\frac{8}{10^8}+\frac{16}{10^{10}}+\cdots \\
+    &= 0.0102040816\ldots.
+  \end{split}\]
+  For fun, here is 1/98 to more digits.
+  \[0.01020408163265306122448979591836734693877551020408163265\ldots\]
+  Let me know if you notice any other patterns! (For example, does it repeat?)
+\end{remark}
+
+\newpage
+
+\begin{problem}[10 points]
+For $n\geq 1$, let
+\[b_n=\begin{cases}
+    4^n    & \text{if }n<314159      \\
+    271828 & \text{if }n\geq 314159.
+  \end{cases}\]
+What is $\lim_{n\to\infty}b_n$? Prove it using the $\eps$ definition of limit.
+\end{problem}
+\begin{remark}
+  The limit is 271828. Proof: Let $\eps>0$ be arbitrarily chosen. Choose $N=314159$. (You could also have chosen $N$ to be any number greater than or equal to 314159 if you wanted.) Then for all $n\geq N$,
+  \[|b_n-271828|=|271828-271828|=0<\eps.\]
+\end{remark}
+
+\end{document}

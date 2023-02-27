@@ -1,0 +1,295 @@
+\documentclass[12pt]{article}  
+
+%Run with XeLaTeX
+\usepackage
+[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=blue]
+{hyperref}
+
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphics} 
+\usepackage{graphicx} 
+%\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepgfplotslibrary{polar}
+\usepackage{ skull }
+\usetikzlibrary{decorations.fractals}
+%\usepackage{pst-func}
+
+% GNUPLOT required
+\usepackage{verbatim}
+
+\linespread{1.3}
+
+%\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{20pt}
+\addtolength{\oddsidemargin}{20pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Begin user defined commands
+
+\newcommand{\map}[1]{\xrightarrow{#1}}
+
+
+\newcommand{\bz}{\mathbb Z}
+\newcommand{\bq}{\mathbb Q}
+\newcommand{\br}{\mathbb R}
+\newcommand{\bc}{\mathbb C}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\ep}{\epsilon}
+\DeclareMathOperator{\lub}{l.u.b.}
+%  End user defined commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These establish different environments for stating Theorems, Lemmas, Remarks, etc.
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ex}[Thm]{Example}
+
+\theoremstyle{definition}
+\newtheorem{Exercise}{Problem}
+
+\newenvironment{Solution}{\noindent\textbf{Solution.}}{}
+
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand\qedsymbol{QED}
+% End environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Some commands to save paper
+
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\LH}{\ \underset{\text{LH}}{=}\ }
+\newcommand{\Dep}{\Delta_+}
+\newcommand{\Dem}{\Delta_-}
+\newcommand{\bu}{\mathbf u}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\bw}{\mathbf w}
+
+\newcommand{\ora}{\overrightarrow}
+
+
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{-40pt}
+\addtolength{\oddsidemargin}{-40pt}
+\addtolength{\topmargin}{-80pt}
+\addtolength{\textheight}{1.8in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now we're ready to start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}  
+
+%\author{Your Name}
+{\bf MATH 1103 Homework 10 }\\
+{\bf Due Friday April 20 2018}
+
+
+
+{\bf Homework 10 problems to be turned in. Practice problems are on the next page.}
+
+
+
+{\bf 1.\ } Let $p$ and $q$ be positive constants. Show that 
+\[
+\int_0^1x^p(1-x)^q\ dx=\int_0^1x^q(1-x)^p\ dx
+=2\int_0^{\pi/2}\cos^{2p+1}(\theta)\sin^{2p+1}(\theta)\ d\theta.
+\]
+[Hint for the second equality: $x=\sin^2\theta$
+
+%\begin{Solution} 
+%\end{Solution} 
+
+{\bf 2.\ } Recall our notation $P_k=\frac{1}{2}\cdot \frac{3}{4}\cdot \frac{5}{6}\cdots\frac{2k-1}{2k}$, $P_0=1$. 
+
+a)\ Show that $P_k\leq\frac{1}{\sqrt{k\pi}}$. (Examine the proof of Wallis' formula for $\pi$.)
+
+b)\ Use a) to prove that $\sum_{k=0}^\infty (-1)^kP_k$ converges. 
+
+c)\ Find the sum of the series in b). (Hint: $(-1)^kP_k=\binom{-1/2}{k}$.)
+
+%\begin{Solution} 
+%\end{Solution}
+
+{\bf 3.\ } In his first argument that $\sum\limits_{n=1}^\infty \frac{1}{n^2}=\frac{\pi^2}{6}$, Euler proposed (conjectured) the product formula 
+\[ \frac{\sin\pi x}{\pi x}=
+\left(1-\frac{x^2}{1^2}\right)\left(1-\frac{x^2}{2^2}\right)
+\left(1-\frac{x^2}{3^2}\right)\cdots
+\]
+As evidence for the correctness of this formula, Euler first noted the obvious facts that both sides take the same value when $x$ is an integer. He then observed that both sides take the same value when $x=\frac{1}{2}$. How did he know this last fact? 
+
+\rule{\textwidth}{1pt}
+
+Euler's product formula was later shown to be correct, but it was controversial at the time. 
+To satisfy his critics,  Euler found another proof that  
+$\sum\limits_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6},$
+which relies on Wallis integrals. 
+In the next three problems you will work through this alternative proof. 
+
+\rule{\textwidth}{1pt}
+
+{\bf 4.\ } For integer $k\geq 0$, compute $\displaystyle \int_0^1\frac{x^{2k+1}}{\sqrt{1-x^2}} dx$. (Hint: let $x=\sin\theta$.)
+
+{\bf 5.\ } Compute 
+$\displaystyle \int_0^1\frac{\arcsin x}{\sqrt{1-x^2}}\ dx$ in two ways:
+a)\ using a substitution and b) using the power series for $\arcsin x$ along with problem 4.  
+
+{\bf 6.\ } Problem 5 computes the sum 
+$\sum\limits_{k=1}^\infty\dfrac{1}{(2k+1)^2}$. Use this to show that 
+$\sum\limits_{n=1}^\infty\dfrac{1}{n^2}=\dfrac{\pi^2}{6}.$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+Practice Problems with solutions (not to be turned in)
+
+{\bf Practice 1.\ }  Compute the following integrals
+
+a)\ $\displaystyle\int_0^1\frac{x}{x+1}\ dx$.
+\vskip10pt
+{\small Substitution: $u=x+1$, so $x=u-1$ and $dx=du$. Limits $x=0,1$ become $u=1,2$, so 
+\[\int_0^1\frac{x}{x+1}\ dx=\int_1^2\frac{u-1}{u}=(u-\log u)\Big\vert_1^2=1-\log 2.\]
+}
+
+b)\  $\displaystyle\int_0^1x(1-x)^{100}\ dx$.
+\vskip10pt
+{\small Substitution: $u=1-x$, $du=-dx$, limits switch, so 
+\[\int_0^1x(1-x)^{100}\ dx=\int_0^1(1-u)u^{100}=\int_0^1(u^{100}-u^{101})=\frac{1}{100}-\frac{1}{101}.\]
+}
+c)\ $\displaystyle\int_0^9\sqrt{4-\sqrt{x}}\ dx$. 
+\vskip10pt
+{\small 
+Substitution: $u=4-\sqrt{x},\ \sqrt{x}=4-u,\ du=-\dfrac{1}{2\sqrt{x}} dx,\ dx=-2(4-u)\ du$. $x=0,9\ \Rightarrow u=1,4$. \[\begin{split}\int_0^9\sqrt{4-\sqrt{x}}\ dx
+&= -2\int_4^1\sqrt{u}(4-u)\ du=2\int_1^4 4u^{1/2}-u^{3/2}\ du=
+2\left[\frac{8}{3}u^{3/2}-\frac{2}{5}u^{5/2}\right]_1^4
+%\\&=2\left[\frac{64}{3}-\frac{64}{5}-\frac{8}{3}+\frac{2}{5}\right]=4\left[\frac{28}{3}-\frac{31}{5}\right]
+=\frac{188}{15}.
+\end{split}
+\]
+}
+\vskip10pt
+d)\ $\displaystyle\int \frac{dx}{x^2+c^2}$ \quad ($c$ is a constant). 
+\vskip10pt
+{\small answer: $\frac{1}{c}\arctan\left(\frac{x}{c}\right)+\text{constant}$.
+}
+\vskip10pt
+e) $\displaystyle\int_{-1}^1\frac{dx}{x^2+x+1}$.
+\vskip10pt
+{\small 
+Completing the square gives 
+\[x^2+x+1=\left(x+\frac{1}{2}\right)^2+\frac{3}{4}.\]
+Let $u=x+\frac{1}{2}$, so $du=dx$ with new limits $-1/2, 3/2$, so 
+\[\begin{split}
+\int_{-1}^1\frac{dx}{x^2+x+1}
+=\frac{2}{\sqrt{3}}
+\arctan\left(\frac{2u}{\sqrt{3}}\right)\Big\vert_{-1/2}^{3/2}
+=\frac{2}{\sqrt{3}}\left(\arctan(\sqrt{3})+\arctan(1/\sqrt{3})\right)
+=\frac{\pi}{\sqrt{3}},
+\end{split}
+\]
+using the identity $\arctan(x)+\arctan(1/x)=\frac{\pi}{2}$. }
+\vskip10pt
+f)\ $\displaystyle\int_{1}^x\dfrac{\log t}{t}\ dt$, \qquad
+$\displaystyle\int_{e}^{e^2}\dfrac{1}{t\log t}\ dt$\qquad
+{\small $u=\log t$ for both. Answers: $(\log x)^2/2$, \quad $\log 2$. }
+\vskip10pt
+g)\ $\displaystyle\int_{0}^\pi\dfrac{\sin x}{1+\cos^2 x}$,\qquad 
+$\displaystyle\int_{0}^\pi\dfrac{x\sin x}{1+\cos^2 x}$.
+
+{\small First one: $u=\cos x$, answer: $\pi/2$. Second one: $x=\pi-u$, solve for the integral, answer: $\pi^2/4$.}
+
+\vskip10pt
+{\bf Practice 2.\ } Let $p>0$ be a constant. Show that 
+\[\int_0^\infty \frac{dx}{(1+x^2)^{p+1}}=\int_0^{\pi/2}\cos^{2p}\theta\ d\theta.\]
+
+{\small
+Let $x=\tan\theta$, so $dx=\sec^2\theta$. When $x=0$ we have $\theta=0$, and $x\to\infty$ corresponds to $\theta\to\pi/2$. 
+\[\int_0^\infty \frac{dx}{(1+x^2)^{p+1}}=
+\int_0^{\pi/2}\frac{\sec^2\theta\ d\theta}{(1+\tan^2\theta)^{p+1}}=
+\int_0^{\pi/2}\frac{\sec^2\theta\ d\theta}{(\sec^2\theta)^{p+1}}=
+\int_0^{\pi/2}\frac{d\theta}{\sec^{2p}\theta}=
+\int_0^{\pi/2}\cos^{2p}\theta\ d\theta.\]}
+
+\vskip10pt
+
+{\bf Practice 3.\ }  Compute $\int_0^\infty xe^{-x^2}$ and show that 
+$\int_0^\infty x^2e^{-x^2}=\frac{1}{2}\int_0^\infty e^{-x^2}$
+
+{\small First one: Substitute $u=x^2$, answer: $1/2$. Second one: $\int$-by-parts with $u=x$ and $v'=xe^{-x^2}$. 
+}
+
+\vskip10pt
+{\bf Practice 4:\ } Use substitution to show that if $n$ is a positive integer then 
+\[\int_0^{\pi/2}\cos^n(x)\ dx=\int_0^{\pi/2}\sin^n(x)\ dx\qquad 
+\text{and}\qquad 
+\int_0^{\pi}\cos^{n}(x)\ dx=
+\begin{cases}
+2\int_0^{\pi/2}\cos^n(x)\ dx&\text{$n$ even}\\
+0&\text{$n$ odd}
+\end{cases}
+\]
+{\small
+First one: use $\cos(x)=\sin(\frac{\pi}{2}-x)$ and let $u=\frac{\pi}{2}-x$. Second one: $u=\pi-\theta$. 
+}
+
+
+\vskip10pt
+{\bf Practice 5:\ } Suppose $f(x)$ is an odd function and $\int_0^1f=\pi$. Compute
+
+a)\ $\displaystyle\int_0^{\pi/2}f(x)\cos x\ dx$,
+
+b)\ $\displaystyle\int_{-\pi/2}^{\pi/2}f(x)\cos x\ dx$.
+
+
+
+
+{\bf Practice 6:} Show that the Bessel function $J_0(x)$ is represented by the integral 
+\[J_0(x)=\frac{2}{\pi}\int_0^{\pi/2} \cos(x\sin \theta)\ d\theta.
+\]
+\vskip10pt
+{\small Use the power series for cosine and integrate term-by-term. }
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+ 
+ 

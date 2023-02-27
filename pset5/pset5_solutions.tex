@@ -1,0 +1,178 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype,pgfplots}
+\usepackage[shortlabels]{enumitem}
+\usepackage[most]{tcolorbox}
+
+\usepgfplotslibrary{fillbetween,decorations.softclip}
+\pgfplotsset{compat=1.18}
+
+\definecolor{sol}{rgb}{0.1, 0.3, 0.6}
+
+\newtcolorbox{solution}{enhanced, breakable, colframe=sol, title=Solution}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 5}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, October 5 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Some exercises.
+        \begin{enumerate}[(a)]
+            \item (Strang 8.1.50) Rotate $y=x^3$ around the $y$-axis from $y=0$ to $y=8$. Write down the volume integral by shells and disks and compute both ways.
+            \begin{solution}
+                Note: the problem is (intentionally?) ambiguous whether the object is supposed to be a vase or a vase mould. So one could get a volume of $96\pi/5$ or $64\pi/5$.
+
+                \textbf{By shells}: We have cylindrical shells going from $x=0$ to $x=8^{1/3}=2$, with radius $x$ and height $8-x^3$. So the area of each shell is $2\pi x(8-x^3)$, and the thicknesses are perpendicular to the cross-sections, so the volume can be computed as
+                \[\int_0^2 2\pi x(8-x^3)\,dx=2\pi \int_0^2 (8x-x^4)\,dx=2\pi\left[4x^2-\frac 15 x^5\right]_0^2=\frac{96}5\pi.\]
+
+                \textbf{By disks}: We have solid disks going from $y=0$ to $y=8$, with radius $\sqrt[3]y$. Each cross section's area is therefore $\pi y^{\frac 23}$, and the thicknesses are perpendicular to the cross sections. The volume can therefore be computed as
+                \[\int_0^8 \pi y^{\frac23}\,dy=\frac 35\pi y^{\frac 53}\Big|_0^8=\frac 35\pi (32-0)=\frac{96}5\pi.\]
+                Remark how both integrals compute the same volume, as they should!
+            \end{solution}
+            \item (Strang 8.2.12) What integral gives the length of Archimedes' spiral $x=t\cos t,\; y=t\sin t$?
+            \begin{solution}
+                The length of the portion from $t$ to $t+dt$ is
+                \[\begin{split}
+                    \sqrt{dx^2+dy^2} &=\sqrt{x'(t)^2+y'(t)^2}\,dt \\
+                    &=\sqrt{(\cos t-t\sin t)^2+(\sin t+t\cos t)^2}\,dt\\
+                    &= \sqrt{\cos^2 t-2t\cos t\sin t+t^2\sin^2 t+\sin^2 t+2t\sin t\cos t+t^2\cos^2 t}\\
+                    &= \sqrt{1+t^2}.
+                \end{split}\]
+                The range of $t$ was not specified, so let's suppose we are integrating the length from 0 to $2\pi$. The integral that would give the length is therefore
+                \[\int_0^{2\pi}\sqrt{1+t^2}\,dt.\]
+                Other forms are possible, if a substitution was chosen.
+            \end{solution}
+            \item (Strang 8.3.1) Find the surface area when the curve $y=\sqrt x,\ 2\leq x\leq 6$ is revolved around the $x$-axis.
+            \begin{solution}
+                Let's use circles perpendicular to the $x$-axis. The circle at position $x$ has circumference $2\pi\sqrt x$, and the arc length from $x$ to $x+dx$ is equal to $\sqrt{dx^2+dy^2}=\sqrt{1+\frac 1{4x}}\,dx=\sqrt{\frac{x+\frac14}{x}}\,dx$. Therefore, the surface area is
+                \[\begin{split}
+                    \int_2^62\pi\sqrt x\sqrt{\frac{x+\frac14}{x}}\,dx &= 2\pi\int_2^6\sqrt{x+\frac 14}\,dx\\
+                    &= 2\pi\frac 23\left(x+\frac 14\right)^{\frac32}\Big|_2^6\\
+                    &= \frac {4\pi}3\left(\left(\frac{25}4\right)^{\frac32}-\left(\frac 94\right)^{\frac 32}\right)\\
+                    &= \frac{4\pi}3\left( \frac{125}8-\frac{27}8 \right)\\
+                    &= \frac{4\pi}3\cdot\frac{98}8\\
+                    &= \frac{49\pi}3.
+                \end{split}\] 
+            \end{solution}
+            \item (Strang 8.3.19 and 8.3.20) A lamp shade is constructed by rotating $y=1/x$ around the $y$-axis, and keeping the part from $y=1$ to $y=2$. What is the surface area of the lamp shade?
+            
+            \emph{Hint:} The integral computation is surprisingly tricky. See the third page for a guide.
+            \begin{solution}
+                We use circles going up from $y=1$ to $y=2$. The circumference of the circle at position $y$ is $2\pi/y$. The arc length of the curve from $y$ to $y+dy$ is $\sqrt{1+(-1/y^2)^2}\,dy=\sqrt{y^4+1}/y^2\,dy$. Therefore the integral representing the surface area is
+                \[2\pi\int_1^2\frac{\sqrt{y^4+1}}{y^3}\,dy.\]
+                Following the guide on page 3, we arrive at the following integral which computes the surface area:
+                \[\pi\int_{\tan^{-1}(1)}^{\tan^{-1}(4)}(\sec\theta+\cot\theta\csc\theta)\,d\theta.\]
+                We use the following antiderivatives obtained via lookup table (e.g.\ the internet)
+                \begin{align*}
+                    \int\sec \theta\,d\theta &=\ln|\sec\theta+\tan\theta|+C\\
+                    \int\cot\theta\csc\theta\,d\theta &= -\csc\theta+C.
+                \end{align*}
+                So now by FTC 2 we obtain, as our surface area,
+                \[\pi((\ln|\sec\tan^{-1}4+4|-\csc\tan^{-1}4)-\ln|\sec\tan^{-1}1+1|-\csc\tan^{-1}1)\]
+                Now the above expression can already be numerically approximated, we can use the following facts to simplify our answer a little bit before approximating. By right-angled trigonometry, for any $x\in\bR$ we have
+                \[\sec\tan^{-1}x=1/\cos\tan^{-1}x=1/(1/\sqrt{x^2+1})=\sqrt{x^2+1}\]
+                and
+                \[\csc\tan^{-1}x=1/\sin\tan^{-1}x=1/(x/\sqrt{x^2+1})=\frac{\sqrt{x^2+1}}x.\]
+                So our surface area is
+                \[\pi\left(\left(\ln|\sqrt{17}+4|-\frac{\sqrt{17}}4\right)-\ln|\sqrt2+1|+\sqrt2\right)\]
+                which is approximately $5.01642$.
+            \end{solution}
+
+            \item (Strang 8.4.7) If you choose $x$ completely at random between 0 and $\pi$, what is the density $p(x)$ and the cumulative density $F(x)$?
+            \begin{solution}
+                The cumulative density function, or CDF, of the random number is the function (called $F$ in the problem) such that $F(x)$ equals the probability that the random number is less than or equal to $x$. This is $x/\pi$.
+                
+                The probability deisty function, or PDF, of the random number (which is called $p$ in the problem) is the derivative of the cumulative density function $F(x)$, which is $1/\pi$.
+
+                \color{red}{Warning: PDF means two completely different things for discrete vs.\ continuous random variables. For discrete random variables, $\mathrm{PDF}(x)$ is the probability that the random number equals $x$ (so $\mathrm{PDF}(x)=\Pr[X=x]$), but for continuous random variables, $\mathrm{PDF}(x)$ is \textbf{not} the probability that the random number equals $x$!}
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}[Strang 8.2.33]
+        \leavevmode\begin{enumerate}[(a)]
+            \item Write down the integral for the length $L$ of $y=x^2$ from $(0,0)$ to $(1,1)$.
+            \begin{solution}
+                We have $y'(x)^2=(2x)^2=4x^2$, so $L=\int_0^1\sqrt{1+4x^2}\,dx$.
+            \end{solution}
+            \item Show (without computing the integrals) that $y=\frac 12x^2$ from $(0,0)$ to $(2,2)$ is exactly twice as long.
+            \begin{solution}
+                Now $y'(x)62=x^2$, so the length $L'$ of this curve is $\int_0^2\sqrt{1+x^2}\,dx$. By substituting $x=2u$, $dx=2du$ we have
+                \[L'=\int_0^1\sqrt{1+4u^2}\cdot 2\,du=2L,\]
+                as desired.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        You toss a coin repeatedly and stop when you get heads. Let $X$ be a random variable representing the number of coins tossed. (So the minimum $X$ can be is 1, which happens if your first flip lands heads. But there is no maximum.)
+        \begin{enumerate}[(a)]
+            \item For each $n$ let $p_n=\Pr[X=n]$, the probability that $X$ equals $n$. Show that $p_n=1/2^n$ for every positive integer $n$.
+            \begin{solution}
+                In order for $X$ to equal $n$, we must flip $n-1$ tails then a head. Each flip has a 1/2 chance of landing on a specific side. So, this has probability $(1/2)^{n-1}(1/2)=(1/2)^n=1/2^n$ of happening.
+            \end{solution}
+            \item (Strang 8.4.2) What is the probability that $X$ is odd?
+            \begin{solution}
+                The probability is the sum of the probabilities that $X=x$, over all odd numbers $x$. This is
+                \[p_1+p_3+p_5+\cdots=\frac 1{2^1}+\frac 1{2^3}+\frac 1{2^5}+\cdots.\]
+                This is a geometric series with common ratio $1/4$ and first term $1/2$, so the sum is $\frac{1/2}{1- 1/4}=\frac {1/2}{3/4}=\frac 23$.
+            \end{solution}
+            \item (Strang 8.4.4) Show that the probability $P$ that $X$ is a prime number satisfies
+            \[\frac 6{16}\leq P\leq \frac 7{16}.\]
+            \begin{solution}
+                The probability that $P$ is a prime number is the sum
+                \[\sum_{n\text{ is prime}}p_n=\sum_{n\text{ is prime}}\frac 1{2^n}=\frac 1{2^2}+\frac 1{2^3}+\frac 1{2^5}+\cdots.\]
+                Notice that $\frac 1{2^2}+\frac 1{2^3}=\frac 38=\frac 6{16}$, and the rest of the terms are positive. So certainly $P>\frac 6{16}$.
+
+                On the other hand, consider the following sum:
+                \[\frac 1{2^2}+\frac 1{2^3}+\sum_{n=5}^\infty\frac 1{2^n}=\frac 1{2^2}+\frac 1{2^3}+\frac 1{2^4}=\frac 7{16}.\]
+                The terms of this sum strictly contain the terms of $P$, and have some more terms (i.e.\ $1/2^n$ where $n\geq 5$ and $n$ is not prime). Therefore, $P<\frac 7{16}$.
+
+                (Notice that we were able to prove that $P$ is strictly between 6/16 and 7/16, which is stronger than what the problem asked!)
+
+                For those unfamiliar with geometric series, brushing up on geometric series is a good idea! Also, this problem illustrates a very common and useful theme in proving lower and upper bounds for quantities that are hard to compute: we find some intermediate quantity that is easier to compute, then prove that $P$ is at most (resp.\ at least) that quantity, and that that quantity is at most (resp.\ at least) the target upper (resp.\ lower) bound. Or, in fewer words, the strategy for proving that $P\leq Q$ is to find some number $R$ for which you can easily prove $P\leq R$ and $R\leq Q$.
+            \end{solution}
+            \item (Strang 8.4.20) Find the average number $\mu$ of coin tosses by writing $p_1+2p_2+3p_3+\dots$ as $(p_1+p_2+p_3+\dots)+(p_2+p_3+p_4+\dots)+(p_3+p_4+p_5+\dots)+\dots$.
+            \begin{solution}
+                For any positive integer $k$ let $S_k$ stand for the sum $p_k+p_{k+1}+p_{k+2}+\dots$. With this, and taking the suggestion of the problem, we can write
+                \[\mu=S_1+S_2+S_3+\dots.\]
+                We compute
+                \[S_k=\frac 1{2^k}+\frac1{2^{k+1}}+\frac 1{2^{k+2}}+\cdots=\frac 1{2^{k-1}}.\]
+                Therefore,
+                \[\mu=S_1+S_2+S_3+\dots=\frac 1{2^0}+\frac 1{2^1}+\frac 1{2^2}+\dots=1+\frac 12+\frac 14+\cdots=2.\]
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    % \begin{problem}
+    %     Two random numbers $X$ and $Y$ are picked at random from the interval $[0,1]$. Let $Z=X+Y$. What is the probability density function of $Z$? What is the cumulative distribution function of $Z$? Compare this to rolling two dice and adding the values together.
+    % \end{problem}
+
+    \newpage
+
+    \section*{Guide on how to compute the integral for 1(d)}
+
+    For this guide I will walk through a computation of the indefinite integral
+    \[\int\frac {\sqrt{y^4+1}}{y^3}\,dy.\]
+    First make the substitution $u=y^2$, $du=2y\,dy$. Then $\sqrt{y^4+1}$ can be written as $\sqrt{u^2+1}$, while $1/y^3\,dy$ can be written as $1/(2u^2)\,du$. So our integral is now
+    \[\int\frac{\sqrt{u^2+1}}{2u^2}\,du=\frac12\int\frac{\sqrt{u^2+1}}{u^2}\,du.\]
+    There are two choices now and they both work.
+    \subsection*{Choice 1}
+    Make the substitution $u=\tan\theta$, $du=\sec^2\theta\,d\theta$. This takes advantage of the fact that $\sqrt{\tan^2\theta+1}=\sec\theta$. We now have
+    \[\frac12\int \frac{\sec\theta}{\tan^2\theta}\sec^2\theta\,d\theta. \]
+    The integrand simplifies (using $\tan\theta=\sin\theta/\cos\theta$) to $\csc^2\theta\sec\theta$. Finally, using $\csc^2\theta=1+\cot^2\theta$ the integrand simplifies to $\sec\theta+\cot\theta\csc\theta$. The rest, as they say, is history. You can integrate both terms easily by a lookup table. Finally don't forget that a definite integral awaits after you find your antiderivative.
+
+    \subsection*{Choice 2}
+    If you like hyperbolic functions, you can make the substitution $u=\sinh\theta$, $du=\cosh\theta\,d\theta$. I won't walk through this beyond this point because I haven't talked about hyperbolic functions at all.
+\end{document}

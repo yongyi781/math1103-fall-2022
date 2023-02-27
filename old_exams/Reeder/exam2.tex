@@ -1,0 +1,120 @@
+\documentclass[10pt]{article}  
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\addtolength{\textwidth}{100pt}
+\addtolength{\evensidemargin}{-50pt}
+\addtolength{\oddsidemargin}{-50pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Begin user defined commands
+
+\newcommand{\map}[1]{\xrightarrow{#1}}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+
+%  End user defined commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These establish different environments for stating Theorems, Lemmas, Remarks, etc.
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ex}[Thm]{Example}
+
+\theoremstyle{definition}
+\newtheorem{Exercise}{Problem}
+
+\newenvironment{Solution}{\noindent\textbf{Solution.}}{\qed}
+
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+
+% End environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Some commands to save paper
+
+\addtolength{\textwidth}{100pt}
+\addtolength{\evensidemargin}{-60pt}
+\addtolength{\oddsidemargin}{-60pt}
+\addtolength{\topmargin}{-100pt}
+\addtolength{\textheight}{2.0in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now we're ready to start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}  
+
+%\author{Your Name}
+{\bf MATH 1103 Exam 2  April 6, 2018}
+\qquad\qquad\qquad\qquad\qquad{\bf Name:\ }
+
+\vskip10pt
+This exam has six questions on six pages. The odd-numbered problems are worth 13 points, with minimal partial credit. The even-numbered problems are worth 20 points. One point will be awarded for spelling your name correctly. Show all of your work! Little or no credit will be given for answers that lack sufficient justification. Except for problem 6, you may use any theorem from class, notes or homework, without proof. 
+\vskip5pt
+{\bf 1.\ } Consider the power series $\sum\limits_{k=0}^\infty\dfrac{x^k}{3^k}$. 
+
+a)\ Find the radius of convergence $R$ of this series. 
+
+b)\ Find a rational function $f(x)$ represented by the series on the interval $(-R,R)$. 
+
+\newpage
+
+{\bf 2.\ } Compute the power series of the function $F(x)=\displaystyle{\int_0^x\cos(t^2)\ dt}$.
+
+\newpage
+
+{\bf 3.\ } Compute the sum 
+\[1+\frac{1}{2}+\frac{1}{2\cdot 4}+\frac{1}{2\cdot 4\cdot 6}+\frac{1}{2\cdot 4\cdot 6\cdot 8}+\cdots.\]
+
+
+
+\newpage
+{\bf 4.\ } Let $L_n$ and $U_n$ be the lower and upper sums for the function $f(x)=\dfrac{1}{1+x^2}$ on the interval $[0,1]$ and the partition of this interval into $n$ equal parts. 
+
+a)\ Compute $L_n$ and $U_n$. 
+
+b)\ Compute $U_n-L_n$. 
+
+c)\ Find a number $A$ such that $L_n\leq A\leq U_n$ for all $n$. 
+\newpage
+
+
+{\bf 5.\ } Compute  $\displaystyle{\int_0^1\sqrt{1+x^3}}$ as an infinite series. 
+
+\newpage
+{\bf 6.\ } Suppose $f$ is a monotone decreasing function on a closed interval $[a,b]$.  Prove that $f$ is integrable on $[a,b]$. 
+
+
+
+
+
+
+
+\end{document}
+
+ 
+ 

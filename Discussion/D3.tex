@@ -1,0 +1,55 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Discussion Sheet 3}
+
+\begin{document}
+    \maketitle
+    Every discussion you will be assigned three problems and you are encouraged to work in groups.
+
+    \begin{problem}
+         Can you recall the statement of Fundamental Theorem of Calculus Part II? What result have you used in the proof(a VERY famous result)? Can you state it? Can you use a graph to show what the result means? Afterwards, can you recal the proof of FCT Part II?
+    \end{problem}
+
+    \begin{problem}
+       This problem aims to help you distinguish between definite integrals and indefinite integrals.
+       \begin{enumerate}
+           \item Determine whether the following is definite or indefinite
+           $$\int_0^1 x^2 \text{ }dx$$
+           \item Determine whether the following is definite or indefinite
+           $$\int x \text{ }dx
+           $$
+           \item In general, what does a definite integral look like and what does an indefinite integral look like? What are the differences can you observe between them, amongst which is the biggest?
+       \end{enumerate}
+       
+       
+       
+    \end{problem}
+
+    \begin{problem}
+       This problem aims to help with the understanding of the method $u$-substitution. In your PS2, you were asked to prove $$\int_{-a}^a f(x) \text{ }dx=0$$ for any odd function $f(x)$. Here's the sketch of the algebraic proof:
+           $$
+           \begin{aligned}
+           \int_{-a}^a f(x) \text{ }dx&=\int_{-a}^ 0 f(x) \text{ }dx+\int_0^a f(x) \text{ }dx\\
+           &=-\int_0^{-a} f(x) \text{ }dx+\int_0^a f(x) \text{ }dx\\
+           &=-\int_0^a f(-u) (-du)+ \int_0^a f(x) \text{ }dx\text{ (by letting $u=-x$)}\\
+           &=-\int_0^a f(u) \text{ }du+\int_0^a f(x) \text{ }dx=0
+           \end{aligned}
+           $$
+        Can you specify the reason why each equality is indeed an equality in the proof above? Especially in the last step, it indicates that $$\int_0^a f(x) \text{ }dx =\int_0^a f(u) \text{ }du$$ Is this always true? Why? Think about why we can do $u$-substitution for integration.
+        
+    \end{problem}
+
+
+\end{document}

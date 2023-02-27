@@ -1,0 +1,59 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Discussion Sheet 8}
+
+\begin{document}
+    \maketitle
+
+    \begin{problem}
+    Recall that a sequence $\{a_n\}$ converges to $L$ if for any $\epsilon >0$, there exists a positive integer $N$ such that 
+    $$
+    |a_n -L| <\epsilon, \text{ for all }n \geq N
+    $$
+    Then show that $a_n=\frac{1}{n^2} \to 0$ by the $\epsilon-$definition of the convergence of a sequence.
+    \vfill
+    \end{problem}
+    
+    \begin{problem}
+    During the class yesterday, you learned that if $\{x_n\} \to x$ and $\{y_n\} \to y$, then $\{x_n+y_n\} \to x+y$ and $\{x_ny_n\} \to xy$. Similarly, we can ask questions as follows: If $\{x_n\}$ and $\{y_n\}$ both diverge, then must $\{x_n+y_n\}$ and $\{x_ny_n\}$ diverge as well? If yes, prove it! If not, give counterexamples! 
+    \newline
+    \textit{Hint}: Can you give some examples of divergent sequences? 
+    \vfill
+    \end{problem}
+ 
+ \newpage   
+    \begin{problem}\textit{(Geometric series)}
+    Let's work with our old friend again! Let $a$ be any real number, and $r$ be a positive real number.
+    \begin{enumerate}
+        \item Consider the finite series as follows. 
+        $$
+        s_n=a+ar+ar^2+ar^3+\cdots+ar^n
+        $$
+        How can you calculate such a sum?
+        \vfill
+        \item Then let's consider the infinite series as follows.
+        $$
+        s=a+ar+ar^2+ar^3+\cdots
+        $$
+        For which $r's$ is this series convergent? For the convergent case, how can you calculate $s$? Can you use some similar argument to the first part?
+        \vfill
+        \item Prove that $1=.999\cdots$ following the idea of geometric series.
+    \end{enumerate}
+    \end{problem}
+
+    
+
+
+\end{document}

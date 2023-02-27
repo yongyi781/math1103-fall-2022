@@ -1,0 +1,385 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks]{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{remark}{Remark}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\eps}{\varepsilon}
+
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\PDF}{PDF}
+\DeclareMathOperator{\CDF}{CDF}
+
+\title{MATH1103 Fall 2022\\
+Final Exam Review}
+
+\begin{document}
+\maketitle
+
+Many of these review problems are similar to homework problems. For best learning, please try to work them out at first \textbf{without} referring to notes or your homework.
+
+\begin{problem}[Warm-up]
+What is $1+2+\cdots+200$?
+\end{problem}
+
+\begin{problem}
+\leavevmode\begin{enumerate}[(a)]
+  \item Given that we worked out in class that
+        \[x+\frac {x^2}2+\frac{x^3}3+\frac{x^4}4+\cdots\]
+        is the power series for $-\ln(1-x)$, what is the power series for $\ln(1+x)$?
+
+        Coincidentally, Problem Set 1, Problem 1(g) is very related to this power series if we use the Taylor series method for $\ln(1+x)$ instead of substitution. See if you can find what the relationship is.
+
+  \item Prove that the power series for $-\ln(1-x)$ converges if $-1\leq x<1$, and diverges otherwise. Prove that the power series for $\ln(1+x)$ converges if $-1<x\leq1$ and diverges otherwise.
+
+        \emph{Hint}: You only need to do significant work for one of these, then deduce the other one by logical reasoning.
+
+  \item What function has
+        \[x+\frac{x^2}4+\frac{x^3}9+\frac{x^4}{16}+\cdots\]
+        as its power series? In fact, the answer is an integral expression that cannot be simplified.
+
+        \emph{Hint}: If you're stuck, here's the answer, and try to work out how you might have gotten it.
+        \[\int_0^x-\frac{\ln(1-t)}t\,dt.\]
+
+        \emph{Fun fact}: This integral expression is called the \emph{dilogarithm} function, ``di'' meaning ``two'' owing to the fact that its power series has inverse squares as its coefficients.
+  \item For which values of $x$ does the series of part (c) converge?
+
+        Hint: The answer is $-1\leq x\leq 1$.
+
+  \item Let $f(x)=\int_0^x e^{-t^2}\,dt$. What is the power series of $f$?
+
+        \emph{Hint}: You could try the Taylor series method (evaluating $n$th derivatives at 0, then dividing by $n!$) but it will get messy pretty fast. Can you think of another way?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Revisiting Problem Set 1, Problem 4, which asked you to find a general expression for
+\[\int_a^b|x|\,dx\]
+in terms of $a$ and $b$. Try this problem again. Does this problem make more sense to you now than at the beginning of the semester?
+\end{problem}
+
+\begin{problem}
+Let $v(t)$ represent some velocity function, and let $\displaystyle f(x)=\int_x^{x+1}v(t)\,dt$. You saw this function in Problem Set 2 where the function $f$ was called the \emph{running average} function of $v$. In other words, the value of $f$ at a number $x$ is the average of $v$ from $x$ to $x+1$.
+\begin{enumerate}[(a)]
+  \item Prove that
+        \[f(x)+f(x+1)=\int_x^{x+2} v(t)\,dt.\]
+  \item Suppose that $\int_{-\infty}^\infty v(t)\,dt$ converges. Prove that
+        \[\sum_{n=0}^\infty f(x+n)=\int_x^\infty v(t)\,dt.\]
+  \item Imagine you were to take the derivative of both sides of part (b). Explain why the derivative of the left hand side is equal to
+        \[\sum_{n=0}^\infty (v(x+n+1)-v(x+n)),\]
+        and why the derivative of the right hand side is equal to
+        \[-v(x).\]
+  \item Of course, the two expressions in part (c) are equal by virtue of part (b). But pretending you forgot that you did part (b), can you see algebraically how to show that the two expressions in part (c) are equal using telescoping series ideas?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Suppose $\int_{-x}^0 v(t)\,dt=\int_0^x v(t)\,dt$ for all $x\in\bR$. Alice claims this proves that $v$ is an odd function, while Bob claims that this proves that $v$ is an even function, while Steve claims that this proves neither. Who is right? Prove it. (Hint: You can very easily prove Alice or Bob \emph{wrong} by demonstrating a single counterexample. This won't help with Steve though.)
+\end{problem}
+
+\begin{problem}
+\leavevmode \begin{enumerate}[(a)]
+  \item Why are $\int_1^x v(t)\,dt$, $\int_3^x v(t)\,dt$, and $\int_\pi^x v(t)\,dt$ all valid antiderivatives of $v(x)$?
+  \item Part (a) shows that the 3 integrals all differ by a constant, because the antiderivatives of a function differ from each other by a constant. Can you show more directly why the integrals differ by constant?
+  \item Why is $\int_x^\infty v(t)\,dt$ an antiderivative of $-v(x)$ rather than an antiderivative of $v(x)$?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Integration practice, old and new.
+\begin{enumerate}[(a)]
+  \item Integrate the constant function $f(x)=c$ from $x=0$ to $x=100$.
+  \item Find $\int_0^\pi\sin(2x+\pi)\,dx$.
+  \item Find $\int_0^x (u^3-e^{u/2})\,du$.
+  \item You can find the power series for the integrand in part (c), namely you can find the power series for $u^3-e^{u/2}$, then integrate term-by-term to get a power series. You can also take the answer of part (c) and find its power series. See if they're equal.
+  \item Find $e^{x/2}\cdot\int_0^x \frac{t^2}2 e^{-t/2}\,dt$. This integral came up in the recent 2022 Putnam A4 probability problem! You will need to do integration by parts twice and it will be messy, but not too messy.
+
+        \emph{Fun fact}: This integral expression (including the factor of $e^{x/2}$ in the front) is the solution to the differential equation $f'(x)=\frac 12f(x)+\frac{x^2}2$ with initial value $f(0)=0$.
+  \item Find $\int \frac{e^x}{e^x+1}\,dx$.
+  \item Find $\int h(x)h'(x)\,dx$.
+  \item Find $\int (g(x)h'(x)+g'(x)h(x))\,dx$.
+  \item Use what you found in the previous part to prove the integration by parts rule!
+  \item Find $\int \frac{g(x)f'(x)-f(x)g'(x)}{g(x)^2}\,dx$.
+  \item Find $\int_0^x \arctan(t)\,dt$.
+  \item Using the power series for $\arctan(x)$, verify your result for the previous part through power series. It should be quite satisfying to see everything match up!
+\end{enumerate}
+\end{problem}
+
+% \begin{problem}
+% Find a function $v(x)$ whose average value between 0 and $x$ is $\cos x$, for all $x\in\bR$. One example to illustrate this condition is that your function $v(x)$ should satisfy the property that the average of $v$ between 0 and $\pi/2$ is 0. (Because $\cos(\pi/2)=0$.)
+% \end{problem}
+
+\begin{problem}
+\leavevmode \begin{enumerate}[(a)]
+  \item Prove that $\int_{3}^{15}\frac 1t\,dt=\int_1^5\frac 1t\,dt$ without using anything about logarithms.
+  \item The same does not hold with $1/t^2$ instead of $1/t$. In fact, suppose that
+        \[\int_3^{15}\frac 1{t^2}\,dt=\int_1^x\frac 1{t^2}\,dt.\]
+        Can you find $x$? You are free to take antiderivatives this time to help solve this problem.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Is the length of the curve $y=\frac 13x^2$ from $(0,0)$ to $(3,3)$ exactly 3 times the length of the curve $y=x^2$ from $(0,0)$ to $(1,1)$?
+\end{problem}
+
+\begin{problem}
+Work out the volume of a unit sphere (unit meaning radius 1) from first principles using both the washer and shell method. Do not look at your notes. To check your answer, compare what you got with
+\[\frac 43\pi.\]
+\end{problem}
+
+\begin{problem}
+\leavevmode \begin{enumerate}[(a)]
+  \item If I cut a stick of length 1 at a random point along the stick, what is the expected size of the piece to the left of the cut?
+  \item If I cut a stick of length 1 at a random point along the stick, what is the expected size of the smaller piece? Expected size of the larger piece?
+  \item If I cut a stick of length 1 at a random point along the stick, what is the expected absolute length difference between the two pieces?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+\leavevmode\begin{enumerate}[(a)]
+  \item Take a look at the formula for the expected value of a random variable $X$:
+        \[\bE[X]=\int_{-\infty}^\infty x\PDF_X(x)\,dx\]
+        and try to understand why it makes sense to define the expected value that way. (Recall the expected value formula in the discrete case if you're stuck.)
+
+        \emph{Hint:} Here's a motto that may be helpful: The expected value is the weighted average of all the possible values of the outcome where the weights are the probabilities of the outcomes. In the integrand of the integral expression above, which part represents the outcome and which part represents the probability?
+  \item Suppose that you want to measure the expected value of $X^2$ instead. The notation $X^2$ means that you generate a random number according to the distribution of $X$, then square it. Try to understand why
+        \[\int_{-\infty}^\infty x^2\PDF_X(x)\,dx\]
+        makes sense as the expected value of $X^2$.
+  \item Let $p(x)$ stand for $\PDF_X(x)$. Let $\mu$ represent the mean of $X$. You are given that $\Var(X)$ is shorthand for $\bE[(X-\mu)^2]$. Write down the integral that will compute $\Var(X)$. Don't look at your notes.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Why are the following three quantities equal according to the normal distribution model? You can appeal to something you know about the normal distribution, but you should also demonstrate the equality by writing down each probability as an integral, and then showing that all three integral expressions have the same value.
+\begin{itemize}
+  \item The probability that the IQ of a randomly selected person is 125 or higher. IQ is modeled as a normal distribution with mean 100 and standard deviation 15.
+  \item The probability that the IQ of a randomly selected person is 75 or lower.
+  \item The probability that the height of a randomly selected person is 73 inches or greater. Height is modeled as a normal distribution with mean 68 inches and standard deviation 3 inches.
+\end{itemize}
+\end{problem}
+
+\begin{problem}
+A dartboard has the shape of a circle of radius 1. A dart hits a random point in the circle, where by random we mean that the probability that the dart lands in any region $R$ inside the circle is equal to the area of $R$ divided by the area of the circle.
+\begin{enumerate}[(a)]
+  \item Let $X$ be the random variable representing the dart's distance from the center. For any $r$ between 0 and 1, what is the probability that $X\leq r$?
+  \item What is the expected distance of the dart from the center?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Buffon's needle problem. Try to derive the fact that the probability of a needle of length $L$ landing on a line when dropped on a grid with uniformly spaced vertical lines $2L$ apart, is $1/\pi$, without looking at your notes.
+\end{problem}
+
+\bigskip
+See the next page for remarks/spoilers to these problems! Stop scrolling if you don't want to be spoiled.
+
+\newpage
+
+\begin{remark}
+  If you use Gauss's trick, twice the sum is 201 added to itself 200 times, which is 40200. Divide by 2, you get 20100.
+\end{remark}
+
+\begin{remark}
+  \leavevmode\begin{enumerate}[(a)]
+    \item Plug in $-x$ in the place of $x$, and then negate the entire result. Answer:
+          \[x-\frac{x^2}2+\frac{x^3}3-\frac{x^4}4+\cdots.\]
+
+          The relationship to Problem 1(g) in Problem Set 1 is: the $n$th derivative of $\ln x$ was found to be $(-1)^{n-1}(n-1)!/x^n$. Therefore, the $n$th derivative of $\ln(1+x)$ will be $(-1)^{n-1}(n-1)!/(1+x)^n$, because the chain rule for the function $1+x$ does nothing. When that is evaluated at $x=0$ and divided by $n!$, you get
+          \[(-1)^{n-1}\frac{(n-1)!}{n!}=\frac{(-1)^{n-1}}n,\]
+          as the $n$th coefficient of the series (for $n\geq 1$). This agrees with the answer!
+
+    \item Everything here can be solved by using the ratio test, then investigating endpoints separately. The $n$th term of the power series for $-\ln(1-x)$ is, according to part (a), $\frac{x^n}n$. Using the ratio test, we get the relevant ratio being:
+          \[\left|\frac{x^{n+1}}{n+1}\cdot \frac n{x^n}\right|=\left|x\cdot\frac n{n+1}\right|\xrightarrow{n\to\infty} |x|.\]
+          This limit is strictly less than 1 iff $-1<x<1$, and strictly greater than 1 if $|x|>1$. So we can already conclude convergence for $-1<x<1$ and divergence for $x<-1$ and $x>1$. It remains to check $x=-1$ and $x=1$. The $x=-1$ case is the alternating harmonic series which converges, and the $x=1$ case is the harmonic series which diverges.
+
+    \item The goal is to do a combination of multiplications or divisions by $x$, along with differentiation or integration, to turn the coefficients from reciprocals to reciprocals of squares. I expect you to try a lot of things here.
+
+          Soon enough you will make the observation that integration should be involved in some way. If you integrate right off the bat though, the power series becomes
+          \[\frac{x^2}2+\frac{x^3}{2\cdot 3}+\frac{x^3}{3\cdot 4}+\cdots,\]
+          which is close but no cigar. What if you divide by $x$ first, then integrate? Dividing by $x$ gets you
+          \[1+\frac x2+\frac{x^2}3+\frac{x^3}{4}+\cdots,\]
+          then integration gives you
+          \[x+\frac{x^2}4+\frac{x^3}9+\frac{x^4}{16}+\cdots.\]
+          Winner winner chicken dinner!
+
+    \item Let's do the ratio test again! The $(n+1)^2/n^2$ part of the ratio test still converges to 1 as $n\to\infty$ (dominant term idea!), so we still get convergence for $-1<x<1$ and divergence for $|x|>1$. But now, at $x=-1$ we have an alternating sum of reciprocal squares, which converges since the series is an alternating decreasing series whose terms converge to 0. At $x=1$, we get the famous $\pi^2/6$ sum, so this also converges.
+
+    \item We did this on Monday! The answer is (if I recall, you should check this for yourself in case I have bad memory)
+          \[\sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1)n!}\]
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  Copied from pset 1 solutions:
+
+  The definition of the definite integral of $|x|$ with respect to $x$ from $a$ to $b$ is the signed area under the graph of $|x|$ from $a$ to $b$. For example, if $a=7$ and $b=9$, the definite integral would evaluate to the signed area under the graph of $|x|$ from 7 to 9. This can be found by taking a difference of the areas of two isosceles right triangles of leg lengths 9 and 7, respectively. The task at hand is to generalize this computation to any values of $a$ and $b$.
+
+  If $a,b\geq 0$, then the area under the absolute value curve from $a$ to $b$ is equal to $\frac 12(b^2-a^2)$.
+
+  If $b\geq 0$ and $a\leq 0$, then the area is equal to $\frac12(b^2+a^2)$.
+
+  If $b\leq 0$ and $a\geq 0$, then the area is equal to $-\frac12(b^2+a^2)$.
+
+  If $a,b\leq 0$, then the area is equal to $\frac 12(a^2-b^2)$.
+
+  Summing up,
+  \[\int_a^b|x|\,dx = \begin{cases}\frac 12(b^2-a^2) & a,b\geq 0        \\
+             \frac 12(b^2+a^2) & b\geq 0,a\leq 0, \\
+             -\frac12(b^2+a^2) & b\leq 0,a\geq 0, \\
+             \frac 12(a^2-b^2) & a,b\leq 0.
+    \end{cases}\]
+\end{remark}
+
+\begin{remark}
+  \begin{enumerate}[(a)]
+    \item Addition property of integrals!
+    \item Addition property of integrals, infinite series version!
+    \item Using FTC 1 we have $f'(x)=v(x+1)-v(x)$, therefore $f'(x+n)=v(x+n+1)-v(x+n)$.
+
+          FTC 1 on the right hand side gives $-v(x)$ for the derivative.
+
+          Advanced note: There is actually a subtle real analysis issue with part (c) but I won't say anything about it here.
+
+    \item The sum
+          \[\sum_{n=0}^\infty (v(x+n+1)-v(x+n)),\]
+          telescopes!
+
+          Advanced note: There is also a subtle real analysis issue Here but I won't say anything about it here.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  The easiest way to see what's going on with this question is to try to draw a graph of a function $v$ satisfying the equation in the first sentence. For example, if areas from 0 to anywhere on the right half of the graph of $v$ are positive, then areas from anywhere on the left half of the graph of $v$ to 0 must also be positive. This rules out the possibility that $v$ is an odd function. Maybe we can now prove that $v$ must be an even function. How? Let's take the derivative of both sides of the integral equation! We get
+  \[v(-x)=v(x)\qquad\text{for all }x\in\bR.\]
+  Getting $v(-x)$ for the derivative of the left hand side is quite tricky, so I'll lay it out in more detail here. First the idea: the fact that the dependence on $x$ is in the lower bound of the integral introduces a negative sign on the outside. But also, the chain rule on $-x$ introduces a second negative sign canceling out the first negative sign. Here's an algebraic way to say the above: Define an ``intermediate'' integral
+  \[V(x)\coloneqq \int_x^0 v(t)\,dt.\]
+  We can also write $V(x)=-\int_0^x v(t)\,dt$. Then the derivative of $V(x)$ is $-v(x)$. The actual LHS is $V(-x)$ and the derivative of this with respect to $x$ is, by the chain rule, $V'(-x)\cdot (-1)=-(-v(-x))=v(-x)$.
+\end{remark}
+
+\begin{remark}
+  \leavevmode\begin{enumerate}[(a)]
+    \item Their derivatives all give the same function $v(x)$ back.
+    \item For example, $\int_3^x v(t)\,dt-\int_1^x v(t)\,dt=\int_1^3 v(t)\,dt$ which is a constant!
+    \item You notice that the $x$ is in the lower bound this time, so roughly speaking, increasing $x$ removes area instead of adding it. That's the intuitive reason, now the mathematically rigorous explanation:
+          \[\frac d{dx}\int_x^\infty v(t)\,dt=\frac d{dx}\left(-\int_{\infty}^x v(t)\,dt\right)=-v(x).\]
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  \begin{enumerate}[(a)]
+    \item Rectangle of width 100 and height $c$.
+    \item One thing you can notice before you do the integration is to observe that $\sin(2x+\pi)=-\sin(2x)$ for all $x$. Or, you can just perform the $u$-substitution $u=2x+\pi$. Either way the answer is 0.
+    \item Term-by-term integration should do the trick here.
+    \item The power series of $u^3$ is itself. The power series of $e^{u/2}$ is $1+u/2+(u/2)^2/2!+(u/2)^3/3!+\cdots$. The integrand is the subtraction of the former by the latter. Integrating we get
+          \[\frac{x^4}4-x-\frac{x^2}{2\cdot 2}-\frac{x^3}{3\cdot 2^2\cdot 2!}-\frac{x^4}{4\cdot 2^3\cdot 3!}-\cdots.\]
+          Noticing that $n\cdot (n-1)!=n!$ for all positive integers $n$, this simplifies to
+          \[\frac{x^4}4-x-\frac{x^2}{2\cdot 2!}-\frac{x^3}{2^2\cdot 3!}-\frac{x^4}{2^3\cdot 4!}-\cdots.\]
+          On the other hand, the answer to part (c) is $\frac{x^4}4-2(e^{x/2}-1)$. The power series of $\frac{x^4}4$ is itself. The power series of $e^{x/2}-1$ is $x/2+(x/2)^2/2!+(x/2)^3/3!+\cdots$. We subtract the former by twice the latter to get
+          \[\frac{x^4}4-x-\frac{x^2}{2\cdot 2!}-\frac{x^3}{2^2\cdot 3!}-\cdots\]
+          Lo and behold, the power series match.
+
+          (Maybe it was easier to see this by writing everything as a summation. I'd recommend that actually.)
+    \item Double integration by parts. The answer is $-x^2-4x+8e^{x/2}-8$.
+    \item This was on Exam 1! Do $u$-substitution $u=e^x+1$, with $du=e^x\,dx$. This takes care of everything and we have
+          \[\int \frac{du}u=\ln|u|+C=\ln|e^x+1|+C.\]
+          For these types of integrations, it's natural to not think of the right method off the bat (many tried integration by parts), but you should be mindful enough to try the other method if you're not getting anywhere with your first choice.
+    \item Let $u=h(x)$, then $du=h'(x)\,dx$. We get that the integral equals $\frac12h(x)^2+C$.
+    \item Notice that $g(x)h'(x)+g'(x)h(x)=\frac d{dx}(g(x)h(x))$. Since antiderivative and derivative are inverse processes (up to a constant), the desired antiderivative is just $g(x)h(x)+C$. As mentioned in class, the fact that derivative and antiderivative are inverse processes is a matter of definition chasing and is not the content of FTC 1 or 2! The FTCs deal with the link between \textbf{definite} integrals and derivatives which is a much deeper statement.
+    \item We know that $\int(gh'+g'h)\,dx=gh+C$. Therefore, $\int(gh')\,dx=gh-\int(g'h)\,dx+C$. That's integration by parts!
+    \item We did this in class. This is the antiderivative of the quotient rule so the answer is $f(x)/g(x)+C$.
+    \item Integration by parts with $u=\arctan t$ and $dv=dt$ ($v=t$). The answer is $t\arctan t-\frac 12\ln(t^2+1)\Big|_0^x=x\arctan x-\frac 12\ln(x^2+1)$.
+    \item So the power series for $\arctan x$ is $\sum_{n=0}^\infty\frac{(-1)^nx^{2n+1}}{2n+1}$. (i.e. coefficients are odd reciprocals with alternating signs.) Doing term-by-term integration we get
+          \[\int_0^x\arctan(t)\,dt=\sum_{n=0}^\infty\frac{(-1)^nx^{2n+2}}{(2n+1)(2n+2)}.\]
+          Well this is nice, we can do partial fractions on this! Noticing that $1/((2n+1)(2n+2))=1/(2n+1)-1/(2n+2)$, this allows us to rewrite the above as
+          \[\begin{split}
+              \int_0^x\arctan(t)\,dt&=\sum_{n=0}^\infty (-1)^nx^{2n+2}\left( \frac 1{2n+1}-\frac 1{2n+2} \right)\\
+              &=\sum_{n=0}^\infty\frac{(-1)^n x\cdot x^{2n+1}}{2n+1}-\sum_{n=0}^\infty\frac{(-1)^nx^{2n+2}}{2n+2}\\
+              &=x\arctan x-\frac 12\sum_{n=0}^\infty\frac{(-1)^n (x^2)^{n+1}}{n+1}\\
+              &=x\arctan x-\frac 12\sum_{n=1}^\infty\frac{(-1)^{n+1} (x^2)^{n}}{n}\\
+              &= x\arctan x-\frac 12\ln(1+x^2).
+            \end{split}\]
+          Hard work but neat!
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  \leavevmode\begin{enumerate}[(a)]
+    \item We did this in class! A $u$-substitution looks good because we can notice that $3=3\cdot 1$ and $15=3\cdot 5$, suggesting the substitution $u=3t$ for the right hand integral. Magically the $u$-substitution does not change the function. This is what is special about the $1/t$ function.
+    \item Let's see: $\int_3^{15}\frac 1{t^2}\,dt=-\frac 1t\Big|_3^{15}=\frac 13-\frac 1{15}=\frac 4{15}$. So we need to solve
+          \[\frac 4{15}=\int_1^x\frac 1{t^2}\,dt=-\frac 1t\Big|_1^x=1-\frac 1x.\]
+          Using algebra, we rewrite this equation as $\frac{11}{15}=\frac 1x$, so $x=\frac{15}{11}$. So we can see that $x=5$ does not work here anymore.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  Here's a tip as to how I re-construct the arc length formula (because it's natural to forget!) The key idea is based on the Pythagorean theorem, just a differential version of it. Instead of $\sqrt{a^2+b^2}$, it's $\sqrt{dx^2+dy^2}$. And we are integrating this infinitesimal hypotenuse length over the interval of interest, and that is the arc length. So here, our curve has equation $y=\frac 13x^2$, we have $dx=dx$ and $dy=\frac 23x\,dx$. So the hypotenuse element is $\sqrt{dx^2+dy^2}=\sqrt{dx^2+\frac 49x^2 dx^2}=dx\sqrt{1+\frac 49x^2}$. And we integrate this from $x=0$ to $x=3$, giving our length
+  \[L_3=\int_0^3\sqrt{1+\frac 49x^2}\,dx.\]
+  Similarly,
+  \[L_1=\int_0^1\sqrt{1+4x^2}\,dx.\]
+  In order to compare these two integrals, in the integral $L_3$ let's make the substitution $u=\frac x3$ so $x=3u$ and $dx=3\,du$. This transforms our integral to
+  \[L_3=\int_0^1\sqrt{1+4u^2}\,3du=3\int_0^1\sqrt{1+4u^2}\,du.\]
+  So indeed, $L_3$ is exactly 3 times $L_1$.
+\end{remark}
+
+\begin{remark}
+  I think this is in the textbook (both Strang and Reeder). This document is long enough as is!
+\end{remark}
+
+\begin{remark}
+  For all these parts, the key thing that makes this problem manageable is to let $x$ stand for the position of the cut (0 for leftmost and 1 for rightmost), and express our desired value in terms of $x$, then average over $x\in[0,1]$ (as $x$ is uniformly distributed). Remember the ``averaging'' method is only appropriate when the parameter ($x$ in this problem) is uniformly distributed.
+
+  There's also a CDF/PDF approach that works here too. It is a nice exercise to try to switch perspectives back and forth.
+  \begin{enumerate}[(a)]
+    \item The size of the piece to the left of the cut, if the cut was at $x$, is just $x$. Averaging $x$ over 0 to 1 we get
+          \[\frac 1{1-0}\int_0^1 x\,dx=\frac{x^2}2\Big|_0^1=\frac 12.\]
+          Another approach is to notice that the size of the piece to the left of the cut follows a uniform distribution on $[0,1]$, and the expected value of this uniform distribution is
+          \[\int_0^1 x\cdot 1\,dx\]
+          which is the same integral (here 1 is the PDF of a uniform distribution on $[0,1]$).
+
+    \item Here, the length of the smaller piece as a function of $x$ is $\min(x,1-x)$. Integrating this gives us
+          \[\frac 1{1-0}\int_0^1\min(x,1-x)\,dx=\int_0^{\frac12}x\,dx+\int_{\frac12}^1(1-x)\,dx=\frac 18+\frac18=\frac 14.\]
+          We can also approach this with distributions. The key method of this approach is to introduce a new variable $z$ (the letter name isn't important, it's just important that it doesn't clash with already used variable names like $x$) and ask: ``What is the probability that the length of the smaller piece is less than $z$?''
+
+          Well in order for the smallest piece have length less than $z$ we must have cut the stick anywhere from 0 to $z$, or anywhere from $1-z$ to 1. The length of the set of valid places to cut is $2z$. And the relevant values of $z$ range from 0 to $1/2$. So this tells us that $\CDF(z)=2z$ for $z\in[0,\frac 12]$. For $z<0$, $\CDF(z)=0$ and for $z>\frac12$, $\CDF(z)=1$. The PDF is then $\PDF(z)=2$ on $[0,\frac12]$ and 0 outside that range. The expected value of the length of the smaller piece is therefore
+          \[\int_0^{\frac12}z\PDF(z)\,dz=\int_0^{\frac 12}2z\,dz=\frac 14.\]
+
+    \item Here, the length of the larger piece as a function of $x$ is $\max(x,1-x)$. Integrating this gives us
+          \[\frac 1{1-0}\int_0^1\max(x,1-x)\,dx=\int_0^{\frac12}(1-x)\,dx+\int_{\frac12}^1 x\,dx=\frac 38+\frac 38=\frac 34.\]
+          A CDF/PDF approach works similar to above.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  \leavevmode\begin{enumerate}[(a)]
+    \item The outcomes are represented by $x$ and the weights (probabilities) are represented by $\PDF_X(x)\,dx$.
+    \item For each outcome $x$ the measured outcome is $x^2$, and the weight (probability) is $\PDF_X(x)\,dx$.
+    \item \[\int_{-\infty}^\infty (x-\mu)^2\PDF_X(x)\,dx.\]
+          Basically, we are taking the expected value of ``our outcome, minus $\mu$, then squared.'' Turning this into our integral, our outcome gets represented by $x$ (the variable of integration). And what we measure given $x$ is $(x-\mu)^2$. Then $\PDF_X(x)\,dx$ gives us the weights.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  The core explanation is that all of these IQ/height values are exactly $5/3$ standard deviations away from the mean. The calculus side of this is that if you write each probability as an integral involving the normal distribution function, a $u$-substitution transforms any of these integrals into any of the other integrals, proving they have the same value.
+\end{remark}
+
+\begin{remark}
+  \leavevmode\begin{enumerate}[(a)]
+    \item The event $X\leq r$ means that the dart landed within a smaller circle of radius $r$ around the center. The region of such points inside this circle has area $\pi r^2$, and the total region has area $\pi\cdot 1^2=\pi$. So the probability that $X\leq r$ is $r^2$.
+    \item The purpose of part (a) is that it gives us the CDF of $X$ as $r^2$, $0\leq r\leq 1$. The PDF is therefore $\PDF_X(r)=2r$, $0\leq r\leq 1$. The expected distance is therefore
+    \[\int_0^1 r\PDF_X(r)\,dr=\int_0^1 r\cdot 2r\,dr=\int_0^1 2r^2\,dr=\frac 23r^3\Big|_0^1=\frac 23.\]
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  \href{https://mindyourdecisions.com/blog/2016/03/13/buffons-needle-problem-sunday-puzzle/}{Here's a link} to a webpage that gives an explanation of Buffon's needle problem. I think it's a nice explanation. Although one difference is that the author chooses to parametrize the position with the center of the needle rather than the edge. However, this changes pretty much nothing in the analysis.
+\end{remark}
+\end{document}

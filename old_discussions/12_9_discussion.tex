@@ -1,0 +1,55 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+\usepackage{amsmath}								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{}
+\author{Week 14 discussion problems}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{enumerate}
+\item An important curve to parameterize is a line segment from one point to another. There are many ways to do this, but the simplest is probably the following. Suppose $C$ is the  line segment \emph{from} point $(x_0,y_0)$ \emph{to} the point $(x_1,y_1)$. We use parametric equations $x=(1-t)x_0+tx_1$, $y=(1-t)y_0+ty_1$, for $0 \le t \le 1.$ Think about what this means: when $t=0$, we're at the point $(x_0,y_0)$; when $t=1$, we're at the point $(x_1,y_1)$. As $t$ increases from 0 to 1, we move linearly from the initial point to the terminal point. (If we took $t$ greater than 1, we'd keep going.) 
+\begin{enumerate} 
+
+\item Find the parametric equations for the line segment from (1,4) to (5,12).
+
+\
+
+\item Now forget this and use high school Algebra I to find the equation of the line connecting these points.
+
+\
+
+\item Now go back to the parametric equations you found, eliminate the parameter and see that you get the same equation for the line.  The difference is that the parametric equations give us the line \emph{segment} between them, with an indicated initial and terminal point.
+
+\end{enumerate}
+
+\
+
+\item Find a Cartesian equation relating $x$ and $y$ corresponding to the parametric equations $x=4\sin(2t), \ y=3\cos(2t)$. What does this curve lie on for an interval of $t$ values?
+
+\
+
+\item Here's a reality check: let's find the area inside a circle of radius $R$, working with polar coordinates. The circle with center (0,0) and radius $R$ has the polar equation $r=R$, for $0  \le \theta \le 2\pi$. Using the area formula I gave in class, find the area inside that circle and see you get the expected result.
+
+\newpage
+
+\item The polar curve $r=\sin(2\theta)$, for $0\le\theta \le 2\pi$, gives a 4-leaf rose, as pictured below.
+How does this get traced out as $\theta$ goes from 0 to $2\pi$? Next, let's find the enclosed area. The rose is symmetric, so it suffices to find the area in the first quadrant and multiply that by 4. Convince yourself that $\sin(2\theta) \ge 0$ for $0 \le \theta \le \pi/2.$ Then find the area.
+
+\
+
+\includegraphics[width= 3 in]{4leafrose.pdf}
+
+
+
+\end{enumerate}
+\end{document}  

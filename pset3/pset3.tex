@@ -1,0 +1,94 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 3}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, September 21 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Some exercises.
+        \begin{enumerate}[(a)]
+            \item (Strang 5.4.1) Find
+            \[\int\sqrt{2+x}\,dx.\]
+            (Don't forget to add $+C$ to your final answer.)
+            % \item (Strang 5.4.5) Find
+            % \[\int x(x^2+1)^5\,dx.\]
+            \item (Strang 5.4.14) Find
+            \[\int t^3\sqrt{1-t^2}\,dt.\]
+            \emph{Hint}: Starting with $u=1-t^2$ worked for me.
+            \item (Strang 5.4.20) Find
+            \[\int\sin^3 x\,dx.\]
+            \emph{Hint}: The identity $\sin^2 x=1-\cos^2x $ may be useful.
+            \item (Strang 7.1.2) Find
+            \[\int xe^{4x}\,dx.\]
+            \item (Strang 7.1.27) Find
+            \[\int_0^1\ln(x)\,dx.\]
+            \item (Strang 7.3.3) Using trigonometric substitution, find
+            \[\int\sqrt{4-x^2}\,dx\]
+            and use this to calculate
+            \[\int_{-2}^2\sqrt{4-x^2}\,dx.\]
+            Could you have found this definite integral using geometry instead?
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        \leavevmode
+        \begin{enumerate}[(a)]
+            \item Use software such as Desmos or WolframAlpha to find an approximation to the following definite integral:
+            \[\int_0^4e^{(x-2)^4}\,dx.\]
+            Do the same for the following definite integral:
+            \[\int_0^4 xe^{(x-2)^4}\,dx.\]
+            If you divide the bigger number by the smaller, what do you get?
+
+            \emph{Hint}: If you didn't get a positive integer, you probably inputted one or more integrals wrong somehow.
+            \item Prove that your observation is in fact exactly true. You may find it useful to use $u$-substitution along with a hefty dose of symmetry.
+            
+            \emph{Hint}: The values of the definite integrals in part (a) have no known closed forms! This suggests that trying to get exact values for the integrals will be a dead end.
+
+            \emph{Hint 2}: If you are still stuck, see the footnote.\footnote{$xe^{(x-2)^4}=(x-2)e^{(x-2)^4}+2e^{(x-2)^4}$.} Try plotting the first term in the right hand side of the footnote and see if you notice anything.
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        Let
+        \[f(x)=\int_1^x\frac 1t\,dt.\]
+        For example, this means that $f(3)=\int_1^3\frac 1t\,dt$, $f(s)=\int_1^s\frac 1t\,dt$, and $f(xy)=\int_1^{xy}\frac 1t\,dt$.
+
+        Put yourself in the mind of someone who does not know yet that $f$ is the natural logarithm function and wants to prove that $f$ is the natural logarithm function. One way to start proving this is to show that $f(xy)=f(x)+f(y)$ for all positive real numbers $x$ and $y$. That is, $f$ turns multiplication into addition. This is one of the defining properties of the natural logarithm.
+        
+        Using properties of integrals and $u$-substitution, prove that $f(xy)=f(x)+f(y)$ for all positive real numbers $x$ and $y$.
+
+        \emph{Optional challenge}: The other ingredient needed to prove that $f$ is the natural logarithm is to prove that $f$ is continuous and that $f(e)=1$. Continuity (in fact, differentiability) follows from the fact that $f$ is an area function whose derivative is $1/x$. Can you prove that $f(e)=1$ from first principles? Of course, you'll need a working definition of $e$. Here is one:
+        \[e\coloneqq\lim_{n\to\infty}\left(1+\frac 1n\right)^n.\]
+    \end{problem}
+
+    \begin{problem}
+        Recall that I mentioned in passing that areas are also invariant under rotations and reflections. In particular, areas are invariant under a reflection across the line $y=x$. This is interesting because the graph of the inverse of a function $f$ is also the reflection across the line $y=x$ of the graph of $f$. We will apply this to show a surprising relationship between the definite integrals of a function and its inverse, using the example of the inverse pair $e^x$ and $\ln x$.
+        \begin{enumerate}[(a)]
+            \item First, show using the integration by parts technique that, for any $b>1$,
+            \[\int_1^b\ln t\,dt=b\ln b-b+1.\]
+            \item Now we will show the same identity without using any integration techniques! Do the following:
+            \begin{enumerate}[(i)]
+                \item Draw on coordinate axes the graph of $e^x$ and shade the region under this curve from $x=0$ to $x=\ln b$. Also find the area of this region.
+                \item Reflect everything across the line $y=x$ and show the result on a new set of coordinate axes. Also draw the rectangle with corners $(0,0)$, $(b,0)$, $(b,\ln b)$, and $(0,\ln b)$.
+                \item If you drew everything right, the unshaded region within the rectangle should correspond exactly to the definite integral
+                \[\int_1^b\ln t\,dt.\]
+                Deduce the formula from part (a) by combining this observation with previous observations.
+            \end{enumerate}
+        \end{enumerate}
+    \end{problem}
+
+\end{document}

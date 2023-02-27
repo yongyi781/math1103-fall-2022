@@ -1,0 +1,168 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools,microtype,pgfplots}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks]{hyperref}
+\usepackage[most]{tcolorbox}
+
+\usepgfplotslibrary{fillbetween,decorations.softclip}
+\pgfplotsset{compat=1.18}
+
+\definecolor{sol}{rgb}{0.1, 0.3, 0.6}
+
+\newtcolorbox{solution}{enhanced, breakable, colframe=sol, title=Solution}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bE}{\mathbb{E}}
+
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\CDF}{CDF}
+\DeclareMathOperator{\PDF}{PDF}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 6 Solutions}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, October 12 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    \begin{problem}
+        Some exercises.
+        \begin{enumerate}[(a)]
+            \item (Strang 8.4.3) Why is $p(x)=e^{-2x}$ not an acceptable probability density for $x\geq 0$? Why is $p(x)=4e^{-2x}-e^{-x}$ (also for $x\geq 0$) not acceptable?
+            \begin{solution}
+                The function $p(x)=e^{-2x}$ is not a valid probability density function because it does not have total area 1 from 0 to $\infty$. The total area is in fact
+                \[\int_0^\infty e^{-2x}\,dx=-\frac 12e^{-2x}\Big|_0^\infty=\frac12.\]
+
+                The function $p(x)=4e^{-2x}-e^{-x}$ is not a valid probability density function because it attains some negative values. More precisely, for all $x>\ln 4$, we have $0<e^{-x}<\frac 14$, so that $4e^{-2x}-e^{-x}=e^{-x}(4e^{-x}-1)<0$, being the product of a positive number and a negative number.
+            \end{solution}
+            \item (Strang 8.4.5) If $p(x)=e^{-x}$ for $x\geq 0$, find the probability that $X\geq 2$ and the approximate probability that $1\leq X\leq 1.01$.
+            \begin{solution}
+                The probability that $X\geq 2$ is
+                \[\int_2^\infty e^{-x}\,dx=-e^{-x}\Big|_2^\infty=e^{-2}.\]
+                The probability that $1\leq X\leq 1.01$ can be approximated by the area of a rectangle with width $0.01$ and height $p(1)=e^{-1}$, which comes out to about $0.00368$ or about 1 in 272.
+
+                We could also find the exact probability, although it is unnecessary: $\int_1^{1.01}p(x)\,dx$ comes out to $0.00366$ or about 1 in 273. The approximation is extremely close, which suggests that the probability density function is not changing too much between 1 and 1.01!
+            \end{solution}
+            \item (Strang 8.4.12) Find the mean of the distribution given by the PDF $p(x)=e^{-x}$ for $x\geq 0$. (Integrate by parts.)
+            \begin{solution}
+                The mean is given by the integral
+                \[\int_0^\infty xe^{-x}\,dx.\]
+                We integrate $xe^{-x}$ by parts using $u=x$ and $v=-e^{-x}$ to find that $\int xe^{-x}=(-x-1)e^{-x}+C$. Therefore,
+                \[\int_0^\infty xe^{-x}\,dx = (-x-1)e^{-x}\Big|_0^\infty=0-(-0-1)=1.\]
+            \end{solution}
+            \item (Strang 8.4.19) Supernovas are expected about every 100 years. What is the probability that you will be alive for the next one?
+            
+            \emph{Hint}: You can use a Poisson model with $\lambda=0.01\times\text{(your lifetime)}$ and estimate your lifetime. You can also use an exponential distribution.
+            
+            (Supernovas actually occurred in 1054 (Crab nebula), 1572, 1604, and 1987. But the future distribution doesn't depend on the date of the last one.)
+            
+            \emph{Remark}: Strang discusses the Poisson distribution on pages 331--332, including in the table at the end of page 332.
+            \begin{solution}
+                Let's say our lifetime is 80 years from today. If we use the Poisson model with mean expected occurrences within our lifetimes being $\lambda=0.01\cdot 80=0.8$, the model says that the probability of no occurrences is equal to $\frac 1{0!}e^{-0.8}\lambda^0=e^{-0.8}$. So the probability of at least one occurrence is $1-e^{-0.8}\approx 55\%$.
+
+                If we use the exponential distribution instead, we will be modeling the expected time until the next supernova by the probability distribution $p(x)=a e^{-ax}$ with $a=0.01$. The probability that the time until the next supernova is at most 80 years (our lifetime) is therefore
+                \[\int_0^{80}0.01e^{-0.01x}\,dx=-e^{-0.01x}\big|_0^{80}=1-e^{-0.8}\approx 55\%,\]
+                same as before.
+            \end{solution}
+            \item (Strang 8.4.24) What is the variance of the uniform distribution on $[0,1]$? What is the standard deviation?
+            \begin{solution}
+                The PDF of the uniform distribution is the constant function 1 on $[0,1]$ (and 0 elsewhere). The mean is 0.5. The variance of this distribution is therefore equal to
+                \[\begin{split}
+                    \int_0^1 \left(x-\frac12\right)^2\,dx &= \frac 13\left(x-\frac 12\right)^3\Big|_0^1\\
+                    &= \frac 13\cdot\frac 18-\frac 13\cdot \left(-\frac18\right)\\
+                    &= \frac 1{12}.
+                \end{split}\]
+                The standard deviation is the square root of the variance, so it is $\frac 1{\sqrt{12}}=\frac 1{2\sqrt 3}$. You could simplify this further to $\frac{\sqrt 3}6$, if you like.
+            \end{solution}
+            \item (Strang 8.4.33) Suppose grades have a normal distribution with mean 70 and standard deviation 10. If 300 students take the test and passing is 55, how many are expected to fail? Write your answer as a definite integral then give an approximation. What passing grade will fail 1/10 of the class?
+            \begin{solution}
+                The normal distribution with mean 70 and standard deviation 10 has probability density function
+                \[p(x)=\frac 1{10\sqrt{2\pi}}e^{-\frac12\left(\frac{x-70}{10}\right)^2}.\]
+                The fraction of students expected to fail is the fraction of students who obtain a score less than 55, which is
+                \[\int_{-\infty}^{55}p(x)\,dx\approx 6.68\%.\]
+                This was numerically calculated by computer. You could also use the range 0 to 55 and get
+                \[\int_{0}^{55}p(x)\,dx\approx 6.68\%.\]
+                In fact the two numbers agree to at least 6 significant digits. In either case, the number of students expected to fail is $6.68\%\cdot 300\approx 20$ students.
+
+                To determine the passing grade that fails 1/10 of the class, one must find the value of $a$ for which
+                \[\int_{-\infty}^{a}p(x)\,dx=0.1\]
+                This again has to be done by computer, either by iterative guess and check or by a $z$-table. Either way, one finds that a passing grade of about 57.2 will do the job.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}
+        You know from class that $\Var(X)$ is defined as $\bE[(X-\mu)^2]$, where $\mu=\bE[X]$. Use calculus to prove the following famous identity for variance:
+        \[\Var(X)=\bE[X^2]-\bE[X]^2.\]
+        \emph{Hint}: If you are stuck, Exercise 8.4.23 in Strang has some spoilers to get you started, but you still need to explain the step Strang asks to explain.
+    \end{problem}
+    \begin{solution}
+        Let $p(x)$ be the PDF of $X$. We use algebra and find:
+        \[\begin{split}
+            \Var(X) &= \bE[(X-\mu)^2] \\
+            &=\int_{-\infty}^\infty (x-\mu)^2 p(x)\,dx\\
+            &= \int_{-\infty}^\infty (x^2-2x\mu+\mu^2)p(x)\,dx\\
+            &= \int_{-\infty}^\infty x^2 p(x)\,dx-2\mu\int_{-\infty}^\infty xp(x)\,dx+\mu^2 \int_{-\infty}^\infty p(x)\,dx.
+        \end{split}\]
+        The first term equals $\bE[X^2]$, the second term equals $2\mu \bE[X]=2\bE[X]^2$, and the third term is $\mu^2\cdot 1=\bE[X]^2$ because $\int_{-\infty}^\infty p(x)\,dx=1$. Therefore,
+        \[\Var(X)=\bE[X^2]-2\bE[X]^2+\bE[X]^2=\bE[X^2]-\bE[X]^2,\]
+        as desired.
+    \end{solution}
+    
+    \begin{problem}
+        Two random numbers $X$ and $Y$ are drawn (independently) from a uniform distribution on $[0,1]$. Find $\bE[\max(X,Y)]$.
+
+        \emph{Hint}: This is a pretty fun problem. Start by finding the CDF of $\max(X,Y)$. Use the fact that $\max(X,Y)\leq z$ if and only if both $X\leq z$ and $Y\leq z$.
+
+        \emph{Optional challenge}: Generalize to the $\max(X_1,\dots,X_n)$ where each $X_i$ is drawn from a uniform distribution on $[0,1]$.
+    \end{problem}
+    \begin{solution}
+        Here is the intended solution. At the end I will show a very sleek solution that will amaze you. Let $z$ be an arbitrary real number. Since $\max(X,Y)\leq z$ if and only if $X\leq z$ and $Y\leq z$, we see that
+        \[\Pr[\max(X,Y)\leq z]=\Pr[X\leq z]\cdot\Pr[Y\leq z]=z\cdot z=z^2.\]
+        Let $Z$ denote the random variable $\max(X,Y)$. Since $\CDF_Z(z)$ is the same thing as $\Pr[\max(X,Y)\leq z]$, we find that $\CDF_Z(z)=z^2$. Therefore, $\PDF_Z(z)=\frac d{dz}z^2=2z$. Hence
+        \[\bE[\max(X,Y)]=\bE[Z]=\int_0^1 z\PDF_Z(z)\,dz=\int_0^1 2z^2\,dz=\frac 23.\]
+        The same method works for the optional challenge, just now $\CDF_Z(z)$ is the probability that $n$ independent random numbers are all less than $z$, which is $z^n$.
+    \end{solution}
+    \begin{solution}
+        Here is the sleek solution. We pick 3 random numbers in $[0,1]$, calling the first two $X$ and $Y$ respectively and calling the last number $Z$. For any values of $X$ and $Y$, the probability that $Z$ is less than at least one of $X$ or $Y$ is the same as the value of $\max(X,Y)$, because $Z$ is random in $[0,1]$. Therefore, $\bE[\max(X,Y)]$ is the same as $\Pr[Z< X\text{ or }Z< Y]$. This probability is just the probability that $Z$ is not the largest of the 3 numbers $X,Y,Z$. The probability that $Z$ is the largest of the 3 numbers $X,Y,Z$ is 1/3, by symmetry. Therefore, the probability that $Z$ is not the largest is 2/3.
+
+        To generalize to the optional challenge, the answer now is just the probability that $Z$ is not the largest among $n+1$ numbers. The probability of this is $n/(n+1)$ by the same reasoning. Very cool!
+    \end{solution}
+
+    % \begin{problem}
+    %     Two random numbers $X$ and $Y$ are drawn from a uniform distribution on $[0,1]$. Let $Z=X+Y$. What is the probability density function of $Z$? In order to figure this out, you should first find the cumulative distribution function of $Z$. Finally, compare the shape of the PDF you obtained with the shape of the PDF of the sum of two dice.
+
+    %     \emph{Hint:} To figure out the cumulative distribution function $\mathrm{CDF}_Z(z)$, i.e.\ the probability that $X+Y$ is less than or equal to $z$, first assume $X=x$, then figure out the probability that $x+Y\leq z$. Then average over $x$ from 0 to 1. Another way to approach this is to draw a square representing the possible values of $X$ and $Y$ together, then for each $z$, finding the area of the region corresponding to the points $(X,Y)$ where $X+Y\leq z$.
+    % \end{problem}
+
+    \begin{problem}[Optional]
+        \href{https://www.youtube.com/watch?v=4y_nmpv-9lI}{This video} talks about the surprisingly non-intuitive problem of generating a random point inside a circle. After watching the video, think about the following.
+        \begin{enumerate}[(a)]
+            \item What do you think is the fairest way to pick a random point on a circle?
+            \item The video mentioned something called inverse transform sampling. To test if you understood it, what is the probability density function of $X^2$ if $X$ is drawn from a uniform distribution on $[0,1]$? (Recall we saw in class a while ago that the average value of $X^2$ was 1/3.)
+            
+            \emph{Hint}: As usual, start by finding the CDF.
+
+            \emph{Spoiler}: the PDF of $X^2$ is $\frac 1{2\sqrt x}$ for $0\leq x\leq 1$.
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}[Optional]
+        \leavevmode\begin{enumerate}[(a)]
+            \item Let $X$ and $Y$ be two independent random variables with PDFs $p(x)$ and $q(x)$ respectively. Prove that the PDF of $X+Y$ is given by
+            \[\mathrm{PDF}_{X+Y}(x)=\int_{-\infty}^\infty p(t)q(x-t)\,dt.\]
+            \emph{Hint:} Find the CDF of $X+Y$, then differentiate under the integral sign.
+            \item We write $X\sim N(\mu,\sigma)$ to mean that $X$ follows a normal distribution with mean $\mu$ and standard deviation $\sigma$. Using part (a), prove that if $X\sim N(0,1)$ and $Y\sim N(0,1)$, then $X+Y\sim N(0,\sqrt 2)$.
+        \end{enumerate}
+    \end{problem}
+    \begin{solution}
+        Let me know if you want to see solutions to these optional problems!
+    \end{solution}
+\end{document}

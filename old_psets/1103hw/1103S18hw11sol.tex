@@ -1,0 +1,411 @@
+\documentclass[12pt]{article}  
+
+%Run with XeLaTeX
+\usepackage
+[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=blue]
+{hyperref}
+
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphics} 
+\usepackage{graphicx} 
+%\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepgfplotslibrary{polar}
+\usepackage{ skull }
+\usetikzlibrary{decorations.fractals}
+%\usepackage{pst-func}
+
+% GNUPLOT required
+\usepackage{verbatim}
+
+\linespread{1.3}
+
+%\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{20pt}
+\addtolength{\oddsidemargin}{20pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Begin user defined commands
+
+\newcommand{\map}[1]{\xrightarrow{#1}}
+
+
+\newcommand{\bz}{\mathbb Z}
+\newcommand{\bq}{\mathbb Q}
+\newcommand{\br}{\mathbb R}
+\newcommand{\bc}{\mathbb C}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\ep}{\epsilon}
+\DeclareMathOperator{\lub}{l.u.b.}
+%  End user defined commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These establish different environments for stating Theorems, Lemmas, Remarks, etc.
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ex}[Thm]{Example}
+
+\theoremstyle{definition}
+\newtheorem{Exercise}{Problem}
+
+\newenvironment{Solution}{\noindent\textbf{Solution.}}{}
+
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand\qedsymbol{QED}
+% End environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Some commands to save paper
+
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\LH}{\ \underset{\text{LH}}{=}\ }
+\newcommand{\Dep}{\Delta_+}
+\newcommand{\Dem}{\Delta_-}
+\newcommand{\bu}{\mathbf u}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\bw}{\mathbf w}
+
+\newcommand{\ora}{\overrightarrow}
+
+
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\evensidemargin}{-40pt}
+\addtolength{\oddsidemargin}{-40pt}
+\addtolength{\topmargin}{-80pt}
+\addtolength{\textheight}{1.8in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{8pt}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now we're ready to start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}  
+
+%\author{Your Name}
+{\bf MATH 1103 Homework 11 Solutions}\\
+{\bf Due Friday April 27 2018}
+
+
+
+ {\bf Homework 11 problems to be turned in. Practice problems are on the next page.}
+
+
+
+
+{\bf 1.\ } Express the Gaussian integral $G_{n}=\int_0^{\infty} x^n e^{-x^2}\ dx$ in terms of factorials. [Hint: do a $u$-substitution to turn it into a factorial integral.]
+
+\begin{Solution}
+Let $u=x^2$, so that $du=2x\ dx$ and $x^n\ dx=x^{n-1}\cdot x\ dx=\frac{1}{2}u^{(n-1)/2}\ du.$
+We get
+\[G_n=\tfrac{1}{2}\left(\tfrac{n-1}{2}\right)!\]
+\end{Solution}
+
+
+
+{\bf 2.\ } Turn each of the following integrals into a factorial integral and compute it in terms of factorials. ($a$ is a positive constant.)
+
+\[ \text{a)}\ \int_0^\infty e^{-ax^2}\ dx \qquad\qquad
+ \text{b)}\ \int_0^\infty e^{-x^3}\ dx\qquad \qquad
+ \text{c)}\ \int_0^1\frac{dx}{\sqrt{-\log x}}.
+\]
+
+
+\begin{Solution} 
+In each case we make a substitution to get the exponential to be $e^{-u}$. 
+
+a)\ Let $u=ax^2$. Then $x=\sqrt{u/a}$ so $dx=du/(2\sqrt{au})$ and we get
+\[\int_0^\infty e^{-ax^2}\ dx=\frac{1}{2\sqrt{a}}\int_0^\infty u^{-1/2}e^{-u}\ du=
+\frac{1}{2\sqrt{a}}\cdot (-1/2)!=\frac{1}{2}\sqrt{\frac{\pi}{a}}.
+\]
+
+b)\ Let $u=x^3$. Then $x=u^{1/3}$  so $dx=(1/3)u^{-2/3} du$ and we get
+\[ \int_0^\infty e^{-x^3}\ dx=(1/3)\int_0^\infty u^{-2/3}e^{-u} du=
+(1/3)(-2/3)!=(1/3)!
+\]
+
+c)\ Let $u=-\log x$. Then $x=e^{-u}$ so $dx=-e^{-u}$,  and the limits $(0,1)$ change to $(\infty,0)$. So we get 
+\[\int_0^1\frac{dx}{\sqrt{-\log x}}=-\int_\infty^0 u^{-1/2} e^{-u}\ du
+=\int_0^\infty u^{-1/2} e^{-u}\ du=(-1/2)!=\sqrt{\pi}.
+\]
+\end{Solution}
+
+\newpage
+{\bf 3.\ } The {\bf error function} $\erf(x)$, is defined by 
+\[\erf(x)=\frac{1}{\sqrt{2\pi}}\int_0^x e^{-t^2/2}\ dt.\]
+It is used for calculating probabilities. 
+
+\begin{enumerate}
+\item[a)] Calculate $\erf(0)$. 
+\item[b)] Calculate $\lim\limits_{x\to\infty}\erf(x)$.
+\item[c)] Show that $\erf(x)$ is an odd function. 
+\item[d)] Determine where $\erf(x)$ is increasing/decreasing, concave up/down. 
+\item[e)] Find the power series of $\erf(x)$. 
+\end{enumerate}
+
+\begin{Solution} 
+a)\ $\erf(0)=\dfrac{1}{\sqrt{2\pi}}\displaystyle\int_0^0 e^{-x^2/2}\ dx=0.$
+
+b)\ 
+\[\lim_{x\to\infty}\erf(x)
+=\frac{1}{\sqrt{2\pi}}\int_0^\infty e^{-x^2/2}\ dx
+=\frac{1}{\sqrt{2\pi}}\cdot\frac{1}{2}\sqrt{2\pi}=\frac{1}{2}.
+\]
+Here we used the answer to problem 2a), with $a=1/2$. 
+
+c)\ Make the substitution $u=-t$, so $du=-dt$ and we get
+\[\erf(-x)=\frac{1}{\sqrt{2\pi}}\int_0^{-x} e^{-t^2/2}\ dt
+=
+-\frac{1}{\sqrt{2\pi}}\int_0^{x} e^{-u^2/2}\ dt
+=-\erf(x).
+\]
+
+d)\ $\erf'(x)=(1/\sqrt{2\pi})e^{-x^2/2}$, which is always positive, so $\erf(x)$ is always increasing. And 
+$\erf''(x)=(1/\sqrt{2\pi})(-x)e^{-x^2/2}$ has the opposite sign as $x$. So the graph is $\erf(x)$ is concave up when $x<0$ and concave down for $x>0$. 
+\end{Solution} 
+
+e)\ 
+\[\begin{split}
+\erf(x)&=\frac{1}{\sqrt{2\pi}}\int_0^xe^{-t^2/2}\ dt\\
+&=\frac{1}{\sqrt{2\pi}}
+\int_0^x\sum_{k=0}^\infty\frac{(-t^2/2)^k}{k!}\\
+&=\frac{1}{\sqrt{2\pi}}
+\sum_{k=0}^\infty\frac{(-1)^k}{2^kk!}\frac{x^{2k+1}}{2k+1}\\
+&=\frac{1}{\sqrt{2\pi}}\left[
+x-\frac{x^2}{2\cdot 3}+\frac{x^5}{2\cdot 4\cdot 5}-\frac{x^7}{2\cdot 4\cdot 6\cdot 7}+\frac{x^9}{2\cdot 4\cdot 6\cdot 8\cdot 9}-\cdots
+\right]
+\end{split}
+\]
+
+
+{\bf 4.\ } Find the area of the interior of the ellipse with equation 
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=1.\]
+(It suffices to compute one-quarter of the area.)
+
+\begin{Solution} Solving for $y$ we get $y=b\sqrt{1-(x/a)^2}$, so 
+\[\text{Area}=4b\int_0^a\sqrt{1-\frac{x^2}{a^2}}\ dx.\]
+Let $x=a\sin\theta$, so $dx=a\cos\theta$ and the limits change from $[0,a]$ to $[0,\pi/2]$. We get 
+\[\text{Area}
+=4b\int_0^{\pi/2}\sqrt{1-\sin^2\theta}\cdot a\cos\theta\ d\theta
+=4ab\int_0^{\pi/2}\cos^2\theta\ d\theta=
+4ab\cdot P_1\cdot\frac{\pi}{2}=\pi ab.
+\]
+\end{Solution}
+
+{\bf 5.\ } For the circumference of the ellipse in problem 4, some people use the simple formula 
+\[
+2\pi\sqrt{\frac{a^2+b^2}{2}}=2\pi a\sqrt{1-\frac{E^2}{2}}.
+\]
+
+a)\ Find a power series in $E$ for 
+\[2\pi a\sqrt{1-\frac{E^2}{2}}\]
+
+b)\ Compare your power series in a) with the power series for the true circumference in equation (9.17) of the notes. Why are they close? Which is bigger?
+
+\begin{Solution}
+a)\ Use the binomial series:
+\[
+\sqrt{1+x}=\sum_{k=0}^\infty \binom{1/2}{k} x^k=
+1-\sum_{k=1}^\infty (-1)^k\frac{P_k}{2k-1}x^k.
+\]
+Replacing $x$ by $-E^2/2$ we get
+\[\begin{split}
+2\pi a\sqrt{1-\frac{E^2}{2}}&=
+2\pi a\left[ 1-\sum_{k=1}^\infty \frac{P_k}{2^{k}}\frac{E^{2k}}{2k-1}\right]\\
+&=
+2\pi a\left[1-\frac{1}{2}\cdot\frac{E^2}{1\cdot 2}-
+\frac{1\cdot 3}{2\cdot 4}\cdot\frac{E^4}{3\cdot 2^2}-
+\frac{1\cdot 3\cdot 5}{2\cdot 4\cdot 6}\cdot\frac{E^6}{5\cdot 2^3}-\cdots\right]
+\end{split}
+\]
+
+
+b)\ The power series for the true arclength is 
+\[
+2\pi a\left[
+1-\sum_{k=1}^\infty P_k^2\frac{E^{2k}}{2k-1}\right]=
+2\pi a\left[
+1-\left(\frac{1}{2}\right)^2\cdot \frac{E^2}{1}-
+\left(\frac{1\cdot 3}{2\cdot 4}\right)^2\cdot \frac{E^4}{3}-
+\left(\frac{1\cdot 3\cdot 5}{2\cdot 4\cdot 6}\right)^2\cdot \frac{E^6}{5}-\cdots\right]
+\]
+
+The first two terms (up to $k=1$) of both series agree; that's why it seems like a good approximation. However for $k\geq 2$ we have
+\[\frac{P_k}{2^k}<P_k^2.\]
+To see this it suffices to see that
+\[\frac{1}{2^k}<P_k.\]
+This follows from 
+\[\frac{1}{2^k}=\frac{1}{2^{k-1}}\cdot\frac{1}{2},\qquad\text{whereas}\qquad P_k=P_{k-1}\cdot\frac{2k-1}{2k},
+\]
+and 
+\[\frac{1}{2}<\frac{2k-1}{2k},\qquad\text{for}\qquad k\geq 2.\]
+Hence in the simple formula of part a) we are subtracting too little, so it always gives a value which is larger than the actual arclength. 
+\end{Solution} 
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+Practice Problems with solutions (not to be turned in)
+
+{\bf Practice 1.\ }  Recall the factorial function is given by $s!=\displaystyle \int_0^\infty x^s e^{-x}\ dx$, for $s>-1$. Show that 
+
+a)\ $(s+1)!=(s+1)\cdot s!$. 
+
+b)\ $(-1/2)!=2\int_0^\infty e^{-x^2}\ dx$. 
+
+c)\ $(1/2)!=\int_0^\infty e^{-x^2}\ dx$. 
+
+\begin{Solution} 
+a)\ $(s+1)!=\int_0^\infty x^{s+1}e^{-x}$. Integrate by parts with $u=x^{s+1}$ and $v'=e^{-x}$. 
+b)\ Using the integral
+\[(-1/2)!=\int_0^\infty x^{-1/2}e^{-x}\ dx\]
+we make the substitution $u=x^{1/2}$ so $du=(1/2)x^{-1/2}\ dx$ and 
+$2du=x^{-1/2}\  dx$, so we get
+\[(-1/2)!=\int_0^\infty 2e^{-u^2}\ dx.\]
+Using a)  with $s=-1/2$ we get 
+\[(1/2)!=(1/2)\cdot(-1/2)!,\]
+so $(-1/2)!=2\cdot(1/2)!$.
+\end{Solution}
+
+
+
+\vskip10pt
+{\bf Practice 2.\ } 
+Show that for any integer $k\geq 0$ we have 
+$\left(k-\frac{1}{2}\right)!= k! P_k \sqrt{\pi}.$
+\begin{Solution} Using $s!=s\cdot(s-1)!$ repeatedly, we get
+\[\begin{split}
+\left(k-\frac{1}{2}\right)!
+&=\left(k-\frac{1}{2}\right)\left(k-\frac{3}{2}\right)!\\
+&=\left(k-\frac{1}{2}\right)\left(k-\frac{3}{2}\right)\left(k-\frac{5}{2}\right)!\\
+&=\left(k-\frac{1}{2}\right)\left(k-\frac{3}{2}\right)\cdots
+\left(k-\frac{2k-1}{2}\right)\left(k-\frac{2k+1}{2}\right)!\\
+&=\left(\frac{2k-1}{2}\right)\left(\frac{2k-3}{2}\right)\cdots
+\left(\frac{1}{2}\right)\left(-\frac{1}{2}\right)!\\
+&=\left(\frac{2k-1}{2k}\right)\left(\frac{2k-3}{2(k-1)}\right)\cdots
+\left(\frac{1}{2\cdot 1}\right)\ k!\  \left(-\frac{1}{2}\right)!\\
+&=P_k\  k!\  \sqrt{\pi},
+\end{split}
+\]
+as desired.
+\end{Solution}
+
+1.\ $\int_0^\infty x^6 e^{-2x}\ dx$.
+ $u=2x$, ans. $45/8$
+
+2.\ $\int_0^\infty \sqrt{x} e^{-x^3}$.
+$u=x^3$, ans. $\sqrt{\pi}/8$
+
+4.\ $\int_0^\infty e^{-ax^2}\ dx$, where $a$ is a positive constant.
+
+$u=\sqrt a\cdot x$, ans. $\frac{1}{2}\sqrt{\pi}{a}$.
+
+3.\ $\int_0^\infty 3^{-4x^2}\ dx$ (use previous problem). 
+
+ans. $\frac{1}{2}\sqrt{\pi}{4\log 3}$
+
+5.\ $\int_0^\infty e^{-x^a}\ dx$, where $a$ is a positive constant
+ 
+ $u=x^a$, ans. $(1/a)!$.
+
+6.\  $\int_0^1 x^8(1-x)^{10}\ dx$.
+
+ans. $1/(11\cdot 13\cdot 17\cdot 18\cdot 19)$. 
+
+7.\ $\int_0^1\sqrt{\frac{1}{x}-1}\ dx$.
+
+ans. $\pi/2$
+
+8.\ $\int_0^{\pi/2}\sqrt{\tan\theta}\ d\theta$. 
+
+ans. $\pi/\sqrt{2}$
+
+9.\ $\int_0^1x^p(-\log x)^q\ dx$, where $p,q$ are postive constants.
+
+$u=-\log x$, ans. $q!/p^{q+1}$.
+
+10.\ $\int_0^2(4-x^2)^{3/2}\ dx$. 
+
+$x=2\sin\theta$, ans. $3\pi$.
+
+11.\ $\int_0^2\frac{x^2}{\sqrt{2-x}}\ dx$.
+
+$u=2x$, ans. $64\sqrt{2}/15$.
+
+12.\ $\int_0^4x^{3/2}(4-x)^{5/2}\ dx$.
+
+ans. $3\pi/256$
+
+13.\ $\int_0^3\frac{1}{\sqrt{3x-x^2}}\ dx$.
+
+ans. $\pi$
+
+14.\ $\int_0^\infty x^a e^{-x^2}\ dx$, where $a$ is a positive constant.
+
+ans. $\frac{1}{2}(\frac{a-1}{2})!$
+
+15.\ Find a recursion formula for the integrals 
+\[J_n=\int_0^1 \frac{x^n}{\sqrt{1-x^4}}\ dx.\]
+[Hint: Integrate by parts, with $u=x^{n-3}(1-x^4)$.
+
+ans. $J_n=\frac{n-3}{n-1} J_{n-4}$. 
+%16.\ $\int_0^1\sqrt{1-x^4}\ dx$.
+
+%17.\ $\int_0^\infty\frac{x^{p-1}}{1+x}\ dx$, where $p$ is a constant, $0<p<1$.
+
+16.\ $\int_0^\infty\frac{1}{1+x^2}\ dx$
+
+ans. $\pi/4$
+
+17.\ $\int_0^\infty \frac{1}{(1+x)^2}\ dx$
+
+ans. $1$
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+ 
+ 

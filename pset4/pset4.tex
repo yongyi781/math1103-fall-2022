@@ -1,0 +1,68 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{geometry}
+\usepackage{amssymb,parskip,mathtools}
+\usepackage[shortlabels]{enumitem}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\title{MATH1103 Fall 2022\\
+Problem Set 4}
+
+\begin{document}
+    \maketitle
+    This problem set is due on Wednesday, September 28 at 11:59 pm. Each problem part is worth 3 points. Collaboration is encouraged. In all cases, you must write your own solutions, and and you must cite collaborators and resources used.
+
+    % \begin{problem}[Strang 5.6.31]
+    %     If you roll three dice at once, what are the probabilities of each outcome between 3 and 18? What is the expected value?
+    % \end{problem}
+
+    \begin{problem}
+        Some exercises.
+        \begin{enumerate}[(a)]
+            \item (Strang 5.6.4) What is the average value of the function $\sqrt x$ between 0 and 4?
+            \item (Strang 8.1.14) Find the area bounded by $y=12-x$, $y=\sqrt x$, and $y=1$.
+            \item (Strang 5.6.17) What number $\overline v$ gives
+            \[\int_a^b(v(x)-\overline v)\,dx=0?\]
+            Justify your answer.
+            \item (Strang 8.1.53) If a roll of paper with inner radius 2 cm and outer radius 10 cm has about 10 thicknesses per centimeter, approximately how long is the paper when unrolled?
+        
+            \emph{Hint}: Computing the volume of the roll would be a good place to start.
+
+            \item (Adapted from Strang 5.6.32) I choose a number at random between 0 and 1, and you choose a number at random between 0 and 1 as well. What is the probability that the square of my number is less than your number? (For example, if I chose 0.4 and you chose 0.2, then the square of my number, 0.16, would be less than your number.)
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}[Adapted from Strang 5.6.27]
+        On the curved portion of a semicircle with radius 1 centered at the origin lying above the $x$-axis, a point $P$ is chosen at random. What is the average height (i.e.\ $y$-coordinate) of $P$? In fact, this problem has multiple different answers depending on how exactly the random point is chosen.
+        \begin{enumerate}[(a)]
+            \item Find the answer assuming $P$ is chosen by choosing a random number $a$ between $-1$ and 1, and then taking the point $P$ on the semicircle with $x$-coordinate equal to $a$.
+            \item Now find the answer assuming $P$ is chosen by choosing a random angle $\theta$ between 0 and $\pi$, and then taking the point $P$ to be $(\cos\theta,\sin\theta)$.
+        \end{enumerate}
+    \end{problem}
+
+    \begin{problem}[Adapted from Strang 5.6.24]
+        Let $v_1,v_2,\dots$ be positive numbers such that $v_{n+1}<v_n$ for all $n$, in other words, the sequence $v_n$ is decreasing. (For example, we could have $v_1=1, v_2=0.5, v_3=0.2, v_4=0.1, v_5=0.05$, and so on.) For each $n$, let $a_n=(v_1+\dots+v_n)/n$, i.e.\ the average of the first $n$ terms. Prove that $a_{n+1}<a_n$ for all $n$, in other words, the sequence $a_n$ is decreasing.
+
+        \emph{Hint}: Equivalently, you have to prove that $a_{n+1}-a_n<0$ for all $n$. Can you write $a_{n+1}-a_n$ in terms of the $v_i$ in a helpful way?
+    \end{problem}
+
+    \begin{problem}
+        Find the hyper-volume of the unit sphere in 4 dimensions, which has equation $x^2+y^2+z^2+w^2\leq 1$. (This problem is an advertisement for how powerful math is when dealing with objects we cannot visualize.)
+
+        \emph{Hint}: Slice it. What are the cross sections?
+
+        \emph{Hint 2}: To see if you made any mistakes, here is the answer: $\frac12\pi^2$. Of course you must still show a derivation.
+
+        \emph{Note:} In solving this problem it may become necessary to find the antiderivative of $\cos^4\theta$. To do this, read Chapter 7.2 of Strang, pages 288--290, and use reduction formula (7).
+
+        \emph{Note 2:} Here is a real life interpretation of this seemingly abstract 4-dimensional volume. It says that the probability that 4 numbers $x,y,z,w$, each chosen randomly from $-1$ to $1$, will satisfy $x^2+y^2+z^2+w^2\leq 1$, is $\pi^2/32\approx 31\%$. Contrast that with the 2 dimensional case, where the probability is $\pi/4\approx 78.5\%$!
+
+        \emph{Optional challenge}: Continue to higher dimensional spheres. Can you find a pattern? Or a recursion?
+    \end{problem}
+\end{document}
